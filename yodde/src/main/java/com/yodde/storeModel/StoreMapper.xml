@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="www.yodde.co.kr/store">
+	<insert id="insertStore" parameterType="com.yodde.storeModel.StoreDto">
+		insert into store(storeId, storeName, address, streetAddr, openDate, serviceTime, mapId, latitude, longitude, status, homepage, rate, category1, category2, category3, phoneNum) values(
+			seq_store.nextval,
+			#{storeName},
+			#{address},
+			#{streetAddr},
+			#{openDate, jdbcType=DATE},
+			#{serviceTime, jdbcType=VARCHAR},
+			#{mapId, jdbcType=VARCHAR},
+			#{latitude, jdbcType=NUMERIC},
+			#{longitude, jdbcType=NUMERIC},
+			#{status, jdbcType=VARCHAR},			
+			#{homepage, jdbcType=VARCHAR},
+			#{rate, jdbcType=NUMERIC},
+			#{category1},
+			#{category2},
+			#{category3},
+			#{phoneNum, jdbcType=VARCHAR}
+		)
+	</insert>
+	
+	<select id="isExistStore" parameterType="com.yodde.storeModel.StoreDto" resultType="String">
+		select storeId from store where latitude = #{latitude} and storeName = #{storeName}
+	</select>
+	
+	<select id="selectStoreByStoreId" parameterType="int" resultType="com.yodde.storeModel.StoreDto">
+		select * from store where storeId = #{storeId}
+	</select>
+   
+</mapper>

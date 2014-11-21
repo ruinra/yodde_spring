@@ -1,0 +1,62 @@
+@CHARSET "UTF-8";
+
+body {
+	font-family: Helvetica;
+	font-size: 12px;
+	color: #63665F
+}
+
+#page {
+	width: 870px;
+	margin: -15px 13px 20px 13px;
+}
+
+#thumbs {
+	padding-top: 10px;
+	overflow: hidden;
+}
+
+#largeImage {
+	width: 450px;
+	height: 450px;
+}
+
+#thumbs img, #largeImage {
+	padding: 4px;
+	background-color: white;
+	cursor: pointer;
+}
+
+#thumbs img {
+	float: left;
+	width: 130px
+}
+
+#panel {
+	position: relative;
+	text-align:center;
+	padding-right: 50px;
+}
+
+h1, h2 {
+	font-size: 30px;
+	color: #333;
+	text-shadow: 0px 2px 3px #c5c5c5;
+	text-align: center;
+}
+
+h2 {
+	font-size: 20px;
+	line-height: 30px;
+}
+
+h2 a {
+	background-color: #F5FF4C;
+	color: #333;
+	text-decoration: none;
+	padding: 5px;
+}
+
+h2 a:hover {
+	background-color: #d5dd42;
+}

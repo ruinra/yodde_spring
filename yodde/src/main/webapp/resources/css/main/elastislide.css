@@ -1,0 +1,61 @@
+/* Elastislide Style */
+
+.elastislide-horizontal {			
+	padding: 10px 40px;
+}
+
+.elastislide-carousel {			/*안할경우 옆으로 사진이 나열됨*/
+	overflow: hidden;
+	position: relative;
+}
+
+.elastislide-carousel ul {
+	position: relative;
+	display: block;
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+	-webkit-backface-visibility: hidden;
+	-webkit-transform: translateX(0px);
+	-moz-transform: translateX(0px);
+	-ms-transform: translateX(0px);
+	-o-transform: translateX(0px);
+	transform: translateX(0px);
+}
+
+.elastislide-horizontal ul {					/*사진관련*/
+	white-space: nowrap;
+}
+
+.elastislide-horizontal ul li {
+	height: 100%;
+	display: inline-block;
+}
+
+.elastislide-carousel ul li a img {		/*사진 배치*/
+	display: block;
+	max-width: 100%;
+}
+
+/* Navigation Arrows */
+.elastislide-wrapper nav span {
+	position: absolute;
+	background: #ddd url(../../images/images/nav.png) no-repeat 4px 3px;
+	width: 23px;
+	height: 23px;
+	text-indent: -9000px;
+	cursor: pointer;
+	opacity: 0.8;
+}
+
+.elastislide-horizontal nav span {								/*화면이동하는 아이콘위치*/
+	top: 50%;
+	left: 10px;
+	margin-top: -11px;
+}
+
+.elastislide-horizontal nav span.elastislide-next {				/*화면이동하는 아이콘(오른쪽)*/
+	right: 10px;
+	left: auto;
+	background-position: 4px -17px;
+}

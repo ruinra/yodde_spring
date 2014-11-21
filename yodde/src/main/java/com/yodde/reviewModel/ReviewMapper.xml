@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="www.yodde.co.kr/store">
+	<insert id="writeReview" parameterType="com.yodde.reviewModel.ReviewDto">
+		INSERT into REVIEW(reviewId, storeId, writer, rate, writeDate, lastModify, like1, unlike, report, content, pic1, pic2, pic3, pic4, pic5) values(
+			SEQ_REVIEW.NEXTVAL, 
+			#{storeId},
+			#{writer},
+			#{rate},
+			SYSDATE, 
+			SYSDATE, 
+			#{like1}, 
+			#{unlike}, 
+			#{report}, 
+			#{content},
+			#{pic1},
+			#{pic2},
+			#{pic3},
+			#{pic4},
+			#{pic5}
+		)
+	</insert>
+	
+	<select id="selectReviewByStoreId" parameterType="int" resultType="com.yodde.reviewModel.ReviewDto" >
+		select * from review where storeId = #{storeId}
+	</select>
+</mapper>

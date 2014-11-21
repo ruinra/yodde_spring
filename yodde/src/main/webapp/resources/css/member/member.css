@@ -1,0 +1,50 @@
+@CHARSET "UTF-8";
+body{
+	margin:0px 0px 0px 0px;
+	background-color:#F38983;
+}
+
+A:link{text-decoration:none;}
+A:visited{text-decoration:none;}
+A:hover{text-decoration:none;}
+
+p{
+	margin-left:40px;
+}
+.join_content{
+	padding-top:50px;
+	height:520px;
+}
+
+.join_box{
+	width:600px; height:60%;
+	margin:9% 0px 0px 25%;
+	padding:0px 0px 0px 0px;
+	background-color:#F4F4F4;
+}
+
+.content_memberJoin{
+	height:520px;
+	padding-top:50px;
+}
+.memberJoin_box{
+	width:600px; height:60%;
+	margin:9% 0px 0px 25%;
+	padding:0px 0px 0px 0px;
+	background-color:#F4F4F4;
+}
+.join_input{
+	width:180px; height:25px;
+	margin:0px 0px 0px 0px;
+
+	border:none;
+	border-bottom:2px solid #F38983;
+	background-color:#F4F4F4;
+
+	font-size:18px;
+	font-family:맑은 고딕;
+	font-weight:bold;
+}
+.bottom_Btn{
+	text-align:center;
+}
