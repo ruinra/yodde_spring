@@ -10,6 +10,7 @@
 	<link rel="stylesheet" type="text/css" href="${root}/resources/css/commons/common.css"/>		<!-- footer, title css -->
 	<link rel="stylesheet" type="text/css" href="${root}/resources/css/commons/category.css" />		<!-- category css -->
 	<link rel="stylesheet" type="text/css" href="${root}/resources/css/main/main.css"/>					<!-- main css -->
+	<link rel="stylesheet" type="text/css" href="${root}/resources/css/search/search.css"/>					<!-- main css -->
 </head>
 <script type="text/javascript" src="${root}/resources/scripts/jquery-2.1.1.js"></script>
 <script>
