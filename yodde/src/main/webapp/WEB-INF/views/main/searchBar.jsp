@@ -28,10 +28,10 @@
                   <img src="${root}/resources/images/images/option.png" height="40">
                </a>
             </li>
-            <li id="search" class="search">
+            <li id="search" class="search" >
                <input type="text" id="query" class="input_text" tabindex="5" style="ime-mode: active;" 
                   placeholder=" STORE/#TAG/@NICKNAME" onfocus="this.placeholder=''" 
-                  onblur="this.placeholder=' STORE/#TAG/@NICKNAME'"/>
+                  onblur="this.placeholder=' STORE/#TAG/@NICKNAME'" onkeydown="if(event.keyCode==13){javascript:search();}"/>
             </li>
             <li class="enter_btn">
                <a href="javascript:search()">

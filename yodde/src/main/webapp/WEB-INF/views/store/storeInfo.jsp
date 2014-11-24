@@ -9,17 +9,13 @@
    <title>요때</title>
    <c:set var="root" value="${pageContext.request.contextPath}" />
    <c:set var="email" value="${sessionScope.email}" />
-   <link rel="stylesheet" type="text/css"
-      href="${root}/resources/css/commons/common.css" />
+   <link rel="stylesheet" type="text/css" href="${root}/resources/css/commons/common.css" />
    <!-- footer, title css -->
-   <link rel="stylesheet" type="text/css"
-      href="${root}/resources/css/commons/category.css" />
+   <link rel="stylesheet" type="text/css" href="${root}/resources/css/commons/category.css" />
    <!-- category css -->
-   <link rel="stylesheet" type="text/css"
-      href="${root}/resources/css/main/main.css" />
+   <link rel="stylesheet" type="text/css" href="${root}/resources/css/main/main.css" />
    <!-- main css -->
-   <link rel="stylesheet" type="text/css"
-      href="${root}/resources/css/store/store.css" />
+   <link rel="stylesheet" type="text/css" href="${root}/resources/css/store/store.css" />
    <script type="text/javascript" src="${root}/resources/scripts/jquery-2.1.1.js"></script>
    <script type="text/javascript" src="http://openapi.map.naver.com/openapi/naverMap.naver?ver=2.0&key=15319f937084dc86f076a48652007f45&coord=latlng"></script>
    <script type="text/javascript">
@@ -55,7 +51,7 @@
                         .getElementById('scholes'), {
                      point : new nhn.api.map.LatLng(
                            data.y , data.x), //아까 구한 위도, 경도   
-                     zoom : 11,
+                     zoom : 9,
                      enableWheelZoom : true,
                      enableDragPan : true,
                      enableDblClickZoom : false,
@@ -125,7 +121,7 @@
       <div class="storeInfo_content">
          <div class="result_img">
             <!-- result title -->
-            <img src="${root}/resources/images/images/about.png" height="30" />
+            <img src="${root}/resources/images/images/about.png" height="55" />
             <span class="result_value"> <!-- 검색해서 넘어온 가게 이름 -->
                ${storeDto.storeName}
             </span> <span class="status_position"> <span class="status">
@@ -156,9 +152,9 @@
                   <div class="starrate">
                      <!-- 별점표시 -->
                      <span class="rate_title"> <img
-                        src="${root}/resources/images/images/rate_title.png" height="35">
+                        src="${root}/resources/images/images/rate_title.png" height="50">
                      </span> <img src="${root}/resources/images/images/starrate_ex.png"
-                        height="35" style="margin-left: 30px;">
+                        height="50" style="margin-left: 30px;">
                   </div>
                   <div class="txt">
                      <!-- 스토어 정보 -->
@@ -183,7 +179,7 @@
 
                      <div class="map">
                         <!-- 스토어 위치 -->
-                        <div id="scholes" style="border: 2px solid #DCDCDF; width: 490px; height: 185px; margin: 5px;"></div>
+                        <div id="scholes" style="border: 1px solid #000; width: 490px; height: 185px; margin: 5px;"></div>
                      </div>
                      <div class="follow_btn">
                         <!-- 팔로우 한 스토어와 안 한 스토어를 구별 -->
@@ -191,7 +187,7 @@
                            <a href=""><img src="${root}/resources/images/images/follow.png" height="35"></a>
                          -->
                         <a href=""><img
-                           src="${root}/resources/images/images/notfollow.png" height="30"></a>
+                           src="${root}/resources/images/images/notfollow.png" height="35"></a>
                      </div>
                   </div>
                </li>
@@ -200,11 +196,9 @@
                   src="${root}/resources/images/images/ex1.jpg" height="300"></li>
 
                <li class="store_icon">
-                  <!-- 스토어 info --> <img
-                  src="${root}/resources/images/images_store_info/card.png"
-                  width="55" style="margin-right: 10px;"> <img
-                  src="${root}/resources/images/images_store_info/group.png"
-                  width="55" style="margin-right: 10px;"> <img
+                  <!-- 스토어 info --> 
+                  <img src="${root}/resources/images/images_store_info/card.png" width="55" style="margin-right: 10px;"> 
+                  <img src="${root}/resources/images/images_store_info/group.png"width="55" style="margin-right: 10px;"> <img
                   src="${root}/resources/images/images_store_info/toilet.png"
                   width="45" style="margin-right: 10px;"> <img
                   src="${root}/resources/images/images_store_info/wifi.png"
@@ -249,23 +243,48 @@
          <div class="write_box">
             <!-- 리뷰쓰기 창 -->
             <div class="review_title">
-               <span style="text-align: left; background-color: white;"> <img
-                  src="${root}/resources/images/images/review_title.png" height="50">
-               </span> <span class="write_btn"> <a
-                  href="javascript:showReviewEditor('${email}')"><img
-                     src="${root}/resources/images/images/write.png" height="30"></a>
+               <span style="text-align: left; background-color: white;"> 
+               	<img src="${root}/resources/images/images/review_title.png" height="50">
+               </span> 
+               
+				<span class="write_btn"> 
+					<a href="javascript:showReviewEditor('${email}')">
+						<img src="${root}/resources/images/images/write.png" height="30">
+					</a>
                </span>
             </div>
-
+			<!--요뗴점수 입력창-->
+		   <script type="text/javascript" src="${root}/resources/scripts/jquery-2.1.1.js"></script>
+		   <script type="text/javascript" src="${root}/resources/scripts/jquery.raty.js"></script>
+			<!--  -->
+			
+			<span id="targetText"></span>
+			<span id="targetText-hint" class="input hint"></span>
+			
+			<script>
+				$.fn.raty.defaults.path = '${root}/resources/images/images';
+			
+				$(function() {
+					$('#default').raty();
+			
+			
+					$('#targetText').raty({
+						target : '#targetText-hint',
+						targetText : ''
+					});
+					
+				});
+			</script>			
+						
             <!-- 작성 버튼을 누르면 나타나는 작성 창 -->
+            
             <div id="reviewEditorDiv" style="display: none;"
                class="review_write">
                <form action="writeReivew" method="post">
                   <textarea name="content" cols=120 rows=5></textarea>
-                  <input type="hidden" name="writer" , value="${email}"> <input
-                     type="hidden" name="storeId" , value="${storeDto.storeId}">
-                  <input type="IMAGE" src="${root}/resources/images/images/ok.png"
-                     height="30" name="Submit" value="Submit">
+                  <input type="hidden" name="writer" , value="${email}"> 
+                  <input type="hidden" name="storeId" , value="${storeDto.storeId}">
+                  <input type="IMAGE" src="${root}/resources/images/images/ok.png" height="30" name="Submit" value="Submit">
                </form>
             </div>
             <br /> <br />

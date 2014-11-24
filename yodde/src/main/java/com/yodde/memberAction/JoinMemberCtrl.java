@@ -20,6 +20,7 @@ public class JoinMemberCtrl {
 	@Autowired //해당 변수타입과 일치하는 빈을 찾아서 주입
 	private MemberDao memberDao;
 	
+
 	@RequestMapping(value = "/member/join", method=RequestMethod.GET)
 	public ModelAndView join(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {

@@ -1,1 +1,26 @@
 @CHARSET "UTF-8";
+.content{
+	width: 600px;
+}
+.title{
+	margin-bottom:20px;
+}
+.bottom_Btn{
+	padding:20px 0px 20px 0px;
+	text-align:center;
+}
+.report_subject{
+	width: 525px;
+height: 25px;
+margin: 0px 0px 0px 0px;
+border: 2px solid #DCDCDF;
+font-size: 16px;
+font-family: 맑은 고딕;
+}
+.report_content{
+	width: 525px; 		height: 200px;
+	margin: 0px 0px 0px 0px;
+	border: 2px solid #DCDCDF;
+	font-size: 14px;
+	font-family: 맑은 고딕;
+}

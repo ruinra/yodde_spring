@@ -1,307 +1,305 @@
 @CHARSET "UTF-8";
+@font-face {font-family:"1훈막대연필 R"; src:url('../../fonts/pencilR.eot')}; 
+@font-face {font-family:"1훈막대연필 R"; src:url('../../fonts/pencilR.woff')}; 
+
 body{
-   margin:0px 0px 0px 0px;
-   background-color:#FFFFFF;
+	margin:0px 0px 0px 0px;
+	background-color:#FFFFFF;
+	font-family: "1훈화양연화 R", 궁서;
+	/* 
+	font-family: "맑은 고딕", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	 */
 }
 A:link{text-decoration:none;}
 A:visited{text-decoration:none;}
 A:hover{}
-
+ol, ul {
+	list-style: none;
+}
 .search_bar{
-   padding: 60px 0px 5px 20%;
-   background-color: #FFFFFF;
-   text-align: center;
-   display: inline-block;
-   width: 80%;
+	padding: 60px 0px 5px 20%;
+	background-color: #FFFFFF;
+	text-align: center;
+	display: inline-block;
+	width: 80%;
 }
 .input_text{
-   width: 100%;   height: 45px;
-   margin-right: 0px;
-   opacity: 0.4;
-   border: solid 3px #F7382D;
-   
-   font-size: 35px;
-   font-family: 맑은 고딕;
-   font-weight: bold;
-   text-transform: uppercase;
+	width: 100%;	height: 45px;
+	margin-right: 0px;
+	opacity: 0.4;
+	border: solid 3px #F7382D;
+	
+	font-size: 35px;
+	font-weight: bold;
+	text-transform: uppercase;
 }
 .option_btn{
-   margin-right: 9px;
-   padding-top: 4px;
-   float: left;
+	margin-right: 9px;
+	padding-top: 4px;
+	float: left;
 }
 .search{
-   float: left;
-   width: 60%;
+	float: left;
+	width: 60%;
 }
 .enter_btn{
-   margin-left: 15px;
-   float: left;
-   margin-top: 3px;
+	margin-left: 15px;
+	float: left;
+	margin-top: 3px;
 }
 .content{
-   width:98%;      height:auto;
-   min-height: 573px;
-   margin: 0px 0px 10px 10px;
-   background-color:white;
-   float:center;
+	width:98%;		height:auto;
+	min-height: 573px;
+	margin: 0px 0px 10px 10px;
+	background-color:white;
+	float:center;
 }
 .main_content{
-   
+	
 }
 .store_box{
-   width: 70%;
-   margin:10px 0px 20px 17%;
-   padding-top: 13px;
-   
-   font-family:맑은 고딕;
-   font-size:15px;
+	width: 70%;
+	margin:10px 0px 20px 17%;
+	padding-top: 13px;
+	font-size:15px;
 }
 .store_box_title{
-   z-index:100;
-   opacity:1;
+	z-index:100;
+	opacity:1;
 }
 .stores{
-   width:95%; height:270px;
-   padding:2px 2px 2px 20px;
-   background-color:#fafafa;
+	width:95%; height:270px;
+	padding:2px 2px 2px 20px;
+	background-color:#fafafa;
 }
 .recommend:hover{
-   background-color:white;
-   opacity:0.6;
+	background-color:white;
+	opacity:0.6;
 }
 
 <!-- hotPlace -->
 .HP_content{
-   padding: 130px 10% 30px 15%;
-   height:auto;
-   width:74%;
+	padding: 130px 10% 30px 15%;
+	height:auto;
+	width:74%;
 }
 .HP_box{
-   height: auto;
-   margin: 0px 0px 0px 12%;
-   padding-top: 40px;
-   font-family: 맑은 고딕;
-   font-size: 15px;
-   display: inline-block;
+	height: auto;
+	margin: 0px 0px 0px 12%;
+	padding-top: 40px;
+	font-size: 15px;
+	display: inline-block;
 }
 .HP_title{
-   width: 930px;    height: 50px;
-   margin-bottom: 30px;
-   padding : 10px 0px 0px 0px;
-   text-align: center;
-   border:solid 2px #DD5050;
-   
-   font-size:40px;
-   font-family:맑은 고딕;
-   color: #DD5050;
-   font-weight:bold;
+	width: 930px; 	height: 50px;
+	margin-bottom: 30px;
+	padding : 10px 0px 0px 0px;
+	text-align: center;
+	border:solid 2px #DD5050;
+	
+	font-size:40px;
+	color: #DD5050;
+	font-weight:bold;
 }
 .HP_thumbnails{
-   width: 950px;    height: auto;
-   padding: 0px 0px 0px 0px;
-   margin-bottom: 570px;
+	width: 950px; 	height: auto;
+	padding: 0px 0px 0px 0px;
+	margin-bottom: 570px;
 }
 .HP_stores{
-   width: 300px;    height: 500px;
-   float: left;
-   margin-right: 10px;
-   
-   text-align: center;
-   border: solid 2px #F38983;
+	width: 300px; 	height: 500px;
+	float: left;
+	margin-right: 10px;
+	
+	text-align: center;
+	border: solid 2px #F38983;
 }
 .HP_store_name{
-   padding-bottom: 5px;
-   font-size: 30px;
-   font-weight: bold;
-   font-family: 맑은 고딕;
-   color: white;
-   background-color: #F38983;
+	padding-bottom: 5px;
+	font-size: 30px;
+	font-weight: bold;
+	color: white;
+	background-color: #F38983;
 }
 .HP_store_address{
-   float:center;
-   font-size:14px;
+	float:center;
+	font-size:14px;
 }
 .HP_store_pic{
-   margin: 10px 0px 10px 0px;
+	margin: 10px 0px 10px 0px;
 }
 .HP_store_starrate{
 }
 .HP_store_reviewnum{
-   margin:10px 10px 5px 0px;
-   float:left;
+	margin:10px 10px 5px 0px;
+	float:left;
 }
 .reviewnum_title{
 }
 .review_num{
-   margin-left: 10px;
-   font-size:40px;
-   font-weight:bold;
-   color:#7C7475;
+	margin-left: 10px;
+	font-size:40px;
+	font-weight:bold;
+	color:#7C7475;
 }
 
 
 <!-- regCenter -->
 .RC_content{
-   padding: 130px 10% 30px 15%;
-   height:auto;
-   width:74%;
+	padding: 130px 10% 30px 15%;
+	height:auto;
+	width:74%;
 }
 .RC_box{
-   height: auto;
-   margin: 0px 0px 20px 12%;
-   padding-top: 40px;
-   font-family: 맑은 고딕;
-   font-size: 15px;
-   display: inline-block;
+	height: auto;
+	margin: 0px 0px 20px 12%;
+	padding-top: 40px;
+	font-size: 15px;
+	display: inline-block;
 }
 .RC_title{
-   width:930px;    height:50px;
-   margin-bottom: 30px;
-   padding : 10px 0px 0px 0px;
-   text-align: center;
-   border:solid 2px #DD5050;
-   
-   font-size:40px;
-   font-family:맑은 고딕;
-   color: #DD5050;
-   font-weight:bold;
+	width:930px; 	height:50px;
+	margin-bottom: 30px;
+	padding : 10px 0px 0px 0px;
+	text-align: center;
+	border:solid 2px #DD5050;
+	
+	font-size:40px;
+	color: #DD5050;
+	font-weight:bold;
 }
 .RC_map_box{
-   width:930px;
-   margin:30px 0px 50px 0px;
+	width:930px;
+	margin:30px 0px 50px 0px;
 }
 .user_reg{
-   text-align:right;
-   font-family:맑은 고딕;
-   font-size:15px;
+	text-align:right;
+	font-size:15px;
 }
 .RC_map{
-   width:930px;   height:300px;
-   background-color:#DCDCDF;
+	width:930px;	height:300px;
+	background-color:#DCDCDF;
 }
 .RC_thumbnails{
-   width:950px;   height:600px;
-   padding:0px 0px 0px 0px;
+	width:950px;	height:600px;
+	padding:0px 0px 0px 0px;
 }
 .RC_stores{
-   width: 225px;    height: 400px;
-   margin: 0px 5px 20px 0px;
-   float: left;
-   text-align: center;
-   border: solid 2px #F38983;
+	width: 225px; 	height: 400px;
+	margin: 0px 5px 20px 0px;
+	float: left;
+	text-align: center;
+	border: solid 2px #F38983;
 }
 .RC_store_name{
-   padding-bottom: 5px;
-   font-size: 25px;
-   font-weight: bold;
-   font-family: 맑은 고딕;
-   color: white;
-   background-color: #F38983;
+	padding-bottom: 5px;
+	font-size: 25px;
+	font-weight: bold;
+	color: white;
+	background-color: #F38983;
 }
 .RC_store_address{
-   float:center;
-   font-size:14px;
+	float:center;
+	font-size:14px;
 }
 .RC_store_pic{
-   margin: 10px 0px 5px 0px;
+	margin: 10px 0px 5px 0px;
 }
 .RC_store_starrate{
 }
 .RC_store_reviewnum{
-   margin:10px 10px 5px 0px;
-   float:left;
+	margin:10px 10px 5px 0px;
+	float:left;
 }
 .RC_review_num {
-   margin-left: 10px;
-   font-size: 30px;
-   font-weight: bold;
-   color: #7C7475;
+	margin-left: 10px;
+	font-size: 30px;
+	font-weight: bold;
+	color: #7C7475;
 }
 
 
 <!-- resultStore -->
 .RS_content{
-   padding: 130px 10% 30px 15%;
-   height:auto;
-   width:74%;
+	padding: 130px 10% 30px 15%;
+	height:auto;
+	width:74%;
 }
 .RS_box{
-   height: auto;
-   margin: 0px 0px 20px 12%;
-   padding-top: 40px;
-   font-family: 맑은 고딕;
-   font-size: 15px;
-   display: inline-block;
+	height: auto;
+	margin: 0px 0px 20px 12%;
+	padding-top: 40px;
+	font-size: 15px;
+	display: inline-block;
 }
 .RS_title{
-   width:926px;    height:50px;
-   margin-bottom: 10px;
-   padding : 10px 0px 0px 0px;
-   text-align: center;
-   border:solid 2px #DD5050;
-   
-   font-size:40px;
-   font-family:맑은 고딕;
-   color: #DD5050;
-   font-weight:bold;
+	width:926px; 	height:50px;
+	margin-bottom: 10px;
+	padding : 10px 0px 0px 0px;
+	text-align: center;
+	border:solid 2px #DD5050;
+	
+	font-size:40px;
+	color: #DD5050;
+	font-weight:bold;
 }
 .RS_Category{
-   width: 890px;    height: auto;
-   padding: 10px 10px 10px 30px;
-   margin: 0px 0px 30px 0px;
-   background-color: #DCDCDF;
-   display: inline-block;
+	width: 890px; 	height: auto;
+	padding: 10px 10px 10px 30px;
+	margin: 0px 0px 30px 0px;
+	background-color: #DCDCDF;
+	display: inline-block;
 }
 .RC_thumbnails{
-   width:950px;   height:600px;
-   padding:0px 0px 0px 0px;
+	width:950px;	height:600px;
+	padding:0px 0px 0px 0px;
 }
 .RC_stores{
-   width: 225px;    height: 400px;
-   margin: 0px 5px 20px 0px;
-   float: left;
-   text-align: center;
-   border: solid 2px #F38983;
+	width: 225px; 	height: 400px;
+	margin: 0px 5px 20px 0px;
+	float: left;
+	text-align: center;
+	border: solid 2px #F38983;
 }
 .RC_store_name{
-   padding-bottom: 5px;
-   font-size: 25px;
-   font-weight: bold;
-   font-family: 맑은 고딕;
-   color: white;
-   background-color: #F38983;
+	padding-bottom: 5px;
+	font-size: 25px;
+	font-weight: bold;
+	color: white;
+	background-color: #F38983;
 }
 .RC_store_address{
-   float:center;
-   font-size:14px;
+	float:center;
+	font-size:14px;
 }
 .RC_store_pic{
-   margin: 10px 0px 5px 0px;
+	margin: 10px 0px 5px 0px;
 }
 .RC_store_starrate{
 }
 .RC_store_reviewnum{
-   margin:10px 10px 5px 0px;
-   float:left;
+	margin:10px 10px 5px 0px;
+	float:left;
 }
 .RC_review_num {
-   margin-left: 10px;
-   font-size: 30px;
-   font-weight: bold;
-   color: #7C7475;
+	margin-left: 10px;
+	font-size: 30px;
+	font-weight: bold;
+	color: #7C7475;
 }
 
+
+
 .small_Category{
-   width: 160px;
-   margin: 0px 20px 0px 40px;
-   text-decoration: none;
-   float: left;
+	width: 160px;
+	margin: 0px 20px 0px 40px;
+	text-decoration: none;
+	float: left;
 }
 a {
-   color: #7C7475;
+	color: #7C7475;
 }
 a:hover {
-   color: #F38983;
-   font-weight:bold;
+	color: #F38983;
+	font-weight:bold;
 }
