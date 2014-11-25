@@ -2,7 +2,7 @@
 
 body{
 	margin:0px 0px 0px 0px;
-	background-color:#F38983;
+	background-color: #FFFFFF;
 }
 .content{
 	height:auto;	
@@ -13,10 +13,12 @@ A:visited{text-decoration:none;}
 A:hover{text-decoration:none;}
 
 .storeInfo_content, .picCollection_content{
-	padding:130px 150px 30px 180px;
-	height:auto;
-	width:900px;
+	padding: 100px 10% 30px 15%;
+	height: auto;
+	width: 71%;
+	min-width: 896px;
 }
+
 .store_pic{
 	height:300px; width:300px;
 	background-color:black;
@@ -27,9 +29,10 @@ A:hover{text-decoration:none;}
 	height:auto;
 	margin-top: 20px;
 	padding-top:0px;
+	padding-left:0px;
 }
 .storeInfo_box{
-	height: 436px;	width: 536px;
+	height: 436px;	width: 526px;
 	margin: 0px 40px 0px 20px;
 	padding-top:20px;
 	float:right;
@@ -39,45 +42,43 @@ A:hover{text-decoration:none;}
 .starrate{
 	position:absolute;
 	margin:0px 0px 20px 0px;
-	text-align:center;
+	min-width: 455px;
 }
 .rate_title{
 }
 .txt{
-	margin:80px 0px 5px 0px;
-	padding-left:150px;
+	margin: 60px 0px 5px 0px;
+	padding-left: 100px;
 	color:black;
 	font-size:15px;
 	font-family:맑은 고딕;
 }
-.map{
-	height:185px; width:500px;
-	background-color: #DCDCDF;
+.map {
+	margin-left: 2.5%;
+	padding: 0px 0px 0px 0px;
 	
-	margin-left:18px;
-	padding:0px 0px 0px 0px;
-	font-size:50px;
-	font-family:맑은 고딕;
-	font-weight:bold;
-	text-align:center;
-	color:white;
-	left:530px; top:460px;
+	font-size: 50px;
+	font-family: 맑은 고딕;
+	font-weight: bold;
+	text-align: center;
+	color: white;
+	left: 530px; 		top: 460px;
 }
 .result_img{
 	margin:0px 0px 20px 0px;
 }
 .status_position{
 	position:absolute;
-	margin-top:45px;
+	margin-top:4%;
 }
 .category_position{
 	position:absolute;
-	margin-top:90px;
+	margin-top:2%;
 }
 .result_value{
 	padding-left:5px;
 	
-	font-size:70px;
+	font-size: 35px;
 	font-weight:bold;
 	font-family:맑은 고딕;
 	color:#DD5050;
@@ -108,7 +109,7 @@ A:hover{text-decoration:none;}
 }
 
 .img_collection{
-	height:160px;	width:870px;
+	height:160px;	width:860px;
 	margin:70px 0px 0px 0px;
 }
 .reviewImg_box{
@@ -167,8 +168,10 @@ A:hover{text-decoration:none;}
 	width:758px;
 }
 .review_photo_position{
-	position:absolute;
+	width: 250px;
 	margin:10px 0px 0px 0px;
+	min-width: 260px;
+	position:absolute;
 }
 .updown_position{
 	position:absolute;
@@ -177,7 +180,7 @@ A:hover{text-decoration:none;}
 }
 .btn_position{
 	position:absolute;
-	margin:1.8% 0px 0px 51%;
+	margin:20px 0px 0px 650px;
 }
 .write_btn{
 	padding-left:530px;
@@ -187,7 +190,6 @@ A:hover{text-decoration:none;}
 	text-align:right;
 }
 .follow_btn{
-	padding-top:5px;
 	text-align:right;
 }
 .review_more{
@@ -198,6 +200,33 @@ A:hover{text-decoration:none;}
 .detail_img{
 	width:80px height:
 }
+
+
+
+
+/* 별점 관련 */
+
+.white {
+	background-color: #FFF
+}
+
+.hint {
+	text-align: center;
+	width: 200px
+}
+
+span.hint {
+	font-size: 1.0em;
+	height: 46px;
+	margin-top: 15px;
+	padding: 7px;
+	color: #F38983;
+}
+
+
+
+
+
 
 
 

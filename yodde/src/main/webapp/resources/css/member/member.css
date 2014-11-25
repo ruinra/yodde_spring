@@ -1,7 +1,7 @@
 @CHARSET "UTF-8";
 body{
 	margin:0px 0px 0px 0px;
-	background-color:#F38983;
+	background-color:#FFFFFF;
 }
 
 A:link{text-decoration:none;}
@@ -9,7 +9,7 @@ A:visited{text-decoration:none;}
 A:hover{text-decoration:none;}
 
 p{
-	margin-left:40px;
+	margin-left:80px;
 }
 .join_content{
 	padding-top:50px;
@@ -17,10 +17,10 @@ p{
 }
 
 .join_box{
-	width:600px; height:60%;
-	margin:9% 0px 0px 25%;
-	padding:0px 0px 0px 0px;
-	background-color:#F4F4F4;
+	width: 60%; 	height: 70%;
+	margin: 8% 0px 0px 20%;
+	padding: 0px 0px 0px 0px;
+	background-color: #F4F4F4;
 }
 
 .content_memberJoin{
