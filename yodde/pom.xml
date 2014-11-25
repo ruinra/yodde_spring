@@ -179,7 +179,12 @@
 			<type>jar</type>
 			<scope>compile</scope>
 		</dependency>
-		
+		<!--file upload  -->
+		<dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+            <version>1.2.2</version>
+        </dependency>
 		<!-- Test -->
 		<dependency>
 			<groupId>junit</groupId>
