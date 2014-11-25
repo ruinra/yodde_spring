@@ -1,27 +1,29 @@
 @CHARSET "UTF-8";
+@font-face {font-family:'1훈막대연필 R'; src:url('../../fonts/pencilR.eot')}; 
+@font-face {font-family:'1훈막대연필 R'; src:url('../../fonts/pencilR.woff')}; 
 
 ol, ul {
-	list-style: none
+	list-style: none;
 }
 
 body {
-	font-size: 100%;
-	font-family: "맑은 고딕", "Helvetica Neue", Helvetica, Arial, sans-serif;
-	width: auto;
-	height: auto;
+	width: auto;	height: auto;
 	margin: 0;
-	color: #848484;
+	
 	background-color: #fff;
+	font-size: 100%;
+	font-family: "1훈화양연화 R", 궁서;
 	font-weight: normal;
+	color: #848484;
 }
 
-ul {
+.category {
 	list-style: none;
-	margin-top:95%;
+	margin-top: 85%;
 	padding:25% 0px 0px 0px; 
 }
 
-li {
+.category_li {
 	margin: 0 0 0 0;
 	padding: 0
 }

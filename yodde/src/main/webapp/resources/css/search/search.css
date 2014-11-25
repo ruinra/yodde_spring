@@ -1,1 +1,100 @@
 @CHARSET "UTF-8";
+body{
+	margin:0px 0px 0px 0px;
+	background-color: #FFFFFF;
+}
+A:link{text-decoration:none;}
+A:visited{text-decoration:none;}
+A:hover{}
+
+.content{
+	width:98%;
+	margin:0px 0px 10px 10px;
+	background-color:white;
+	float:center;
+}
+.result{
+	
+}
+.recommend{
+	height:180px;
+	float:left;
+}
+.recommend_content{
+	float:left; 
+	padding:10px 20px 20px 20px;
+}
+.recommend_title{
+	padding-bottom:10px;
+	color:#F38983;
+	font-size:25px;
+	font-family:맑은 고딕;
+}
+.recommend_category, .recommend_phone, .recommend_address, .recommend_roadAddress{
+	color:#7C7475;
+	font-family:맑은 고딕;
+	font-size:15px;
+}
+.recommend_address{
+	margin-top:10px;
+}
+.result_content{
+	padding: 20px 30px 10px 15%;
+	width: 860px;
+}
+.result_img{
+	margin: 30px 0px 5px 0px;
+	padding-left: 0px;
+}
+.result_title_img{
+	float:left;	
+}
+.result_title_txt{
+	font-size:22px;
+	padding-left: 150px;
+	font-weight: 700;
+}
+.result_value{
+	padding-left:5px;
+	padding-bottom:10px;
+	
+	font-size:50px;
+	font-weight:bold;
+	font-family:맑은 고딕;
+	color:#DD5050;
+}
+.none{
+	width: 800px;
+	margin-top: 20px;
+	padding: 30px;
+	text-align: center;
+	background-color:#f1f1f1;
+}
+.resultCount{
+	padding-right: 20px;
+	text-align: right;
+	margin-bottom: 5px;
+}
+.result_box{
+	margin-bottom:20px;
+}
+.mem_result_box{
+	margin-bottom:20px;
+	margin-top:30px;
+}
+.result_stores{
+	width:840px; height:180px;
+	padding:0px 0px 0px 0px;
+	margin-bottom: 20px;
+	border:solid 2px #F38983;
+}
+.result_stores_title{
+	z-index:100;
+	opacity:1;
+}
+.store_more{
+	margin:15px 0px 10px 320px;
+}
+.request_Btn{
+	margin:15px 0px 10px 760px;
+}

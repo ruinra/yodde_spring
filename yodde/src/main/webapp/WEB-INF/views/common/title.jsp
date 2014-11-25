@@ -13,7 +13,7 @@
 			}
 		</script>
 	</head>
-	<body>		
+	<body style="min-width:1260px;">		
 		<div class="title_box">
 			<!-- 타이틀 왼쪽 버튼 -->
 			<span class="title_left">

@@ -3,9 +3,9 @@
 
 html { height: 100%; }
 
-*,
-*:after,
-*:before {
+#pic_slide,
+#pic_slide:after,
+#pic_slide:before {
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
