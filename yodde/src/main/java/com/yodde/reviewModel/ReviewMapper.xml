@@ -23,7 +23,9 @@
 		)
 	</insert>
 	
-	<select id="selectReviewByStoreId" parameterType="int" resultType="com.yodde.reviewModel.ReviewDto" >
-		select * from review where storeId = #{storeId}
-	</select>
+	<select id="selectReviewByStoreId" parameterType="int" resultType="com.yodde.reviewModel.Review" >
+		select R.REVIEWID, R.STOREID, M.PROFILEPIC, M.NICKNAME AS writer, R.RATE, R.WRITEDATE, R.LASTMODIFY, R.LIKE1, R.UNLIKE,
+			R.REPORT, R.CONTENT, R.PIC1, R.PIC2, R.PIC3, R.PIC4, R.PIC5 
+		from REVIEW r,MEMBER m where r.writer = m.email AND r.storeId = 4 ORDER BY r.writedate DESC
+	</select>	
 </mapper>

@@ -22,7 +22,7 @@ public class SearchMemberCtrl {
 	private MemberDao memberDao;
 	
 	@RequestMapping(value = "/searchMember", method=RequestMethod.GET)
-	public ModelAndView join(HttpServletRequest request,
+	public ModelAndView searchMember(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 
 		String query=request.getParameter("query");
@@ -41,4 +41,28 @@ public class SearchMemberCtrl {
 		mav.setViewName("/search/findMember");
 		return mav;
 	}
+	
+	@RequestMapping(value = "/profilePic", method=RequestMethod.GET)
+	public ModelAndView join(HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+
+		String email=request.getParameter("email");
+		//System.out.println(email);		
+		
+		//result search member profilePic
+		String profilePic = null;
+		MemberDto member = memberDao.selectMember(email);
+		profilePic = member.getProfilePic();
+		
+		//System.out.println(profilePic);
+		
+		ModelAndView mav = new ModelAndView();		
+		
+		mav.addObject("result", profilePic);
+		mav.setViewName("/result");
+		
+		return mav;
+	}
+	
+	
 }

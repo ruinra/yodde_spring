@@ -13,6 +13,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.yodde.memberModel.MemberDao;
 import com.yodde.memberModel.MemberDto;
+import com.yodde.ownerModel.OwnerDao;
+import com.yodde.ownerModel.OwnerDto;
 
 
 /**
@@ -29,6 +31,10 @@ public class HomeController {
 	@Autowired //해당 변수타입과 일치하는 빈을 찾아서 주입
 	private MemberDao memberDao;
 	private MemberDto member;
+	
+	@Autowired
+	private OwnerDao ownerDao;
+	private OwnerDto owner;
 		
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView home(HttpServletRequest request,
@@ -42,8 +48,20 @@ public class HomeController {
 			//login ok
 			//System.out.println(auth.getName());
 			member = memberDao.selectMember(auth.getName());
-			mav.addObject("email", member.getEmail());
-			mav.addObject("nick", member.getNickName());
+			if (member != null) {
+				mav.addObject("email", member.getEmail());
+				mav.addObject("nick", member.getNickName());
+				mav.addObject("profilePic", member.getProfilePic());
+				mav.addObject("status", "member");
+				
+			}
+			owner = ownerDao.selectOwner(auth.getName());
+	         if (owner != null) {
+               mav.addObject("email", owner.getEmail());
+               mav.addObject("nick", owner.getStoreName());
+               mav.addObject("profilePic", owner.getProfilePic());
+               mav.addObject("status", "owner");
+	         } 
 			
 		} else {
 			//without login

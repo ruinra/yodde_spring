@@ -1,19 +1,22 @@
 package com.yodde.memberModel;
 
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 
 @Component
 public class MemberDto {
 	private String email;
 	private String password;
 	private String zipcode;
-	private String nickname;
+	private String nickName;
 	private String profilePic;
 	private int memberLv;
 	
+	private MultipartFile uploadfile;
+	
 	public String getEmail() {
 		return email;
-	}
+	}	
 	public void setEmail(String email) {
 		this.email = email;
 	}
@@ -30,10 +33,10 @@ public class MemberDto {
 		this.zipcode = zipcode;
 	}
 	public String getNickName() {
-		return nickname;
+		return nickName;
 	}
 	public void setNickName(String nickName) {
-		this.nickname = nickName;
+		this.nickName = nickName;
 	}
 	public String getProfilePic() {
 		return profilePic;
@@ -47,4 +50,11 @@ public class MemberDto {
 	public void setMemberLv(int memberLv) {
 		this.memberLv = memberLv;
 	}	
+	
+	public MultipartFile getUploadfile() {
+		return uploadfile;
+	}
+	public void setUploadfile(MultipartFile uploadfile) {
+		this.uploadfile = uploadfile;
+	}
 }

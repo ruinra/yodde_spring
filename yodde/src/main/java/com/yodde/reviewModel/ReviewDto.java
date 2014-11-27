@@ -1,6 +1,9 @@
 package com.yodde.reviewModel;
 
 import java.util.Date;
+import java.util.List;
+
+import org.springframework.web.multipart.MultipartFile;
 
 public class ReviewDto {
 	private int reviewId;
@@ -19,6 +22,14 @@ public class ReviewDto {
 	private int pic4;
 	private int pic5;
 	
+	private List<MultipartFile> files;
+	
+	public List<MultipartFile> getFiles() {
+		return files;
+	}
+	public void setFiles(List<MultipartFile> files) {
+		this.files = files;
+	}
 	public int getReviewId() {
 		return reviewId;
 	}
@@ -108,5 +119,24 @@ public class ReviewDto {
 	}
 	public void setPic5(int pic5) {
 		this.pic5 = pic5;
+	}	
+	public void setPic(int index, int pic){
+		switch (index) {
+		case 1:
+			setPic1(pic);
+			break;
+		case 2:
+			setPic2(pic);
+			break;
+		case 3:
+			setPic3(pic);
+			break;
+		case 4:
+			setPic4(pic);
+			break;
+		case 5:
+			setPic5(pic);
+			break;			
+		}
 	}
 }

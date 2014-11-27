@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="www.yodde.co.kr/store">
+	
+	<select id="followCheck" parameterType="java.util.HashMap" resultType="String">
+		select * from follow_store where storeId=#{store} and storefollowee=#{email}
+	</select>
+	
+	<delete id="deleteFollow" parameterType="java.util.HashMap">
+		delete from follow_store where storeId=#{store} and storefollowee=#{email} 
+	</delete>
+	
+	<insert id="insertFollow" parameterType="java.util.HashMap">
+		insert into follow_store values(#{email}, #{store}) 
+	</insert>
+</mapper>

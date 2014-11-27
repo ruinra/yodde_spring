@@ -8,7 +8,7 @@
 			#{email},
 			#{password},
 			#{zipcode},
-			#{nickname},
+			#{nickName},
 			#{profilePic, jdbcType=VARCHAR},
 			#{memberLv}
 		)
@@ -32,4 +32,12 @@
 	<select id="selectMembersByNick" parameterType="String" resultType="com.yodde.memberModel.MemberDto">
 		select * from member where nickname like #{query}
 	</select>
+	
+	<update id="updateMember" parameterType="com.yodde.memberModel.MemberDto">
+		update member set 
+			nickname = #{nickName}, 
+			profilepic = #{profilePic}, 
+			zipcode = #{zipcode}
+		where email = #{email}
+	</update>
 </mapper>

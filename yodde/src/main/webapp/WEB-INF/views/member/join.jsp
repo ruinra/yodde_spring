@@ -31,7 +31,7 @@
 								</a>
 							</span>
 							<span class="Btn_buss">
-								<a href="" onclick="">
+								<a href="ownerJoin" onclick="">
 									<img src="${root}/resources/images/images/buss.png" height="200">
 								</a>
 							</span>

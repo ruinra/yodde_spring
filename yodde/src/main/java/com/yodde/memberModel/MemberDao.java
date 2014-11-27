@@ -8,4 +8,5 @@ public interface MemberDao {
 	public boolean 	isExistMember(String id);
 	public MemberDto selectMember(String id);
 	public List<MemberDto> selectMembersByNick(String query);
+	public int		updateMember(MemberDto memberDto);
 }

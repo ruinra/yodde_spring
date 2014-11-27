@@ -104,4 +104,22 @@ public class MemberDaoImp implements MemberDao {
 		
 		return list;
 	}
+
+	@Override
+	public int updateMember(MemberDto memberDto) {
+		int value = 0;
+		  
+		try{
+			session=sqlSessionFactory.openSession();
+			value =session.update("updateMember", memberDto);
+			session.commit();
+		}catch(Exception e){
+			System.out.println("updateMember Error");
+			e.printStackTrace();
+		}finally{
+			session.close();
+		}
+		
+		return value;
+	}
 }

@@ -209,8 +209,7 @@
       for (var i = 1; i <= this.opt.number; i++) {
         var title = methods._getHint.call(this, i),
             icon  = (this.opt.score && this.opt.score >= i) ? 'starOn' : 'starOff';
-        	css = (this).data.css("height","36px");
-        icon = this.opt.path + this.opt[icon];
+        	icon = this.opt.path + this.opt[icon];
 
         $('<img/>', { src : icon, alt: i, title: title }).appendTo(this);
 
@@ -441,7 +440,7 @@
     noRatedMsg    : 'Not rated yet!',
     number        : 5,
     numberMax     : 20,
-    path          : '',
+    path          : '/home/resources/images/images',
     precision     : false,
     readOnly      : false,
     round         : { down: .25, full: .6, up: .76 },
@@ -451,8 +450,8 @@
     size          : 1,
     space         : true,
     starHalf      : 'star-half.png',
-    starOff       : 'yodde-off.png',
-    starOn        : 'yodde-on.png',
+    starOff       : 'yodde_off.png',
+    starOn        : 'yodde_on.png',
     target        : undefined,
     targetFormat  : '{score}',
     targetKeep    : false,

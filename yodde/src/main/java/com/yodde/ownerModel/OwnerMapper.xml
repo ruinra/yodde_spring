@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="www.yodde.co.kr/store">
+	<insert id="storeJoin" parameterType="com.yodde.ownerModel.OwnerDto">
+		insert into owner(email, storeId, storeName, password, registerNum, profilePic) values(
+			#{email},
+			#{storeId},
+			#{storeName},
+			#{password},
+			#{registerNum},
+			#{profilePic, jdbcType=VARCHAR}
+		)
+	</insert>
+	
+	<insert id="ownerJoinAuth" parameterType="java.util.HashMap">
+		insert into auth values(
+			#{email},
+			#{authority}
+		)
+	</insert>
+	
+	<select id="selectOwner" parameterType="String" resultType="com.yodde.ownerModel.OwnerDto">
+		select * from owner where email = #{id}
+	</select>
+</mapper>

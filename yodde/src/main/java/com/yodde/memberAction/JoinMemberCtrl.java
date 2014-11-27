@@ -53,7 +53,8 @@ public class JoinMemberCtrl {
 		memberDto.setPassword(password);
 		memberDto.setNickName(nickname);
 		memberDto.setMemberLv(0);
-		memberDto.setZipcode("1");
+		memberDto.setZipcode("123-123");
+		memberDto.setProfilePic("/resources/images/profile/noname.png");
 		//System.out.println(email + "," + password + "," + nickname); 
 		
 		int check = memberDao.memberJoin(memberDto);

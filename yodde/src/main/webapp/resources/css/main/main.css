@@ -16,6 +16,52 @@ A:hover{}
 ol, ul {
 	list-style: none;
 }
+.main_recommend{
+	width:250px; height:250px;
+}
+.pic1{ width:250px; height:250px; } 
+.text{ 
+	width: 250px; 	height: 120px;
+	padding-top: 130px; 
+	background: white;
+	opacity: 0;
+} 
+.pic1:hover .text { 
+	width: 250px; 	height: 150px;
+	padding-top: 105px;
+	text-align: center;
+	color: black;
+	opacity: 0.7;
+}
+.pic1:hover .tit{
+	font-size: 30px;
+	font-weight: 700;
+	font-family: "맑은 고딕";
+}
+.pic1:hover .add{
+	font-size: 20x;
+	font-family: "맑은 고딕";
+}
+
+/* 
+.target { 
+	float: left;
+	border: 0px;
+	margin: 0px; 
+} 
+.overlay  {
+	position: absolute;
+	opacity: 0.5;
+	background-color: black;
+	color: white;
+	text-align: center;
+	font-size: 12px;
+	font-weight: bold;
+	margin: 0px;
+	padding: 0px;
+	border: none;
+} 
+ */
 .search_bar{
 	padding: 60px 0px 5px 20%;
 	background-color: #FFFFFF;
@@ -68,13 +114,10 @@ ol, ul {
 	opacity:1;
 }
 .stores{
-	width:95%; height:270px;
+	height:270px;
 	padding:2px 2px 2px 20px;
 	background-color:#fafafa;
-}
-.recommend:hover{
-	background-color:white;
-	opacity:0.6;
+	min-width: 883px;
 }
 
 <!-- hotPlace -->

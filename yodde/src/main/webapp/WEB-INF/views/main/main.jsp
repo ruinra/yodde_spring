@@ -21,10 +21,14 @@
          <c:when test="${email==''}">
             <c:set var="email" value="" scope="session"/>
             <c:set var="nick" value="" scope="session"/>
+            <c:set var="profilePic" value="" scope="session"/>
+            <c:set var="status" value="" scope="session"/>
          </c:when>
          <c:otherwise>
             <c:set var="email" value="${email}" scope="session"/>
-            <c:set var="nick" value="${nick}" scope="session"/>            
+            <c:set var="nick" value="${nick}" scope="session"/>
+            <c:set var="profilePic" value="${profilePic}" scope="session"/>
+			<c:set var="status" value="${status}" scope="session"/>
          </c:otherwise>
       </c:choose>
       <div>

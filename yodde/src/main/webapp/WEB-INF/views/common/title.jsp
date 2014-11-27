@@ -7,11 +7,37 @@
 	<head>
 		<c:set var="root" value="${pageContext.request.contextPath}"/>
 		<c:set var="email" value="${sessionScope.email}"/>
+		<c:set var="profilePic" value="${profilePic}" scope="session"/>	
+		<c:set var="status" value="${status}" scope="session"/>
 		<script type="text/javascript">
 			function logout() {
 				alert("bye~");
 			}
 		</script>
+		<!--
+		<script>
+		    $(document).ready(function() {
+		    	if ('${email}' == "") return;
+		   		var email = '${email}';
+		       jQuery.ajax({            
+		          type:"GET",
+		          url:"profilePic",
+		          data:"email="+ email,
+		          success : function(data) {
+		                //alert(data);		      
+		               	$("#profilePic").attr("src", '${root}'+data)
+		          },
+		          complete : function(data) {
+		                // 통신이 실패했어도 완료가 되었을 때 이 함수를 타게 된다.
+		                // TOD
+		          },
+		          error : function(xhr, status, error) {
+		                alert("에러발생");
+		          }
+		       });
+		    });
+		 </script>
+		 -->
 	</head>
 	<body style="min-width:1260px;">		
 		<div class="title_box">
@@ -23,40 +49,41 @@
 							<a href="javascript:jQuery.pageslide.close()" class="closeBtn"></a> 
 							<span id="mainNav"> 
 								<span class="title_btn2">		<!-- 프로필 버튼 -->
-									<a href="#">
-										<img src="${root}/resources/images/images/profile.png" height="90">
-									</a>
+									<c:choose>
+										<c:when test="${status == 'member'}">
+											<a href="modifyMember?email=${email}">
+												<img id="profilePic" src="${root}${profilePic}" height="90" style="border-radius: 75px;">
+											</a>
+										</c:when>
+										<c:when test="${status == 'owner'}">
+											<a href="modifyOwner?email=${email}">
+												<img id="profilePic" src="${root}${profilePic}" height="90" style="border-radius: 75px;">
+											</a>
+										</c:when>
+										<c:otherwise>
+											<a href="modifyMember?email=${email}">
+												<img id="profilePic" src="${root}/resources/images/images/profile.png" height="90" style="border-radius: 75px;">
+											</a>
+										</c:otherwise>
+									</c:choose>
 								</span>
-							
 								<span class="menu-menu-1-container">
-									<ul id="menu-menu-1" class="">
-										<li id=""><a href="">Food</a></li>
-		
-										<li id=""><a href="">카페/제과 </a></li>
-		
-										<li id=""><a href="">금융서비스 </a></li>
-		
-										<li id=""><a href="">공공기관 </a></li>
-		
-										<li id=""><a href="">자동차 </a></li>
-		
-										<li id=""><a href="">마트 </a></li>
-		
-										<li id=""><a href="">숙박 </a></li>
-		
-										<li id=""><a href="">영화/공연 </a></li>
-		
-										<li id=""><a href="">병원 </a></li>
-		
-										<li id=""><a href="">오락서비스 </a></li>
-		
-										<li id=""><a href="">생활서비스 </a></li>
-		
-										<li id=""><a href="">렌탈 </a></li>
-		
-										<li id=""><a href="">교육 </a></li>
-									</ul>
-								</span>
+		                           <ul class="category" style="margin-left:0px">
+		                              <li class="category_li" id=""><a href="">공공기관</a></li>
+		                              <li class="category_li" id=""><a href="">교육</a></li>
+		                              <li class="category_li" id=""><a href="">금융서비스 </a></li>
+		                              <li class="category_li" id=""><a href="">렌탈</a></li>
+		                              <li class="category_li" id=""><a href="">마트</a></li>
+		                              <li class="category_li" id=""><a href="">병원</a></li>
+		                              <li class="category_li" id=""><a href="">생활서비스</a></li>
+		                              <li class="category_li" id=""><a href="">숙박</a></li>
+		                              <li class="category_li" id=""><a href="">영화/공연</a></li>
+		                              <li class="category_li" id=""><a href="">오락서비스</a></li>
+		                              <li class="category_li" id=""><a href="">음식</a></li>
+		                              <li class="category_li" id=""><a href="">자동차</a></li>
+		                              <li class="category_li" id=""><a href="">카페/제과</a></li>
+		                           </ul>
+		                        </span>
 							</span>
 						</span>
 					</span> 
@@ -96,8 +123,7 @@
 					<img src="${root}/resources/images/images/moning.png" height="18">
 				</a>
 			</span>
-		</div>
-		
+		</div>		
 		<script type="text/javascript" src="${root}/resources/scripts/jQueryWeb.js"></script> 
 		<script type="text/javascript" src="${root}/resources/scripts/jQueryWeb2.js"></script>
 	</body>

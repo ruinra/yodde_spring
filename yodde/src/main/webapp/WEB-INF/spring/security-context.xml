@@ -60,7 +60,7 @@
 		<authentication-provider>
 			<jdbc-user-service data-source-ref="dataSource"
 				users-by-username-query=
-				"SELECT email AS username, password,1 AS enabled FROM MEMBER WHERE email=?"
+				"SELECT username, password, enabled from (SELECT email AS username, password,1 AS enabled FROM MEMBER UNION SELECT email AS username, password,1 AS enabled FROM OWNER) WHERE username=?"
 				authorities-by-username-query=
 				"select email AS username, authority from auth where email=?"
 			/>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="www.yodde.co.kr/store">
+	<insert id="insertPicture" parameterType="com.yodde.pictureModel.PictureDto">
+		INSERT into picture(pictureId, path, tag, storeId) values(
+			SEQ_PICTURE.NEXTVAL,
+			#{path}, 
+			#{tag, jdbcType=VARCHAR},
+			#{storeId}
+		)
+	</insert>
+	<select id="getMaxPictureId" resultType="int" >
+		select max(pictureId) from picture
+	</select>	
+	
+	<select id="getFilePath" parameterType="int" resultType="String" >
+		select path from picture where pictureId=#{pictureId}
+	</select>
+</mapper>

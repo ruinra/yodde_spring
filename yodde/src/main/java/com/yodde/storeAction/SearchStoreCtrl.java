@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.yodde.reviewModel.Review;
 import com.yodde.reviewModel.ReviewDao;
-import com.yodde.reviewModel.ReviewDto;
 import com.yodde.storeModel.StoreDao;
 import com.yodde.storeModel.StoreDto;
 
@@ -75,7 +75,7 @@ public class SearchStoreCtrl {
 		storeDto = storeDao.selectStoreByStoreId(storeId);
 		
 		//select review : 원래 스토어가 있을때만 리뷰검색
-		List<ReviewDto> reviewList = null;		
+		List<Review> reviewList = null;		
 		if (check == 2) {			
 			reviewList = reviewDao.getReviewsByStoreId(storeDto.getStoreId());			
 		}

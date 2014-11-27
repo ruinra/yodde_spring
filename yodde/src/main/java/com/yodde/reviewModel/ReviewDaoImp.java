@@ -1,5 +1,6 @@
 package com.yodde.reviewModel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -14,12 +15,24 @@ public class ReviewDaoImp implements ReviewDao {
 	private SqlSession session;
 		
 	@Override
-	public List<ReviewDto> getReviewsByStoreId(int storeId) {		
-		List<ReviewDto> list=null;
+	public List<Review> getReviewsByStoreId(int storeId) {		
+		List<Review> list=null;
 	  
 		try{
 			session=sqlSessionFactory.openSession();
 			list=session.selectList("selectReviewByStoreId", storeId);
+			if (list != null) {
+				for (Review review:list){
+					List<String>files = new ArrayList<String>();
+					for (int i = 0; i < 5; i++) {
+						System.out.println(review.getPic(i));
+						String path = session.selectOne("getFilePath", review.getPic(i));
+						files.add(i, path);
+						//System.out.println(path);
+					}
+					review.setPicPath(files);
+				}
+			}
 		}catch(Exception e){
 			System.out.println("selectlist review by storeid Error");
 			e.printStackTrace();
@@ -47,5 +60,5 @@ public class ReviewDaoImp implements ReviewDao {
 		}
 		
 		return value;
-	}
+	}	
 }
