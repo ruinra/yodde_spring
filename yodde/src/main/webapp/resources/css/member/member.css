@@ -6,14 +6,17 @@ body{
 	background-color:#FFFFFF;
 	font-family:'Nanum Gothic', '맑은 고딕', Helvetica;
 }
-
 A:link{text-decoration:none;}
 A:visited{text-decoration:none;}
 A:hover{text-decoration:none;}
-
+ul{
+	list-style:none;
+}
 p{
 	margin-left:80px;
 }
+
+
 .join_content{
 	padding-top:50px;
 	height:520px;

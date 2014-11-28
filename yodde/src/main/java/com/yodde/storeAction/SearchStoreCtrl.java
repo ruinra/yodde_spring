@@ -73,6 +73,7 @@ public class SearchStoreCtrl {
 			//insert store
 			check = storeDao.insertStore(storeDto);
 			storeId = storeDao.isExistStore(storeDto);
+			storeDao.insertStoreInfo(storeId);
 		} else {
 			check = 2;
 		}		

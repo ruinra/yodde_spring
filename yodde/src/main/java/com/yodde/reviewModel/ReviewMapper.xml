@@ -28,4 +28,8 @@
 			R.REPORT, R.CONTENT, R.PIC1, R.PIC2, R.PIC3, R.PIC4, R.PIC5 
 		from REVIEW r,MEMBER m where r.writer = m.email AND r.storeId = #{storeId} ORDER BY r.writedate DESC
 	</select>	
+	
+	<select id="reviewCount" parameterType="String" resultType="int">
+		select count(reviewId) from REVIEW WHERE writer=#{email}
+	</select>
 </mapper>

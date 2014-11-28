@@ -16,13 +16,13 @@ public class RegisterStoreCtrl {
 	//@Autowired //해당 변수타입과 일치하는 빈을 찾아서 주입
 
 
-	@RequestMapping(value = "", method=RequestMethod.GET)
+	@RequestMapping(value = "/requestRegStore", method=RequestMethod.GET)
 	public ModelAndView delete(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		
 		
 		ModelAndView mav = new ModelAndView();
-		
+		mav.setViewName("/search/storeRegInfo");
 		return mav;
 	}
 }

@@ -51,8 +51,8 @@
 								<span class="title_btn2">		<!-- 프로필 버튼 -->
 									<c:choose>
 										<c:when test="${status == 'member'}">
-											<a href="info/modifyMember?email=${email}">
-												<img id="profilePic" src="${root}${profilePic}" height="90" style="border-radius: 75px;">
+											<a href="info/memberMypage?email=${email}">
+												<img id="profilePic" src="${root}${profilePic}?email=${email}" height="90" style="border-radius: 75px;">
 											</a>
 										</c:when>
 										<c:when test="${status == 'owner'}">
@@ -87,9 +87,9 @@
 		                        <span id="memberMenu" class="menu-menu-1-container">
 		                           <ul class="category" style="margin-left:0px">
 		                              <li class="category_li" id=""><a href="${root}/info/modifyMember">회원정보수정</a></li>
-		                              <li class="category_li" id=""><a href="${root}/info/followerList">팔로워리스트</a></li>
+		                              <li class="category_li" id=""><a href="${root}/info/followerList?">팔로워리스트</a></li>
 		                              <li class="category_li" id=""><a href="${root}/info/followingList">팔로잉리스트 </a></li>
-		                              <li class="category_li" id=""><a href="${root}/info/storeFollowingList">스토어 팔로잉리스트</a></li>
+		                              <li class="category_li" id=""><a href="${root}/info/storeFollowingList?email=${email}">스토어 팔로잉리스트</a></li>
 		                              <li class="category_li" id=""><a href="${root}/info/history">나의 리뷰</a></li>
 		                              <li class="category_li" id=""><a href="">회원탈퇴</a></li>		                             
 		                           </ul>

@@ -100,8 +100,8 @@
 							store info
 							<div class="store_info">
 								<div class="firstline_icon">
-									<span class="info_icon">
-										<img src="${root}/resources/images/images_store_info/card.png" width="60">
+									<span class="info_icon" >
+										<img src="${root}/resources/images/images_store_info/card.png" width="60" alt="abc">
 									</span>
 									<span class="info_icon">
 										<img src="${root}/resources/images/images_store_info/delivery.png" width="60">

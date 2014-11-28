@@ -66,4 +66,22 @@ public class StoreDaoImp implements StoreDao {
 		
 		return store;
 	}
+
+	@Override
+	public int insertStoreInfo(int storeId) {
+		int value=0;
+		
+		try {
+			session = sqlSessionFactory.openSession();
+			value = session.insert("storeInfo", storeId);
+			session.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("selectStoreByStoreId Error.");
+		} finally {
+			session.close();
+		}
+		
+		return value;
+	}
 }

@@ -18,20 +18,31 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.yodde.memberModel.MemberDao;
 import com.yodde.memberModel.MemberDto;
+import com.yodde.reviewModel.ReviewDao;
 
 @Component
 @Controller
 public class modifyMemberCtrl {
 	@Autowired //해당 변수타입과 일치하는 빈을 찾아서 주입
 	private MemberDao memberDao;
-	
+	@Autowired
+	private ReviewDao reviewDao;
 	
 	@RequestMapping(value = "/info/memberMypage", method=RequestMethod.GET)
 	public ModelAndView memberMypage(@ModelAttribute MemberDto memberDto, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		
 		String email=request.getParameter("email");
+		//System.out.println(email);
+		
+		MemberDto member = memberDao.selectMember(email);
+		int reviewCnt = reviewDao.getReviewCnt(email);
+		
+		System.out.println(reviewCnt);
+		
 		ModelAndView mav = new ModelAndView();
+		mav.addObject("member", member);
+		mav.addObject("reviewCnt", reviewCnt);
 		mav.setViewName("/member/memberMyPage");
 		return mav;
 	}
