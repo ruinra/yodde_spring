@@ -303,7 +303,7 @@
 					</li>
 
 					<li class="store_pic"><img
-						src="${root}/resources/images/images/ex1.jpg" height="300"></li>
+						src="${root}/resources/images/picture/sample.jpg" width="300" height="300"></li>
 
 					<li class="store_icon">
 						<!-- 스토어 info --> <img
@@ -333,23 +333,16 @@
 				</div>
 				<div class="reviewImg_box">
 					<!-- 최근 리뷰의 사진 순으로 7개만 모아서 보여줌 -->
-					<span class="review_img"> <img
-						src="${root}/resources/images/images/pic1.png" height="118">
-					</span> <span class="review_img"> <img
-						src="${root}/resources/images/images/pic2.png" height="118">
-					</span> <span class="review_img"> <img
-						src="${root}/resources/images/images/pic3.png" height="118">
-					</span> <span class="review_img"> <img
-						src="${root}/resources/images/images/pic4.png" height="118">
-					</span> <span class="review_img"> <img
-						src="${root}/resources/images/images/pic1.png" height="118">
-					</span> <span class="review_img"> <img
-						src="${root}/resources/images/images/pic2.png" height="118">
-					</span> <span class="review_img"> <a
-						href="morePicture?storeId=${storeDto.storeId}&storeName=${storeDto.storeName}">
-							<img src="${root}/resources/images/images/pic_more.png"
-							height="118">
-					</a>
+					<c:forEach var="itemPicture" items="${pictureList}">
+						<span class="review_img"> 
+							<!-- <img src="${root}${itemPicture.path}" height="118"> -->
+							<img src="${root}${itemPicture.path}" style="max-width:118px;max-height:118px;height:expression(this.height > 118 ? 118: true); width:auto">
+						</span>
+					</c:forEach>
+					<span class="review_img"> 
+						<a href="morePicture?storeId=${storeDto.storeId}&storeName=${storeDto.storeName}">
+							<img src="${root}/resources/images/images/pic_more.png" height="118">
+						</a>
 					</span>
 				</div>
 			</div>
@@ -457,11 +450,14 @@
                                       <a href=""><img src="${root}/resources/images/images/report.png" height="25"></a>
                                  --%>
 								</span>
-							</span> <span class="profile"> <!-- 리뷰어 프로필사진 --> <img
-									src="${root}${itemReview.profilePic}" height="100">
-							</span> <span class="reviewer_NICK"> <!-- 리뷰어 닉네임 -->
+							</span> 
+								<span class="profile"> <!-- 리뷰어 프로필사진 --> 
+								<img src="${root}${itemReview.profilePic}" style="max-width:75px;width:expression(this.width > 75 ? 75: true); heigth:auto;border-radius: 75px;">
+								<!--<img src="${root}${itemReview.profilePic}" height="100"> -->
+								</span> 
+								<span class="reviewer_NICK"> <!-- 리뷰어 닉네임 -->
 									${itemReview.writer}
-							</span>
+								</span>
 							</span>
 						</div>
 					</c:forEach>

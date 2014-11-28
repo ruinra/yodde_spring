@@ -1,21 +1,20 @@
 @CHARSET "UTF-8";
-@font-face {font-family:"1훈막대연필 R"; src:url('../../fonts/pencilR.eot')}; 
-@font-face {font-family:"1훈막대연필 R"; src:url('../../fonts/pencilR.woff')}; 
+@import url('http://fonts.googleapis.com/earlyaccess/nanumgothic.css');
 
 body{
 	margin:0px 0px 0px 0px;
 	background-color:#FFFFFF;
-	font-family: "1훈화양연화 R", 궁서;
-	/* 
-	font-family: "맑은 고딕", "Helvetica Neue", Helvetica, Arial, sans-serif;
-	 */
+	font-family:'Nanum Gothic', '맑은 고딕', Helvetica;
 }
+
 A:link{text-decoration:none;}
 A:visited{text-decoration:none;}
 A:hover{}
+
 ol, ul {
 	list-style: none;
 }
+
 .main_recommend{
 	width:250px; height:250px;
 }
@@ -28,7 +27,7 @@ ol, ul {
 } 
 .pic1:hover .text { 
 	width: 250px; 	height: 150px;
-	padding-top: 105px;
+	padding-top: 112px;
 	text-align: center;
 	color: black;
 	opacity: 0.7;
@@ -36,62 +35,35 @@ ol, ul {
 .pic1:hover .tit{
 	font-size: 30px;
 	font-weight: 700;
-	font-family: "맑은 고딕";
 }
 .pic1:hover .add{
 	font-size: 20x;
-	font-family: "맑은 고딕";
 }
 
-/* 
-.target { 
-	float: left;
-	border: 0px;
-	margin: 0px; 
-} 
-.overlay  {
-	position: absolute;
-	opacity: 0.5;
-	background-color: black;
-	color: white;
-	text-align: center;
-	font-size: 12px;
-	font-weight: bold;
-	margin: 0px;
-	padding: 0px;
-	border: none;
-} 
- */
 .search_bar{
-	padding: 60px 0px 5px 20%;
+	padding: 60px 0px 5px 26%;
 	background-color: #FFFFFF;
-	text-align: center;
 	display: inline-block;
 	width: 80%;
 }
-.input_text{
-	width: 100%;	height: 45px;
-	margin-right: 0px;
-	opacity: 0.4;
-	border: solid 3px #F7382D;
-	
-	font-size: 35px;
-	font-weight: bold;
+.input_text {
+	width: 95%; 	height: 25px;
+	border: solid 7px #F38983;
+	font-size: 25px;
 	text-transform: uppercase;
+	font-family: 'Nanum Gothic', '맑은 고딕', Helvetica;
+	font-weight: bold;
 }
 .option_btn{
-	margin-right: 9px;
-	padding-top: 4px;
+	margin-right: 10px;
+	padding-top: 10px;
 	float: left;
 }
 .search{
 	float: left;
-	width: 60%;
+	width: 45%;
 }
 .enter_btn{
-	margin-left: 15px;
-	float: left;
-	margin-top: 3px;
 }
 .content{
 	width:98%;		height:auto;

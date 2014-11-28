@@ -34,20 +34,13 @@
 					<div id="page">
 						<div id="gallery">
 							<div id="panel">
-								<img id="largeImage" src="${root}/resources/images/images/ex1.jpg" />
+								<img id="largeImage" src="${root}${pictureList[0].path}" />
 							</div>
 	
 							<div id="thumbs">
-								<img src="${root}/resources/images/images/ex1.jpg" alt="" /> 
-								<img src="${root}/resources/images/images/ex2.jpg" alt="" />
-								<img src="${root}/resources/images/images/ex3.jpg" alt="" /> 
-								<img src="${root}/resources/images/images/ex4.jpg" alt="" />
-								<img src="${root}/resources/images/images/ex1.jpg" alt="" /> 
-								<img src="${root}/resources/images/images/ex2.jpg" alt="" />
-								<img src="${root}/resources/images/images/ex3.jpg" alt="" /> 
-								<img src="${root}/resources/images/images/ex4.jpg" alt="" />
-								<img src="${root}/resources/images/images/ex1.jpg" alt="" /> 
-								<img src="${root}/resources/images/images/ex2.jpg" alt="" />
+								<c:forEach var="itemPicture" items="${pictureList}">
+									<img src="${root}${itemPicture.path}" alt="" /> 
+								</c:forEach>
 							</div>
 						</div>
 					</div>

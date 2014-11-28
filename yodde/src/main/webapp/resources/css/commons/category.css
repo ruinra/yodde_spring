@@ -1,6 +1,5 @@
 @CHARSET "UTF-8";
-@font-face {font-family:'1훈막대연필 R'; src:url('../../fonts/pencilR.eot')}; 
-@font-face {font-family:'1훈막대연필 R'; src:url('../../fonts/pencilR.woff')}; 
+@import url('http://fonts.googleapis.com/earlyaccess/nanumgothic.css');
 
 ol, ul {
 	list-style: none;
@@ -12,7 +11,7 @@ body {
 	
 	background-color: #fff;
 	font-size: 100%;
-	font-family: "1훈화양연화 R", 궁서;
+	font-family:'Nanum Gothic', '맑은 고딕', Helvetica;
 	font-weight: normal;
 	color: #848484;
 }

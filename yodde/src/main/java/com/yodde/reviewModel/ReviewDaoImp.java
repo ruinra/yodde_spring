@@ -25,7 +25,7 @@ public class ReviewDaoImp implements ReviewDao {
 				for (Review review:list){
 					List<String>files = new ArrayList<String>();
 					for (int i = 0; i < 5; i++) {
-						System.out.println(review.getPic(i));
+						//System.out.println(review.getPic(i));
 						String path = session.selectOne("getFilePath", review.getPic(i));
 						files.add(i, path);
 						//System.out.println(path);

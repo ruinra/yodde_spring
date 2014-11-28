@@ -26,7 +26,7 @@ public class modifyMemberCtrl {
 	private MemberDao memberDao;
 	
 	
-	@RequestMapping(value = "/memberMypage", method=RequestMethod.GET)
+	@RequestMapping(value = "/info/memberMypage", method=RequestMethod.GET)
 	public ModelAndView memberMypage(@ModelAttribute MemberDto memberDto, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		
@@ -36,7 +36,7 @@ public class modifyMemberCtrl {
 		return mav;
 	}
 	
-	@RequestMapping(value = "/modifyMember", method=RequestMethod.GET)
+	@RequestMapping(value = "/info/modifyMember", method=RequestMethod.GET)
 	public ModelAndView modifyMember(@ModelAttribute MemberDto memberDto, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		
@@ -59,7 +59,7 @@ public class modifyMemberCtrl {
 		return mav;
 	}
 	
-	@RequestMapping(value = "/modifyMember", method=RequestMethod.POST)
+	@RequestMapping(value = "/info/modifyMember", method=RequestMethod.POST)
 	public ModelAndView modifyMemberOk(@ModelAttribute MemberDto memberDto, 
 			MultipartHttpServletRequest request,
 			HttpServletResponse response,

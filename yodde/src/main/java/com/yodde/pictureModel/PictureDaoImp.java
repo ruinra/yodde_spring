@@ -1,5 +1,7 @@
 package com.yodde.pictureModel;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,6 +66,42 @@ public class PictureDaoImp implements PictureDao {
 		}
 		
 		return filePath;
+	}
+
+	@Override
+	public List<PictureDto> select7Picture(int storeId) {
+		List<PictureDto> pictureList = null;
+		
+		try{
+			session=sqlSessionFactory.openSession();
+			pictureList=session.selectList("select7Picture", storeId);
+			
+		}catch(Exception e){
+			e.printStackTrace();
+			System.out.println("select7Picture Error");
+		}finally{
+			session.close();
+		}
+		
+		return pictureList;
+	}
+
+	@Override
+	public List<PictureDto> selectListPicture(int storeId) {
+		List<PictureDto> pictureList = null;
+		
+		try{
+			session=sqlSessionFactory.openSession();
+			pictureList=session.selectList("selectListPicture", storeId);
+			
+		}catch(Exception e){
+			e.printStackTrace();
+			System.out.println("selectListPicture Error");
+		}finally{
+			session.close();
+		}
+		
+		return pictureList;
 	}
 	
 }

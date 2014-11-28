@@ -14,9 +14,32 @@ import com.yodde.relationModel.RelationDao;
 
 @Component
 @Controller
-public class FollowStoreCtrl {
+public class StoreRelationCtrl {
 	@Autowired
 	private RelationDao	relationDao;
+	
+	@RequestMapping(value = "/info/storeFollowingList", method=RequestMethod.GET) //storeinfo.jsp에서 들어올때
+	public ModelAndView storeFollowingList(HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		
+		
+		ModelAndView mav=new ModelAndView();
+		mav.setViewName("/relation/storeFollowingList");
+		
+		return mav;
+	}
+	
+	@RequestMapping(value = "/info/storeFollowerList", method=RequestMethod.GET) //storeinfo.jsp에서 들어올때
+	public ModelAndView storeFollowerList(HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		
+		
+		ModelAndView mav=new ModelAndView();
+		mav.setViewName("/relation/followerList");
+		
+		return mav;
+	}
+	
 	
 	@RequestMapping(value = "/followStoreCheck", method=RequestMethod.GET) //storeinfo.jsp에서 들어올때
 	public ModelAndView followCheck(HttpServletRequest request,

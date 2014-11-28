@@ -2,12 +2,12 @@
 @import url('http://fonts.googleapis.com/earlyaccess/nanumgothic.css');
 
 body{
-   margin:0px 0px 0px 0px;
-   background-color: #FFFFFF;
-   font-family:'Nanum Gothic', '맑은 고딕', Helvetica;
+	margin:0px 0px 0px 0px;
+	background-color: #FFFFFF;
+	font-family:'Nanum Gothic', '맑은 고딕', Helvetica;
 }
 .content{
-   height:auto;   
+	height:auto;	
 }
 
 A:link{text-decoration:none;}
@@ -16,204 +16,224 @@ A:hover{text-decoration:none;}
 
 /* 별점관련 */
 .white {
-   background-color: #FFF
+	background-color: #FFF
 }
 
 .hint {
-   text-align: center;
-   width: 200px
+	text-align: center;
+	width: 200px
 }
 
 span.hint {
-   font-size: 1.0em;
-   height: 46px;
-   margin-top: 15px;
-   padding: 7px;
-   color: #F38983;
+	font-size: 1.0em;
+	height: 46px;
+	margin-top: 15px;
+	padding: 7px;
+	color: #F38983;
 }
 
 
 .storeInfo_content, .picCollection_content{
-   padding: 100px 10% 30px 15%;
-   height: auto;
-   width: 71%;
-   min-width: 896px;
+	padding: 100px 10% 30px 15%;
+	height: auto;
+	width: 71%;
+	min-width: 896px;
 }
 
 .store_pic{
-   height:300px; width:300px;
-   background-color:black;
-   float:left
+	height:300px; width:300px;
+	background-color:black;
+	float:left
 }
 
 .storeInfo_ul{
-   height:auto;
-   margin-top: 40px;
-   padding-top:0px;
-   padding-left:0px;
+	height:auto;
+	margin-top: 40px;
+	padding-top:0px;
+	padding-left:0px;
 }
 .storeInfo_box{
-   height: 436px;   width: 526px;
-   margin: 0px 40px 0px 20px;
-   padding-top:20px;
-   float:right;
-   background-color: white;
-   border:solid 2px #F38983;
+	height: 436px;	width: 526px;
+	margin: 0px 40px 0px 20px;
+	padding-top:20px;
+	float:right;
+	background-color: white;
+	border:solid 2px #F38983;
 }
 .starrate{
-   position:absolute;
-   margin:0px 0px 20px 0px;
-   min-width: 455px;
+	position:absolute;
+	margin:0px 0px 20px 0px;
+	min-width: 455px;
 }
 .rate_title{
 }
 .txt{
-   margin: 60px 0px 5px 0px;
-   padding-left: 100px;
-   color:black;
-   font-size:15px;
+	margin: 60px 0px 5px 0px;
+	padding-left: 100px;
+	color:black;
+	font-size:15px;
 }
 .map {
-   margin-left: 11px;
-   padding: 0px 0px 0px 0px;
-   
-   font-size: 50px;
-   font-weight: bold;
-   text-align: center;
-   color: white;
-   left: 530px;       top: 460px;
+	margin-left: 11px;
+	padding: 0px 0px 0px 0px;
+	
+	font-size: 50px;
+	font-weight: bold;
+	text-align: center;
+	color: white;
+	left: 530px; 		top: 460px;
 }
 .result_img{
-   margin:0px 0px 0px 0px;
+	margin:0px 0px 0px 0px;
 }
 .status_position{
-   position:absolute;
-   margin-top: 5px;
-   margin-left: 468px;
+	position:absolute;
+	margin-top: 5px;
+	margin-left: 468px;
 }
 .category_position{
-   position:absolute;
+	position:absolute;
 }
 .result_value{
-   padding-left:5px;
-   
-   font-size: 35px;
-   font-weight:bold;
-   color:#DD5050;
+	padding-left:5px;
+	
+	font-size: 35px;
+	font-weight:bold;
+	color:#DD5050;
 }
 .status{
-    margin-left:300px;
+	 margin-left:300px;
 }
 .category_txt{
-   font-size:15px;
-   font-weight:bold;
-   color:#7C7475;
+	font-size:15px;
+	font-weight:bold;
+	color:#7C7475;
 }
 .store_icon {
-   height: 120px;
-   width: 300px;
-   padding: 320px 0px 0px 0px;
-   background-color: white;
-   text-align:center;
+	height: 120px;
+	width: 300px;
+	padding: 320px 0px 0px 0px;
+	background-color: white;
+	text-align:center;
 }
 
 .icon_box{
-   height:120px;   float:left;
-   margin:0px 0px 0px 0px;
-   padding:0px 0px 0px 0px;
-   background-color:#DCDCDF;
+	height:120px;	float:left;
+	margin:0px 0px 0px 0px;
+	padding:0px 0px 0px 0px;
+	background-color:#DCDCDF;
 }
 
 .img_collection{
-   height:160px;   width:860px;
-   margin:70px 0px 0px 0px;
+	height:160px;	width:860px;
+	margin:70px 0px 0px 0px;
 }
 .reviewImg_box{
-   margin-top:5px;
+	margin-top:5px;
 }
 .review_img{
-   margin:0px 0px 0px 0px;
-   padding:0px 0px 0px 0px;
+	margin:0px 0px 0px 0px;
+	padding:0px 0px 0px 0px;
 }
 .write_box{
-   height:auto;   width:860px;
-   margin:80px 0px 10px 0px;
-   background-color:white;
+	height:auto;	width:860px;
+	margin:80px 0px 10px 0px;
+	background-color:white;
 }
 .review_title{
-   margin-bottom:10px;
+	margin-bottom:10px;
 }
 .review_write{
 }
 .review_board{
-   padding:0px 0px 0px 0px;
-   margin:2px 0px 10px 0px;
+	padding:0px 0px 0px 0px;
+	margin:2px 0px 10px 0px;
 }
 .review{
-   height:170px; width:860px;
-   margin-bottom:20px;
-   background-color:white;
-   border:solid 2px #DCDCDF;
+	height:170px; width:860px;
+	margin-bottom:20px;
+	background-color:white;
+	border:solid 2px #DCDCDF;
 }
 .reviewer_profile{
-   width:860px; height:100px;
-   float:left;
+	width:860px; height:100px;
+	float:left;
 }
 .reviewer_NICK{
-   width:100px;
-   float:left;
-   text-align:center;
-   font-weight:bold;
+	width:100px;
+	float:left;
+	text-align:center;
+	font-weight:bold;
 }
 .review_content{
-   height:auto; width:746px;
-   margin-left:2px;
-   padding:7px 2px 2px 10px;
-   float:right;
-   color:black;
+	height:auto; width:746px;
+	margin-left:2px;
+	padding:7px 2px 2px 10px;
+	float:right;
+	color:black;
 }
 .scroll_tag{
-   height:70px;
-   margin-top:5px; 
-   margin-bottom:5px; 
-   max-height:70px; 
-   overflow:auto;
+	height:70px;
+	margin-top:5px; 
+	margin-bottom:5px; 
+	max-height:70px; 
+	overflow:auto;
 }
 .review_starrate{
-   width:758px;
+	width:758px;
 }
 .review_photo_position{
-   width: 250px;
-   margin:10px 0px 0px 0px;
-   min-width: 260px;
-   position:absolute;
+	width: 250px;
+	margin:10px 0px 0px 0px;
+	min-width: 260px;
+	position:absolute;
 }
 .updown_position{
-   position:absolute;
-   margin:0px 0px 0px 500px;
-   font-size:18px;
-   min-width: 95px;
+	position:absolute;
+	margin:0px 0px 0px 500px;
+	font-size:18px;
+	min-width: 95px;
 }
 .btn_position{
-   position:absolute;
-   margin: 26px 0px 0px 665px;
+	position:absolute;
+	margin: 26px 0px 0px 587px;
 }
 .write_btn{
-   float: right;
+	float: right;
 }
 .request_btn{
-   padding-top:0px;
-   text-align:right;
+	padding-top:0px;
+	text-align:right;
 }
 .follow_btn{
-   text-align:right;
-   margin-right: 5px;
+	text-align:right;
+	margin-right: 5px;
 }
 .review_more{
-   text-align:center;
+	text-align:center;
 }
 
 <!--picCollection-->
 .detail_img{
-   width:80px height:
+	width:80px height:
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

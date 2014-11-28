@@ -8,7 +8,7 @@
 		<c:set var="root" value="${pageContext.request.contextPath}"/>
 		<c:set var="email" value="${sessionScope.email}"/>
 		<c:set var="profilePic" value="${profilePic}" scope="session"/>	
-		<c:set var="status" value="${status}" scope="session"/>
+		<c:set var="status" value="${status}" scope="session"/>		
 		<script type="text/javascript">
 			function logout() {
 				alert("bye~");
@@ -39,7 +39,7 @@
 		 </script>
 		 -->
 	</head>
-	<body style="min-width:1260px;">		
+	<body style="min-width:1260px;">
 		<div class="title_box">
 			<!-- 타이틀 왼쪽 버튼 -->
 			<span class="title_left">
@@ -51,23 +51,23 @@
 								<span class="title_btn2">		<!-- 프로필 버튼 -->
 									<c:choose>
 										<c:when test="${status == 'member'}">
-											<a href="modifyMember?email=${email}">
+											<a href="info/modifyMember?email=${email}">
 												<img id="profilePic" src="${root}${profilePic}" height="90" style="border-radius: 75px;">
 											</a>
 										</c:when>
 										<c:when test="${status == 'owner'}">
-											<a href="modifyOwner?email=${email}">
+											<a href="info/modifyOwner?email=${email}">
 												<img id="profilePic" src="${root}${profilePic}" height="90" style="border-radius: 75px;">
 											</a>
 										</c:when>
 										<c:otherwise>
-											<a href="modifyMember?email=${email}">
+											<a href="info/modifyMember?email=${email}">
 												<img id="profilePic" src="${root}/resources/images/images/profile.png" height="90" style="border-radius: 75px;">
 											</a>
 										</c:otherwise>
 									</c:choose>
 								</span>
-								<span class="menu-menu-1-container">
+								<span id="categoryMenu" class="menu-menu-1-container">
 		                           <ul class="category" style="margin-left:0px">
 		                              <li class="category_li" id=""><a href="">공공기관</a></li>
 		                              <li class="category_li" id=""><a href="">교육</a></li>
@@ -82,6 +82,23 @@
 		                              <li class="category_li" id=""><a href="">음식</a></li>
 		                              <li class="category_li" id=""><a href="">자동차</a></li>
 		                              <li class="category_li" id=""><a href="">카페/제과</a></li>
+		                           </ul>
+		                        </span>
+		                        <span id="memberMenu" class="menu-menu-1-container">
+		                           <ul class="category" style="margin-left:0px">
+		                              <li class="category_li" id=""><a href="${root}/info/modifyMember">회원정보수정</a></li>
+		                              <li class="category_li" id=""><a href="${root}/info/followerList">팔로워리스트</a></li>
+		                              <li class="category_li" id=""><a href="${root}/info/followingList">팔로잉리스트 </a></li>
+		                              <li class="category_li" id=""><a href="${root}/info/storeFollowingList">스토어 팔로잉리스트</a></li>
+		                              <li class="category_li" id=""><a href="${root}/info/history">나의 리뷰</a></li>
+		                              <li class="category_li" id=""><a href="">회원탈퇴</a></li>		                             
+		                           </ul>
+		                        </span>
+		                        <span id="ownerMenu" class="menu-menu-1-container">
+		                           <ul class="category" style="margin-left:0px">
+		                              <li class="category_li" id=""><a href="${root}/info/modifyOwner">회원정보수정</a></li>
+		                              <li class="category_li" id=""><a href="${root}/info/modifyStore">스토어정보수정</a></li>
+		                              <li class="category_li" id=""><a href="${root}/info/storeFollowerList">팔로워리스트</a></li>
 		                           </ul>
 		                        </span>
 							</span>
@@ -126,5 +143,38 @@
 		</div>		
 		<script type="text/javascript" src="${root}/resources/scripts/jQueryWeb.js"></script> 
 		<script type="text/javascript" src="${root}/resources/scripts/jQueryWeb2.js"></script>
+		<script type="text/javascript">
+			var url = location.href;
+			var search = url.search("/info/");			
+			if(search == -1){
+				//category
+				var category = document.getElementById("categoryMenu");
+				var memberMenu = document.getElementById("memberMenu");
+				var ownerMenu = document.getElementById("ownerMenu");
+				
+	            category.style.display = "";
+	            memberMenu.style.display = "none";
+	            ownerMenu.style.display = "none";
+			}
+			else {
+				var category = document.getElementById("categoryMenu");
+				var memberMenu = document.getElementById("memberMenu");
+				var ownerMenu = document.getElementById("ownerMenu");
+				var status = "${status}";
+	            if (status == "member") {
+	            	category.style.display = "none";
+	            	memberMenu.style.display = "";
+		            ownerMenu.style.display = "none";
+	            } else if(status == "owner") {
+	            	category.style.display = "none";
+	            	memberMenu.style.display = "none";
+		            ownerMenu.style.display = "";
+	            } else {
+	            	category.style.display = "";
+		            memberMenu.style.display = "none";
+		            owner.style.display = "none";
+	            }	            
+			}			
+		</script>
 	</body>
 </html>

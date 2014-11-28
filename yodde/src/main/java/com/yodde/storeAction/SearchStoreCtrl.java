@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.yodde.pictureModel.PictureDao;
+import com.yodde.pictureModel.PictureDto;
 import com.yodde.reviewModel.Review;
 import com.yodde.reviewModel.ReviewDao;
 import com.yodde.storeModel.StoreDao;
@@ -25,6 +27,8 @@ public class SearchStoreCtrl {
 	private StoreDao storeDao;
 	@Autowired
 	private ReviewDao reviewDao;
+	@Autowired
+	private PictureDao pictureDao;
 	
 	@RequestMapping(value = "/getStoreInfo", method=RequestMethod.GET)
 	public ModelAndView getStoreInfo(HttpServletRequest request,
@@ -67,21 +71,26 @@ public class SearchStoreCtrl {
 		
 		if (storeId == 0) {
 			//insert store
-			check = storeDao.insertStore(storeDto);			
+			check = storeDao.insertStore(storeDto);
+			storeId = storeDao.isExistStore(storeDto);
 		} else {
 			check = 2;
 		}		
 		//select store;
+		//System.out.println(check + "," + storeId);
 		storeDto = storeDao.selectStoreByStoreId(storeId);
 		
-		//select review : 원래 스토어가 있을때만 리뷰검색
-		List<Review> reviewList = null;		
+		//select review : 원래 스토어가 있을때만 리뷰검색 : 사진검색
+		List<Review> reviewList = null;
+		List<PictureDto> pictureList = null;
 		if (check == 2) {			
-			reviewList = reviewDao.getReviewsByStoreId(storeDto.getStoreId());			
+			reviewList = reviewDao.getReviewsByStoreId(storeDto.getStoreId());	
+			pictureList = pictureDao.select7Picture(storeDto.getStoreId());
 		}
 		
 		//set response value
 		mav.addObject("reviewList", reviewList);
+		mav.addObject("pictureList", pictureList);
 		mav.addObject("storeDto", storeDto);
 		mav.addObject("check", check);
 		mav.setViewName("/store/storeInfo");

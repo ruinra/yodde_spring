@@ -18,4 +18,17 @@
 	<select id="getFilePath" parameterType="int" resultType="String" >
 		select path from picture where pictureId=#{pictureId}
 	</select>
+	
+	<select id="select7Picture" parameterType="int" resultType="com.yodde.pictureModel.PictureDto" >
+		<![CDATA[
+			SELECT * FROM (SELECT * FROM PICTURE WHERE storeId = #{storeId} ORDER BY pictureId DESC) WHERE ROWNUM < 7
+		]]>
+	</select>
+	
+	<select id="selectListPicture" parameterType="int" resultType="com.yodde.pictureModel.PictureDto" >
+		<![CDATA[
+			SELECT * FROM (SELECT * FROM PICTURE WHERE storeId = #{storeId} ORDER BY pictureId DESC) WHERE ROWNUM < 30
+		]]>
+	</select>
+	
 </mapper>

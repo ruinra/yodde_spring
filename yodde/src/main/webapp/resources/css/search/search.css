@@ -1,7 +1,10 @@
 @CHARSET "UTF-8";
+@import url('http://fonts.googleapis.com/earlyaccess/nanumgothic.css');
+
 body{
 	margin:0px 0px 0px 0px;
 	background-color: #FFFFFF;
+	font-family:'Nanum Gothic', '맑은 고딕', Helvetica;
 }
 A:link{text-decoration:none;}
 A:visited{text-decoration:none;}
@@ -28,11 +31,9 @@ A:hover{}
 	padding-bottom:10px;
 	color:#F38983;
 	font-size:25px;
-	font-family:맑은 고딕;
 }
 .recommend_category, .recommend_phone, .recommend_address, .recommend_roadAddress{
 	color:#7C7475;
-	font-family:맑은 고딕;
 	font-size:15px;
 }
 .recommend_address{
@@ -60,7 +61,6 @@ A:hover{}
 	
 	font-size:50px;
 	font-weight:bold;
-	font-family:맑은 고딕;
 	color:#DD5050;
 }
 .none{

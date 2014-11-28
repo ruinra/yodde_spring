@@ -20,7 +20,7 @@ public class ModifyOwnerCtrl {
 	@Autowired //해당 변수타입과 일치하는 빈을 찾아서 주입
 	private OwnerDao ownerDao;
 
-	@RequestMapping(value = "/modifyOwner", method=RequestMethod.GET)
+	@RequestMapping(value = "/info/modifyOwner", method=RequestMethod.GET)
 	public ModelAndView modifyOwner(@ModelAttribute OwnerDto ownerDto, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		
@@ -35,7 +35,7 @@ public class ModifyOwnerCtrl {
 		return mav;
 	}
 	
-	@RequestMapping(value = "/modifyOwner", method=RequestMethod.POST)
+	@RequestMapping(value = "/info/modifyOwner", method=RequestMethod.POST)
 	public ModelAndView modifyOwnerOk(@ModelAttribute OwnerDto ownerDto, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		
@@ -49,5 +49,15 @@ public class ModifyOwnerCtrl {
 		mav.setViewName("/owner/modifyStoreOwner");
 		return null;
 	}
-
+	
+	@RequestMapping(value = "/info/modifyStore", method=RequestMethod.GET)
+	public ModelAndView modifyStore(HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+						
+		ModelAndView mav = new ModelAndView();
+		
+		mav.setViewName("/owner/modifyStore");
+		return mav;
+	}
+	
 }
