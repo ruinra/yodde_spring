@@ -42,6 +42,23 @@ public class SearchMemberCtrl {
 		return mav;
 	}
 	
+	@RequestMapping(value = "/member/memberMyPage", method=RequestMethod.GET)
+	public ModelAndView getMemberInfo(HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		ModelAndView mav = new ModelAndView();
+		
+		String email = request.getParameter("email");
+		//System.out.println(email);
+		MemberDto member = memberDao.selectMember(email);
+		
+		if (member != null) {
+			mav.addObject("member", member);
+		}				
+		
+		mav.setViewName("/member/memberMyPage");
+		return mav;
+	}
+	
 	@RequestMapping(value = "/profilePic", method=RequestMethod.GET)
 	public ModelAndView join(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {

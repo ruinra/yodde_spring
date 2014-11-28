@@ -46,7 +46,7 @@
 						<div class="result_box">					<!-- member store -->
 							<c:forEach var="itemMember" items="${memberList}">
 								<div class="result_stores">
-									<div class='recommend' style='float:left'><a href="${root}/member/memberMyPage.do"><img src='${root}/resources/images/images/ex1.jpg' height='180'></a></div>
+									<div class='recommend' style='float:left'><a href="${root}/member/memberMyPage?email=${itemMember.email}"><img src='${root}/resources/images/images/ex1.jpg' height='180'></a></div>
 									<div style='float:left; padding-left:20px; padding-top: 20px;'>
 										닉네임 : <a href="">${itemMember.nickName}</a></br>
 										e-mail : ${itemMember.email}</br>

@@ -54,5 +54,47 @@ public class MemberRelationCtrl {
 		return mav;
 	}
 	
+	@RequestMapping(value = "/member/followMemberCheck", method=RequestMethod.GET) //storeinfo.jsp에서 들어올때
+	public ModelAndView checkFollowMember(HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		
+		// 로그인 follower, following를 받아온다
+		String follower=request.getParameter("follower");
+		String following=request.getParameter("following");
+		//System.out.println(email + "," + store);
+		
+		int check=relationDao.checkFollowMember(follower, following);
+		//System.out.println(check);
+		
+		
+		ModelAndView mav=new ModelAndView();
+		mav.addObject("result",check);
+		mav.setViewName("/result");
+		
+		return mav;
+	}
+	
+	@RequestMapping(value = "/member/followMember", method=RequestMethod.GET) //storeinfo.jsp에서 들어올때
+	public ModelAndView follow(HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		
+		String follower = request.getParameter("follower");
+		String following = request.getParameter("following");
+		
+		int check = relationDao.checkFollowMember(follower, following);
+		//System.out.println(check);
+		
+		if(check == 1){
+			check = relationDao.unfollowMember(follower, following);
+		}else if(check == 0){
+			check = relationDao.followMember(follower, following);
+		}
+		
+		ModelAndView mav=new ModelAndView();
+		mav.addObject("result",check);
+		mav.setViewName("/result");
+		
+		return mav;
+	}
 	
 }

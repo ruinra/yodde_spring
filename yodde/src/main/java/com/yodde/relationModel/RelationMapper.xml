@@ -8,12 +8,24 @@
 		select * from follow_store where storeId=#{store} and storefollowee=#{email}
 	</select>
 	
+	<select id="checkFollowMember" parameterType="java.util.HashMap" resultType="String">
+		select * from follow_member where followee=#{follower} and follower=#{following}
+	</select>
+	
 	<delete id="deleteFollow" parameterType="java.util.HashMap">
 		delete from follow_store where storeId=#{store} and storefollowee=#{email} 
 	</delete>
 	
 	<insert id="insertFollow" parameterType="java.util.HashMap">
 		insert into follow_store values(#{email}, #{store}) 
+	</insert>
+	
+	<delete id="deleteFollowMember" parameterType="java.util.HashMap">
+		delete from follow_member where followee=#{follower} and follower=#{following} 
+	</delete>
+	
+	<insert id="insertFollowMember" parameterType="java.util.HashMap">
+		insert into follow_member values(#{follower}, #{following}) 
 	</insert>
 	
 	<select id="selectFollowingStore" parameterType="String" resultType="com.yodde.storeModel.StoreDto">

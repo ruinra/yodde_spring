@@ -35,13 +35,13 @@ public class modifyMemberCtrl {
 		String email=request.getParameter("email");
 		//System.out.println(email);
 		
-		MemberDto dto = memberDao.selectMember(email);
+		MemberDto member = memberDao.selectMember(email);
 		int reviewCnt = reviewDao.getReviewCnt(email);
 		
 		System.out.println(reviewCnt);
 		
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("memberDto", dto);
+		mav.addObject("member", member);
 		mav.addObject("reviewCnt", reviewCnt);
 		mav.setViewName("/member/memberMyPage");
 		return mav;
