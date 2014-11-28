@@ -32,7 +32,7 @@ public class SearchMemberCtrl {
 		List<MemberDto> list;
 		list = memberDao.selectMembersByNick(query);
 		
-		//System.out.println(list);
+		System.out.println(list);
 		
 		ModelAndView mav = new ModelAndView();		
 		

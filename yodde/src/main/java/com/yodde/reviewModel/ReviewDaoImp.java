@@ -60,5 +60,23 @@ public class ReviewDaoImp implements ReviewDao {
 		}
 		
 		return value;
+	}
+
+	@Override
+	public int getReviewCnt(String email) {
+		// TODO Auto-generated method stub
+		int cnt=0;
+		
+		try{
+			session=sqlSessionFactory.openSession();
+			cnt=session.selectOne("reviewCount", email);
+		}catch(Exception e){
+			e.printStackTrace();
+			System.out.println("getReviewCnt Error");
+		}finally{
+			session.close();
+		}
+		
+		return cnt;
 	}	
 }

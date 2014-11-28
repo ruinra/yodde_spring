@@ -10,43 +10,49 @@
 	<link rel="stylesheet" type="text/css" href="${root}/resources/css/commons/common.css"/>		<!-- footer, title css -->
 	<link rel="stylesheet" type="text/css" href="${root}/resources/css/commons/category.css" />		<!-- category css -->
 	<link rel="stylesheet" type="text/css" href="${root}/resources/css/main/main.css"/>					<!-- main css -->
+	<link rel="stylesheet" type="text/css" href="${root}/resources/css/search/search.css"/>
 </head>
 <script type="text/javascript" src="${root}/resources/scripts/jquery-2.1.1.js"></script>
 	<body>
 		<div>
-			<jsp:include page="../common/title.jsp"/>			<!-- title -->
+			<jsp:include page="../common/title.jsp"/>				<!-- title -->
 		</div>
 		
 		<div>
-			<jsp:include page="../main/searchBar.jsp"/>					<!-- searchBar -->
+			<jsp:include page="../main/searchBar.jsp"/>				<!-- searchBar -->
 		</div>
 		
 		<script type="text/javascript" src="${root}/resources/scripts/jQueryWeb.js"></script> 
 		<script type="text/javascript" src="${root}/resources/scripts/jQueryWeb2.js"></script>
 		
-		<div class="content">									<!-- content -->
+		<div class="content">										<!-- content -->
 			<div class="result_content">
-				<div class="result_img">						<!-- member title -->
-					<img src="${root}/resources/images/images/about.png" height="55">
-					${memberDto.nickName}
-				</div>
+				<ul class="result_img" style="margin-bottom:30px;">	<!-- member title -->
+					<li class="result_title_img">
+						<img src="${root}/resources/images/images/about.png" height="30">
+					</li>
+					<li class="result_title_txt">
+						${query}
+					</li>
+				</ul>
+				
+				<div id="resultCount"></div>
 				
 				<c:choose>
 					<c:when test="${memberList == null }">
-						<div> 검색하신 회원이 존재하지 않습니다.</div>
+						<div class="none"> 검색하신 회원이 존재하지 않습니다.</div>
 					</c:when>
 					<c:otherwise>
-						<div class="result_box">						<!-- member store -->
+						<div class="result_box">					<!-- member store -->
 							<c:forEach var="itemMember" items="${memberList}">
 								<div class="result_stores">
 									<div class='recommend' style='float:left'><a href="${root}/member/memberMyPage.do"><img src='${root}/resources/images/images/ex1.jpg' height='180'></a></div>
-									<div style='float:left; padding-left:20px;'>
+									<div style='float:left; padding-left:20px; padding-top: 20px;'>
 										닉네임 : <a href="">${itemMember.nickName}</a></br>
 										e-mail : ${itemMember.email}</br>
 										<c:if test="${itemMember.memberLv == 0}">
 											회원등급 : 일반회원<br/>
 										</c:if>
-								
 									</div>
 								</div>
 							</c:forEach>
@@ -54,14 +60,14 @@
 					</c:otherwise>
 				</c:choose>
 			</div>
-				<div class="request_Btn">
-					<a href=""><img src="${root}/resources/images/images/request.png" height="20"></a>
-				</div>
+			
+			<div class="request_Btn">
+				<a href=""><img src="${root}/resources/images/images/request.png" height="20"></a>
 			</div>
-		<div>
-			<jsp:include page="../common/footer.jsp"/>		<!-- footer -->
 		</div>
 		
-		
+		<div>
+			<jsp:include page="../common/footer.jsp"/>				<!-- footer -->
+		</div>
 	</body>
 </html>

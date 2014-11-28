@@ -15,4 +15,8 @@
 	<insert id="insertFollow" parameterType="java.util.HashMap">
 		insert into follow_store values(#{email}, #{store}) 
 	</insert>
+	
+	<select id="selectFollowingStore" parameterType="String" resultType="com.yodde.storeModel.StoreDto">
+		SELECT * FROM FOLLOW_STORE fs,STORE s WHERE fs.storefollowee=#{email} AND fs.storeid = s.storeid
+	</select>
 </mapper>

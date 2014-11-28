@@ -6,16 +6,16 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>Insert title here</title>
-		<link rel="stylesheet" type="text/css" href="${root}/resources/css/common/common.css"/>		<!-- footer, title css -->
-		<link rel="stylesheet" type="text/css" href="${root}/resources/css/common/category.css" />		<!-- category css -->
-		<link rel="stylesheet" type="text/css" href="${root}/resources/css/main/main.css"/>			<!-- main css -->
+		<c:set var="root" value="${pageContext.request.contextPath}"/>
+
+		<link rel="stylesheet" type="text/css" href="${root}/resources/css/commons/common.css"/>		<!-- footer, title css -->
+		<link rel="stylesheet" type="text/css" href="${root}/resources/css/commons/category.css" />		<!-- category css -->
+		<link rel="stylesheet" type="text/css" href="${root}/resources/css/main/main.css"/>				<!-- main css -->
 		<link rel="stylesheet" type="text/css" href="${root}/resources/css/member/member.css"/>
 		
 		<script type="text/javascript" src="${root}/resources/scripts/jquery-2.1.1.js"></script>
 	</head>
 	<body style="min-width:1260px;">
-		<c:set var="root" value="${pageContext.request.contextPath}"/>
-		
 		<div>
 			<jsp:include page="../common/title.jsp"/>			<!-- title -->
 		</div>
@@ -32,10 +32,10 @@
 					<ul class="content_box">
 						<li class="myProfile">					<!-- user의 프로필사진과 닉네임 받아오는 부분 -->
 							<div class="myPhoto" style="margin-top: 20px;">
-								<img src="${root}/resources/images/images/profile.png" width="150px">
+								<img src="${root}${memberDto.profilePic}" style="Width: 150px; Height: 150px; border-radius: 75px;">
 							</div>
 							<div class="myNick">
-								나영이
+								${memberDto.nickName}
 							</div>
 						</li>
 						<li style="float:left;">
@@ -43,19 +43,19 @@
 							<div class="profile_content" style="width: 300px; padding-left:0px">	
 								<p style="margin-left: 20px;">
 									<img src="${root}/resources/images/images/pick.png" height="25"><b class="label">레벨</b>
-									<input type="text" class="profile_input error" value="level" name="level" readonly>
+									<input type="text" class="profile_input error" value="${memberDto.memberLv}" name="level" readonly>
 								</p>
 								<p style="margin-left: 20px;">
 									<img src="${root}/resources/images/images/pick.png" height="25"><b class="label" >아이디</b>
-									<input type="text" class="profile_input error" style="width:170px;" value="e-mail" name="e-mail" readonly>
+									<input type="text" class="profile_input error" style="width:170px;" value="${memberDto.email}" name="e-mail" readonly>
 								</p>
 								<p style="margin-left: 20px;">
 									<img src="${root}/resources/images/images/pick.png" height="25"><b class="label">우편번호</b>
-									<input type="text" class="profile_input error" style="width:140px;" value="zipcode" name="zipcode" readonly>
+									<input type="text" class="profile_input error" style="width:140px;" value="${memberDto.zipcode}" name="zipcode" readonly>
 								</p>
 								<p style="margin-left: 20px;">
 									<img src="${root}/resources/images/images/pick.png" height="25"><b class="label">리뷰</b>
-									<input type="text" class="profile_input error" value="리뷰 갯수" readonly><b>개</b>
+									<input type="text" class="profile_input error" value="${reviewCnt}" readonly><b>개</b>
 								</p>
 							</div>
 						</li>

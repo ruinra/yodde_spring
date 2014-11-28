@@ -1,11 +1,14 @@
 package com.yodde.relationModel;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import com.yodde.storeModel.StoreDto;
 
 @Component
 public class RelationDaoImp implements RelationDao {
@@ -79,4 +82,22 @@ public class RelationDaoImp implements RelationDao {
 		
 		return value;
 	}
+
+	@Override
+	public List<StoreDto> selectFollowingStore(String email) {
+		List<StoreDto> list=null;
+		
+		try{
+			session=sqlSessionFactory.openSession();
+			list=session.selectList("selectFollowingStore", email);
+		}catch(Exception e){
+			System.out.println("selectFollowingStore Error");
+			e.printStackTrace();
+		}finally{
+			session.close();
+		}
+		
+		return list;
+	}
+
 }

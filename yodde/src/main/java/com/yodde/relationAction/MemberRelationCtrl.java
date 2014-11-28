@@ -22,8 +22,11 @@ public class MemberRelationCtrl {
 	public ModelAndView followerList(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		
+		String email = request.getParameter("email");
+		System.out.println(email);
 		
 		ModelAndView mav=new ModelAndView();
+//		mav.addObject("followerList", list);
 		mav.setViewName("/relation/followerList");
 		
 		return mav;
