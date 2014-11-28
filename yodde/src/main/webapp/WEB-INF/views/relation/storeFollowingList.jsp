@@ -21,120 +21,28 @@
 			<div class="followerList_content">
 				<div class="followerList_box">
 					<div class="result_title">					<!-- login title -->
-						<img src="${root}/resources/images/images/storefollowing.png" height="55">
+						<img src="${root}/resources/images/images/storefollowing.png" height="45">
 					</div>
 					
 					<ul class="content_box">
-						<li class="myProfile">					<!-- 스토어의 사진과 가게이름 받아오는 부분 12개. -->
-							<div class="myPhoto" style="padding-top:20px">
-								<img src="${root}/resources/images/images/ex1.jpg" width="130px">
-							</div>
-							<div class="follower_nickname">
-								7Train
-							</div>
-							<img src="${root}/resources/images/images/fcancel.png" height="20">
-						</li>
-						
-						<li class="myProfile">
-							<div class="myPhoto" style="padding-top:20px">
-								<img src="${root}/resources/images/images/ex1.jpg" width="130px">
-							</div>
-							<div class="follower_nickname">
-								7Train
-							</div>
-							<img src="${root}/resources/images/images/fcancel.png" height="20">
-						</li>
-						<li class="myProfile">
-							<div class="myPhoto" style="padding-top:20px">
-								<img src="${root}/resources/images/images/ex1.jpg" width="130px">
-							</div>
-							<div class="follower_nickname">
-								7Train
-							</div>
-							<img src="${root}/resources/images/images/fcancel.png" height="20">
-						</li>
-						<li class="myProfile">
-							<div class="myPhoto" style="padding-top:20px">
-								<img src="${root}/resources/images/images/ex1.jpg" width="130px">
-							</div>
-							<div class="follower_nickname">
-								7Train
-							</div>
-							<img src="${root}/resources/images/images/fcancel.png" height="20">
-						</li>
-						<li class="myProfile">
-							<div class="myPhoto" style="padding-top:20px">
-								<img src="${root}/resources/images/images/ex1.jpg" width="130px">
-							</div>
-							<div class="follower_nickname">
-								7Train
-							</div>
-							<img src="${root}/resources/images/images/fcancel.png" height="20">
-						</li>
-						<li class="myProfile">
-							<div class="myPhoto" style="padding-top:20px">
-								<img src="${root}/resources/images/images/ex1.jpg" width="130px">
-							</div>
-							<div class="follower_nickname">
-								7Train
-							</div>
-							<img src="${root}/resources/images/images/fcancel.png" height="20">
-						</li>
-						<li class="myProfile">
-							<div class="myPhoto" style="padding-top:20px">
-								<img src="${root}/resources/images/images/ex1.jpg" width="130px">
-							</div>
-							<div class="follower_nickname">
-								7Train
-							</div>
-							<img src="${root}/resources/images/images/fcancel.png" height="20">
-						</li>
-						<li class="myProfile">
-							<div class="myPhoto" style="padding-top:20px">
-								<img src="${root}/resources/images/images/ex1.jpg" width="130px">
-							</div>
-							<div class="follower_nickname">
-								7Train
-							</div>
-							<img src="${root}/resources/images/images/fcancel.png" height="20">
-						</li>
-						<li class="myProfile">
-							<div class="myPhoto" style="padding-top:20px">
-								<img src="${root}/resources/images/images/ex1.jpg" width="130px">
-							</div>
-							<div class="follower_nickname">
-								7Train
-							</div>
-							<img src="${root}/resources/images/images/fcancel.png" height="20">
-						</li>
-						<li class="myProfile">
-							<div class="myPhoto" style="padding-top:20px">
-								<img src="${root}/resources/images/images/ex1.jpg" width="130px">
-							</div>
-							<div class="follower_nickname">
-								7Train
-							</div>
-							<img src="${root}/resources/images/images/fcancel.png" height="20">
-						</li>
-						<li class="myProfile">
-							<div class="myPhoto" style="padding-top:20px">
-								<img src="${root}/resources/images/images/ex1.jpg" width="130px">
-							</div>
-							<div class="follower_nickname">
-								7Train
-							</div>
-							<img src="${root}/resources/images/images/fcancel.png" height="20">
-						</li>
-						<li class="myProfile">
-							<div class="myPhoto" style="padding-top:20px">
-								<img src="${root}/resources/images/images/ex1.jpg" width="130px">
-							</div>
-							<div class="follower_nickname">
-								7Train
-							</div>
-							<img src="${root}/resources/images/images/fcancel.png" height="20">
-						</li>
-						
+						<c:choose>
+							<c:when test="${empty storeFollowingList}">
+								<div class="none"> 새로운 스토우를 팔로잉 해보세요!</div>
+							</c:when>
+							<c:otherwise>
+								<c:forEach var="storeList" items="${storeFollowingList}">
+									<li class="myProfile">					<!-- 스토어의 사진과 가게이름 받아오는 부분 12개. -->
+										<div class="myPhoto" style="padding-top:20px">
+											<img src="${root}/resources/images/images/ex1.jpg" width="130px">
+										</div>
+										<div class="follower_nickname">
+											${storeList.storeName}
+										</div>
+										<img src="${root}/resources/images/images/fcancel.png" height="20">
+									</li>
+								</c:forEach>
+							</c:otherwise>
+						</c:choose>
 					</ul>
 					
 					<div class="more">							<!-- 더보기 버튼 -->

@@ -31,5 +31,9 @@
 	<select id="selectStoreByStoreId" parameterType="int" resultType="com.yodde.storeModel.StoreDto">
 		select * from store where storeId = #{storeId}
 	</select>
+	
+	<insert id="storeInfo" parameterType="String">
+		insert into store_info values(#{storeId}, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+	</insert>
    
 </mapper>

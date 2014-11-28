@@ -60,28 +60,30 @@ public class WriteReviewCtrl {
 		int index = 0;
 		if (files != null){
 			for (MultipartFile multipartFile : files) {
-				index++;
-				//확장자
-				String ext = multipartFile.getOriginalFilename();
-    			ext = ext.substring(ext.length() - 4);
-    			int pictureId = pictureDao.getMaxPictureId() + 1;
-    			//pictureId + index 로 파일이름 작성
-    			filename = pictureId + "_" + index;
-    			filePath = "/resources/images/picture/" + filename + ext;
-    			File file = new File(picturePath + filePath);
-    			
-    			multipartFile.transferTo(file);
-    			
-    			PictureDto picture = new PictureDto();
-    			picture.setPath(filePath);
-    			picture.setStoreId(storeId);
-    			picture.setTag(null);
-    			
-    			int picId = pictureDao.insertPicture(picture);
-    			review.setPic(index, picId);
-    			//System.out.println(index +":" + picId);
-    			
-    			if(index == 5) break;
+				if(multipartFile.getOriginalFilename().length() > 0) {
+					index++;
+					//확장자
+					String ext = multipartFile.getOriginalFilename();
+	    			ext = ext.substring(ext.length() - 4);
+	    			int pictureId = pictureDao.getMaxPictureId() + 1;
+	    			//pictureId + index 로 파일이름 작성
+	    			filename = pictureId + "_" + index;
+	    			filePath = "/resources/images/picture/" + filename + ext;
+	    			File file = new File(picturePath + filePath);
+	    			
+	    			multipartFile.transferTo(file);
+	    			
+	    			PictureDto picture = new PictureDto();
+	    			picture.setPath(filePath);
+	    			picture.setStoreId(storeId);
+	    			picture.setTag(null);
+	    			
+	    			int picId = pictureDao.insertPicture(picture);
+	    			review.setPic(index, picId);
+	    			//System.out.println(index +":" + picId);
+	    			
+	    			if(index == 5) break;
+				}
             }
 		}	
 		
