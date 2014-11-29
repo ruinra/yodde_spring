@@ -37,10 +37,10 @@
 			var mapy = $(this).find("mapy").text();
 			var item = "title="+ title + "&category="+ category + "&telephone=" + telephone + "&address=" + address + "&roadAddress=" + roadAddress + "&mapx=" + mapx + "&mapy=" + mapy;
 			
-			var info = "<br/>" + "<div class='result_stores'>"
-			info += "<div class='recommend' style='float:left'><a href='javascript:insertStore(\""+item+"\")'>" + "<img src='${root}/resources/images/images/ex1.jpg' height='170'></a></div>"
-			info += "<div style='float:left; padding-left:20px;'><a href='javascript:insertStore(\""+item+"\")'>" + title + "</a>" + "</br>" + category + "</br>" + telephone + "</br>" + address + "</br>" + roadAddress +"</div></div>";
-			$("#result").append(info); // <title>값 표시
+			var info = "<div class='result_stores'>"
+				info += "<div class='recommend' style='float:left'><a href='javascript:insertStore(\""+item+"\")'>" + "<img src='${root}/resources/images/images/ex1.jpg' height='180'></a></div>"
+				info += "<div style='float:left; padding-left:20px; padding-top: 20px;'><a href='javascript:insertStore(\""+item+"\")'>" + title + "</a>" + "</br>" + category + "</br>" + telephone + "</br>" + address + "</br>" + roadAddress +"</div></div>";
+				$("#result").append(info); // <title>값 표시
 		});
 	}
 	function insertStore(item){				   		
@@ -61,26 +61,18 @@
 		
 		<div class="content">									<!-- content -->
 			<div class="result_content">
-				<div class="result_img">						<!-- result title -->
-					<img src="${root}/resources/images/images/about.png" height="55">
-					${query}
-				</div>
-				<div id="resultCount"></div>
+				<ul class="result_img">						<!-- result title -->
+					<li class="result_title_img">
+						<img src="${root}/resources/images/images/about.png" height="30">
+					</li>
+					<li class="result_title_txt">
+						${query}
+					</li>
+				</ul>
 				
+				<div id="resultCount" class="resultCount"></div>
+					
 				<div id="result"></div>
-				
-<!-- 				<div class="result_box">						result store -->
-<!-- 					<div class="result_stores"> -->
-<!-- 						<span class="recommend"> -->
-<!-- 							<a href=""><img src="./../images/ex1.jpg" height="170"></a> -->
-<!-- 						</span> -->
-<!-- 						<span class="result_stores_title"> -->
-<!-- 							<img src="./../images/1_HOT.png" height="55"> -->
-<!-- 						</span> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
-				
-				
 				
 				<div class="request_Btn">
 					<a href=""><img src="${root}/resources/images/images/request.png" height="20"></a>
@@ -91,7 +83,5 @@
 		<div>
 			<jsp:include page="../common/footer.jsp"/>		<!-- footer -->
 		</div>
-		
-		
 	</body>
 </html>

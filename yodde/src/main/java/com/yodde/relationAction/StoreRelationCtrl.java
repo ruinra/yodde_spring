@@ -1,5 +1,7 @@
 package com.yodde.relationAction;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.yodde.relationModel.RelationDao;
+import com.yodde.storeModel.StoreDto;
 
 @Component
 @Controller
@@ -22,8 +25,18 @@ public class StoreRelationCtrl {
 	public ModelAndView storeFollowingList(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		
+		String email=request.getParameter("email");
+		//System.out.println(email);
+		
+		List<StoreDto> list;
+		list = relationDao.selectFollowingStore(email);
+		
+		//System.out.println(list);
 		
 		ModelAndView mav=new ModelAndView();
+		
+		mav.addObject("storeFollowingList", list);
+		mav.addObject("email", email);
 		mav.setViewName("/relation/storeFollowingList");
 		
 		return mav;

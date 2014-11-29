@@ -134,8 +134,7 @@
       <!-- content -->
       <div class="myPage_content">
          <div class="myPage_box">
-            <form id="valiex" novalidate="novalidate"
-               action="${root}/modifyMember" method="post" enctype="multipart/form-data">
+            <form id="valiex" novalidate="novalidate" action="${root}/modifyMember" method="post" enctype="multipart/form-data">
                <div class="result_title">
                   <!-- login title -->
                   <img src="${root}/resources/images/images/modify.png" height="55">
@@ -144,8 +143,7 @@
                   <li class="myProfile">
                      <!-- user의 프로필사진과 닉네임 받아오는 부분 -->
                      <div class="myPhoto">
-                        <img src="${root}${memberDto.profilePic}" id="profile"
-                           style="Width: 150px; Height: 150px; border-radius: 75px;">
+                        <img src="${root}${memberDto.profilePic}" id="profile" style="Width: 150px; Height: 150px; border-radius: 75px;">
                      </div>
                      <div class="modify_myphoto">
                         <!-- 프로필 사진 변경 부분 -->
