@@ -75,7 +75,7 @@
 				<div id="result"></div>
 				
 				<div class="request_Btn">
-					<a href=""><img src="${root}/resources/images/images/request.png" height="20"></a>
+					<a href="${root}/requestRegStore"><img src="${root}/resources/images/images/request.png" height="20"></a>
 				</div>
 			</div>
 		</div>

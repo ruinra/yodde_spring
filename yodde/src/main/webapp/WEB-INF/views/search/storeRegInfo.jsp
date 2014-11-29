@@ -10,7 +10,8 @@
 		<link rel="stylesheet" type="text/css" href="${root}/resources/css/search/search.css" />
 	</head>
 <body style="margin: 8px;">
-	<form action="">
+	<c:set var="nick" value="${nick}" scope="session"/>
+	<form action="${root}/requestRegStore" method="post">
 		<div class="storeRegInfo_content">
 			<div class="title">
 				<img src="${root}/resources/images/images/store_reg.png" height="50px;">
@@ -23,21 +24,21 @@
 					<div class="sub">
 						닉네임
 					</div>
-					<input type="text" value="닉네임" class="reg_nick" readonly>
+					<input type="text" value="${nick}" class="reg_nick" name="nick" readonly>
 				</li>
 				
 				<li>
 					<div class="sub">
 						가게 이름
 					</div>
-					<input type="text" class="reg_name">
+					<input type="text" class="reg_name" name="storeName">
 				</li>
 				
 				<li>
 					<div class="sub">
 						가게 주소
 					</div>
-					<textarea cols="80" class="reg_address" id="context" name="context" style="resize:none;"></textarea>
+					<textarea cols="80" class="reg_address" id="context" name="address" style="resize:none;"></textarea>
 				</li>		
 				
 				<li class="bottom_Btn">

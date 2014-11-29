@@ -51,17 +51,17 @@
 								<span class="title_btn2">		<!-- 프로필 버튼 -->
 									<c:choose>
 										<c:when test="${status == 'member'}">
-											<a href="info/memberMypage?email=${email}">
+											<a href="${root}/info/memberMypage?email=${email}">
 												<img id="profilePic" src="${root}${profilePic}?email=${email}" height="90" style="border-radius: 75px;">
 											</a>
 										</c:when>
 										<c:when test="${status == 'owner'}">
-											<a href="info/modifyOwner?email=${email}">
+											<a href="${root}/info/modifyOwner?email=${email}">
 												<img id="profilePic" src="${root}${profilePic}" height="90" style="border-radius: 75px;">
 											</a>
 										</c:when>
 										<c:otherwise>
-											<a href="info/modifyMember?email=${email}">
+											<a href="${root}/info/modifyMember?email=${email}">
 												<img id="profilePic" src="${root}/resources/images/images/profile.png" height="90" style="border-radius: 75px;">
 											</a>
 										</c:otherwise>

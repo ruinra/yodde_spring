@@ -14,12 +14,15 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.yodde.memberModel.MemberDao;
 import com.yodde.memberModel.MemberDto;
+import com.yodde.reviewModel.ReviewDao;
 
 @Component
 @Controller
 public class SearchMemberCtrl {
 	@Autowired //해당 변수타입과 일치하는 빈을 찾아서 주입
 	private MemberDao memberDao;
+	@Autowired
+	private ReviewDao reviewDao;
 	
 	@RequestMapping(value = "/searchMember", method=RequestMethod.GET)
 	public ModelAndView searchMember(HttpServletRequest request,
@@ -44,17 +47,19 @@ public class SearchMemberCtrl {
 	
 	@RequestMapping(value = "/member/memberMyPage", method=RequestMethod.GET)
 	public ModelAndView getMemberInfo(HttpServletRequest request,
-			HttpServletResponse response) throws Exception {
+		HttpServletResponse response) throws Exception {
 		ModelAndView mav = new ModelAndView();
-		
+		  
 		String email = request.getParameter("email");
 		//System.out.println(email);
 		MemberDto member = memberDao.selectMember(email);
-		
+		int reviewCnt = reviewDao.getReviewCnt(email);
+		  
 		if (member != null) {
 			mav.addObject("member", member);
-		}				
-		
+			mav.addObject("reviewCnt", reviewCnt);
+		}            
+		  
 		mav.setViewName("/member/memberMyPage");
 		return mav;
 	}
