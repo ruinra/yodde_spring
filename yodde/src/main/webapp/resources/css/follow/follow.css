@@ -34,6 +34,11 @@ A:hover{text-decoration:none;}
 	float: left;
 	text-align: center;
 }
+.none{
+	text-align:center;
+	margin-top: 80px;
+	font-weight: 700;
+}
 .myPhoto{
 }
 .profile_content{

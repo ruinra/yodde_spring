@@ -11,6 +11,30 @@
 		<link rel="stylesheet" type="text/css" href="${root}/resources/css/commons/category.css" />		<!-- category css -->
 		<link rel="stylesheet" type="text/css" href="${root}/resources/css/main/main.css"/>			<!-- main css -->
 		<link rel="stylesheet" type="text/css" href="${root}/resources/css/follow/follow.css"/>
+		
+		<script type="text/javascript">
+			function followCheck(email){
+				var follower="${email}";
+				var following=email;
+				var url="followMember1?follower=" + follower + "&following=" + following;
+				alert(url);
+				$.ajax({
+					url:url,
+					type:"get",
+					contentType:"text/xml; charset=utf-8", 
+					dataType: "text",
+					error: function(xhr, status, error) { alert("error : " +status); },
+					success: function(data){
+						//alert(data);
+						if(data ==1){
+							$("#follow").attr("src", "${root}/resources/images/images/follow_list.png");	
+						}else{
+							$("#follow").attr("src", "${root}/resources/images/images/notfollow_list.png");
+						}
+					}
+				}); // Ajax 호출 및 이벤트 핸들러 함수 정의
+			}
+		</script>
 	</head>
 	<body style="min-width:1260px;">
 		<div>
@@ -25,115 +49,36 @@
 					</div>
 					
 					<ul class="content_box">
-						<li class="myProfile">					<!-- user의 프로필사진과 닉네임 받아오는 부분 12개. -->
-							<div class="myPhoto" style="padding-top:20px">
-								<img src="${root}/resources/images/images/profile.png" width="130px">
-							</div>
-							<div class="follower_nickname">
-								예쁜나영이
-							</div>
-							<img src="${root}/resources/images/images/fcancel.png" height="20">
-						</li>
-						
-						<li class="myProfile">					<!-- user의 프로필사진과 닉네임 받아오는 부분 12개. -->
-							<div class="myPhoto" style="padding-top:20px">
-								<img src="${root}/resources/images/images/profile.png" width="130px">
-							</div>
-							<div class="follower_nickname">
-								예쁜나영이
-							</div>
-							<img src="${root}/resources/images/images/fcancel.png" height="20">
-						</li>
-						<li class="myProfile">					<!-- user의 프로필사진과 닉네임 받아오는 부분 12개. -->
-							<div class="myPhoto" style="padding-top:20px">
-								<img src="${root}/resources/images/images/profile.png" width="130px">
-							</div>
-							<div class="follower_nickname">
-								예쁜나영이
-							</div>
-							<img src="${root}/resources/images/images/fcancel.png" height="20">
-						</li>
-						<li class="myProfile">					<!-- user의 프로필사진과 닉네임 받아오는 부분 12개. -->
-							<div class="myPhoto" style="padding-top:20px">
-								<img src="${root}/resources/images/images/profile.png" width="130px">
-							</div>
-							<div class="follower_nickname">
-								예쁜나영이
-							</div>
-							<img src="${root}/resources/images/images/fcancel.png" height="20">
-						</li>
-						<li class="myProfile">					<!-- user의 프로필사진과 닉네임 받아오는 부분 12개. -->
-							<div class="myPhoto" style="padding-top:20px">
-								<img src="${root}/resources/images/images/profile.png" width="130px">
-							</div>
-							<div class="follower_nickname">
-								예쁜나영이
-							</div>
-							<img src="${root}/resources/images/images/fcancel.png" height="20">
-						</li>
-						<li class="myProfile">					<!-- user의 프로필사진과 닉네임 받아오는 부분 12개. -->
-							<div class="myPhoto" style="padding-top:20px">
-								<img src="${root}/resources/images/images/profile.png" width="130px">
-							</div>
-							<div class="follower_nickname">
-								예쁜나영이
-							</div>
-							<img src="${root}/resources/images/images/fcancel.png" height="20">
-						</li>
-						<li class="myProfile">					<!-- user의 프로필사진과 닉네임 받아오는 부분 12개. -->
-							<div class="myPhoto" style="padding-top:20px">
-								<img src="${root}/resources/images/images/profile.png" width="130px">
-							</div>
-							<div class="follower_nickname">
-								예쁜나영이
-							</div>
-							<img src="${root}/resources/images/images/fcancel.png" height="20">
-						</li>
-						<li class="myProfile">					<!-- user의 프로필사진과 닉네임 받아오는 부분 12개. -->
-							<div class="myPhoto" style="padding-top:20px">
-								<img src="${root}/resources/images/images/profile.png" width="130px">
-							</div>
-							<div class="follower_nickname">
-								예쁜나영이
-							</div>
-							<img src="${root}/resources/images/images/fcancel.png" height="20">
-						</li>
-						<li class="myProfile">					<!-- user의 프로필사진과 닉네임 받아오는 부분 12개. -->
-							<div class="myPhoto" style="padding-top:20px">
-								<img src="${root}/resources/images/images/profile.png" width="130px">
-							</div>
-							<div class="follower_nickname">
-								예쁜나영이
-							</div>
-							<img src="${root}/resources/images/images/fcancel.png" height="20">
-						</li>
-						<li class="myProfile">					<!-- user의 프로필사진과 닉네임 받아오는 부분 12개. -->
-							<div class="myPhoto" style="padding-top:20px">
-								<img src="${root}/resources/images/images/profile.png" width="130px">
-							</div>
-							<div class="follower_nickname">
-								예쁜나영이
-							</div>
-							<img src="${root}/resources/images/images/fcancel.png" height="20">
-						</li>
-						<li class="myProfile">					<!-- user의 프로필사진과 닉네임 받아오는 부분 12개. -->
-							<div class="myPhoto" style="padding-top:20px">
-								<img src="${root}/resources/images/images/profile.png" width="130px">
-							</div>
-							<div class="follower_nickname">
-								예쁜나영이
-							</div>
-							<img src="${root}/resources/images/images/fcancel.png" height="20">
-						</li>
-						<li class="myProfile">					<!-- user의 프로필사진과 닉네임 받아오는 부분 12개. -->
-							<div class="myPhoto" style="padding-top:20px">
-								<img src="${root}/resources/images/images/profile.png" width="130px">
-							</div>
-							<div class="follower_nickname">
-								예쁜나영이
-							</div>
-							<img src="${root}/resources/images/images/fcancel.png" height="20">
-						</li>
+						<c:choose>
+							<c:when test="${empty selectFollowingMember}">
+								<div class="none"> 새로운 멤버를 팔로잉 해보세요!</div>
+							</c:when>
+							<c:otherwise>
+								<c:forEach var="memList" items="${selectFollowingMember}">
+									<li class="myProfile">
+										<%-- 
+										<c:choose>
+											<c:when test="">
+										--%>
+												<div class="myPhoto" style="padding-top:20px">
+													<img src="${root}/resources/images/images/profile.png" width="130px">
+												</div>
+												<div class="follower_nickname">
+													${memList.nickName}
+												</div>
+												
+												<a href="javascript:followCheck('${memList.email}')"><img src="${root}/resources/images/images/follow_list.png" height="20" id="follow"></a> 
+												<%-- 
+												<a href="javascript:follow()"><img src="${root}/resources/images/images/notfollow_list.png" height="20"></a>
+												 --%>
+										<%-- 		 
+											</c:when>
+										</c:choose>
+										 --%>
+									</li>
+								</c:forEach>
+							</c:otherwise>
+						</c:choose>
 						
 					</ul>
 					

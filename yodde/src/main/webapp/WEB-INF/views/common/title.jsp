@@ -51,17 +51,17 @@
 								<span class="title_btn2">		<!-- 프로필 버튼 -->
 									<c:choose>
 										<c:when test="${status == 'member'}">
-											<a href="info/memberMypage?email=${email}">
+											<a href="${root}/info/memberMypage?email=${email}">
 												<img id="profilePic" src="${root}${profilePic}?email=${email}" height="90" style="border-radius: 75px;">
 											</a>
 										</c:when>
 										<c:when test="${status == 'owner'}">
-											<a href="info/modifyOwner?email=${email}">
+											<a href="${root}/info/modifyOwner?email=${email}">
 												<img id="profilePic" src="${root}${profilePic}" height="90" style="border-radius: 75px;">
 											</a>
 										</c:when>
 										<c:otherwise>
-											<a href="info/modifyMember?email=${email}">
+											<a href="${root}/info/modifyMember?email=${email}">
 												<img id="profilePic" src="${root}/resources/images/images/profile.png" height="90" style="border-radius: 75px;">
 											</a>
 										</c:otherwise>
@@ -87,8 +87,8 @@
 		                        <span id="memberMenu" class="menu-menu-1-container">
 		                           <ul class="category" style="margin-left:0px">
 		                              <li class="category_li" id=""><a href="${root}/info/modifyMember">회원정보수정</a></li>
-		                              <li class="category_li" id=""><a href="${root}/info/followerList?">팔로워리스트</a></li>
-		                              <li class="category_li" id=""><a href="${root}/info/followingList">팔로잉리스트 </a></li>
+		                              <li class="category_li" id=""><a href="${root}/info/followerList?email=${email}">팔로워리스트</a></li>
+		                              <li class="category_li" id=""><a href="${root}/info/followingList?email=${email}">팔로잉리스트 </a></li>
 		                              <li class="category_li" id=""><a href="${root}/info/storeFollowingList?email=${email}">스토어 팔로잉리스트</a></li>
 		                              <li class="category_li" id=""><a href="${root}/info/history">나의 리뷰</a></li>
 		                              <li class="category_li" id=""><a href="">회원탈퇴</a></li>		                             
@@ -98,7 +98,7 @@
 		                           <ul class="category" style="margin-left:0px">
 		                              <li class="category_li" id=""><a href="${root}/info/modifyOwner">회원정보수정</a></li>
 		                              <li class="category_li" id=""><a href="${root}/info/modifyStore">스토어정보수정</a></li>
-		                              <li class="category_li" id=""><a href="${root}/info/storeFollowerList">팔로워리스트</a></li>
+		                              <li class="category_li" id=""><a href="${root}/info/followerList?email=${email}">팔로워리스트</a></li>
 		                           </ul>
 		                        </span>
 							</span>

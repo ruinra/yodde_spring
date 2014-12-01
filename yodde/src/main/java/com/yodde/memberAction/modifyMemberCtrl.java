@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.yodde.memberModel.MemberDao;
 import com.yodde.memberModel.MemberDto;
+import com.yodde.relationModel.RelationDao;
 import com.yodde.reviewModel.ReviewDao;
 
 @Component
@@ -27,6 +28,8 @@ public class modifyMemberCtrl {
 	private MemberDao memberDao;
 	@Autowired
 	private ReviewDao reviewDao;
+	@Autowired
+	private RelationDao relationDao;
 	
 	@RequestMapping(value = "/info/memberMypage", method=RequestMethod.GET)
 	public ModelAndView memberMypage(@ModelAttribute MemberDto memberDto, HttpServletRequest request,
@@ -37,12 +40,17 @@ public class modifyMemberCtrl {
 		
 		MemberDto member = memberDao.selectMember(email);
 		int reviewCnt = reviewDao.getReviewCnt(email);
-		
-		System.out.println(reviewCnt);
+		int followingCnt = relationDao.getFollowingCnt(email);
+		int followerCnt = relationDao.getFollowerCnt(email);
+		int followingStoreCnt = relationDao.getfollowingStoreCnt(email);
 		
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("member", member);
 		mav.addObject("reviewCnt", reviewCnt);
+		mav.addObject("followingCnt", followingCnt);
+		mav.addObject("followerCnt", followerCnt);
+		mav.addObject("followingStoreCnt", followingStoreCnt);
+		
 		mav.setViewName("/member/memberMyPage");
 		return mav;
 	}
@@ -109,7 +117,7 @@ public class modifyMemberCtrl {
 		MemberDto member = memberDao.selectMember(memberDto.getEmail());
 		
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("memberDto", memberDto);
+		mav.addObject("memberDto", member);
 		mav.setViewName("/member/memberMyPage");
 		return mav;
 	}

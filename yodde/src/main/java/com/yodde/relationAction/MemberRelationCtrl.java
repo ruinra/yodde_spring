@@ -1,5 +1,7 @@
 package com.yodde.relationAction;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.yodde.memberModel.MemberDto;
 import com.yodde.relationModel.RelationDao;
 
 @Component
@@ -25,8 +28,13 @@ public class MemberRelationCtrl {
 		String email = request.getParameter("email");
 		System.out.println(email);
 		
+		List<MemberDto> list;
+		list=relationDao.selectFollowerMember(email);
+		System.out.println(list);
+		
 		ModelAndView mav=new ModelAndView();
-//		mav.addObject("followerList", list);
+		mav.addObject("followerList", list);
+		mav.addObject("email", email);
 		mav.setViewName("/relation/followerList");
 		
 		return mav;
@@ -36,8 +44,21 @@ public class MemberRelationCtrl {
 	public ModelAndView followingList(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		
+		String email=request.getParameter("email");
+		//System.out.println(email);
+		
+		// 로그인 follower, following를 받아온다
+		String follower=request.getParameter("follower");
+		String following=request.getParameter("following");
+		
+		List<MemberDto> list;
+		list=relationDao.selectFollowingMember(email);
+		int followingCheck = relationDao.checkFollowMember(follower, following);
 		
 		ModelAndView mav=new ModelAndView();
+		mav.addObject("selectFollowingMember", list);
+		mav.addObject("result",followingCheck);
+		mav.addObject("email", email);
 		mav.setViewName("/relation/followingList");
 		
 		return mav;
@@ -62,7 +83,8 @@ public class MemberRelationCtrl {
 		String follower=request.getParameter("follower");
 		String following=request.getParameter("following");
 		//System.out.println(email + "," + store);
-		
+		//System.out.println("MemberrelationCtrl"+follower + following);
+
 		int check=relationDao.checkFollowMember(follower, following);
 		//System.out.println(check);
 		
@@ -78,17 +100,46 @@ public class MemberRelationCtrl {
 	public ModelAndView follow(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		
+		
 		String follower = request.getParameter("follower");
 		String following = request.getParameter("following");
-		
+		System.out.println("MemberrelationCtrl, followingList.jsp"+follower + following);
+
 		int check = relationDao.checkFollowMember(follower, following);
 		//System.out.println(check);
-		
+
 		if(check == 1){
 			check = relationDao.unfollowMember(follower, following);
 		}else if(check == 0){
 			check = relationDao.followMember(follower, following);
 		}
+		//System.out.println(check+"12341234");
+		
+		ModelAndView mav=new ModelAndView();
+		mav.addObject("result",check);
+		mav.setViewName("/result");
+		
+		return mav;
+	}
+	
+	@RequestMapping(value = "/followMember1", method=RequestMethod.GET) //storeinfo.jsp에서 들어올때
+	public ModelAndView follow1(HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		
+		System.out.println("hi");
+		String follower = request.getParameter("follower");
+		String following = request.getParameter("following");
+		System.out.println("MemberrelationCtrl, followingList.jsp"+follower + following);
+
+		int check = relationDao.checkFollowMember(follower, following);
+		//System.out.println(check);
+
+		if(check == 1){
+			check = relationDao.unfollowMember(follower, following);
+		}else if(check == 0){
+			check = relationDao.followMember(follower, following);
+		}
+		//System.out.println(check+"12341234");
 		
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("result",check);

@@ -27,7 +27,7 @@
 					<ul class="content_box">
 						<c:choose>
 							<c:when test="${empty storeFollowingList}">
-								<div class="none"> 새로운 스토우를 팔로잉 해보세요!</div>
+								<div class="none"> 새로운 스토어를 팔로잉 해보세요!</div>
 							</c:when>
 							<c:otherwise>
 								<c:forEach var="storeList" items="${storeFollowingList}">

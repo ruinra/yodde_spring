@@ -4,10 +4,12 @@
 <%@ page import="org.apache.commons.httpclient.methods.GetMethod" %>
 <%@ page import="org.apache.commons.httpclient.HttpStatus" %>
 <%
-	String key = "fece5eed2b355fdeb56e8ce1c7aea4fc";
+	String key = "b550718ee0761a7ed92b61a4f9c5afa0";
 	String target = request.getParameter("target");
 	String query = request.getParameter("query");
-	String url = "http://openapi.naver.com/search?query="+query+"&target="+target+"&key="+key;
+	//﻿int display = Integer.parseInt(request.getParameter("display"));
+	int start = Integer.parseInt(request.getParameter("start"));
+	String url = "http://openapi.naver.com/search?query="+query+"&target="+target+"&start="+start+"&display="+10+"&key="+key;
 	request.setCharacterEncoding("utf-8");
 	HttpClient client = new HttpClient();
 	GetMethod method = new GetMethod(url);

@@ -23,22 +23,21 @@
 			<div class="followerList_content">
 				<div class="followerList_box">
 					<div class="result_title">					<!-- login title -->
-						<img src="${root}/resources/images/images/follower.png" height="55">
-						${email}
+						<img src="${root}/resources/images/images/follower.png" height="45">
 					</div>
 					<ul class="content_box">
 						<c:choose>
-							<c:when test="${followList==null}">
-								<div>팔로워 멤버가 없습니다.</div>
+							<c:when test="${empty followerList}">
+								<div class="none">팔로우 멤버가 없습니다.</div>
 							</c:when>
 							<c:otherwise>
 								<div>
-									<c:forEach var="itemMember" items="${memberList}">
+									<c:forEach var="memList" items="${followerList}">
 										<div class="myPhoto" style="padding-top:20px">
 											<img src="${root}/resources/images/images/profile.png" width="130px">
 										</div>
 										<div class="follower_nickname">
-											예쁜나영이
+											${memList.nickName}
 										</div>
 									</c:forEach>
 								</div>

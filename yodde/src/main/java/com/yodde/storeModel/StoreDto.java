@@ -18,7 +18,7 @@ public class StoreDto {
 	private int 	status;
 	private String	phoneNum;
 	private String	homepage;
-	private int		rate;
+	private double	rate;
 	private String	category1;
 	private String	category2;
 	private String	category3;
@@ -95,7 +95,7 @@ public class StoreDto {
 	public void setHomepage(String homepage) {
 		this.homepage = homepage;
 	}
-	public int getRate() {
+	public double getRate() {
 		return rate;
 	}
 	public void setRate(int rate) {
