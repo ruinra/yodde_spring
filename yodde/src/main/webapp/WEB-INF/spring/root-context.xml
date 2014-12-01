@@ -20,6 +20,7 @@
 				<value>classpath:com/yodde/relationModel/RelationMapper.xml</value>
 				<value>classpath:com/yodde/pictureModel/PictureMapper.xml</value>
 				<value>classpath:com/yodde/ownerModel/OwnerMapper.xml</value>
+				<value>classpath:com/yodde/evaluationModel/EvaluationMapper.xml</value>
 			</list>
 		</property>
 	</bean>

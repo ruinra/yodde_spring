@@ -2,54 +2,211 @@
 @import url('http://fonts.googleapis.com/earlyaccess/nanumgothic.css');
 
 body{
-	margin:0px 0px 0px 0px;
-	background-color:#FFFFFF;
-	font-family:'Nanum Gothic', '맑은 고딕', Helvetica;
+   margin:0px 0px 0px 0px;
+   background-color: #FFFFFF;
+   font-family:'Nanum Gothic', '맑은 고딕', Helvetica;
 }
+
 A:link{text-decoration:none;}
 A:visited{text-decoration:none;}
 A:hover{text-decoration:none;}
-ul{
-	list-style:none;
-}
+
 p{
-	margin-left:80px;
+   margin-left:40px;
 }
-
-
 .join_content{
-	padding-top:50px;
-	height:520px;
+   padding-top:50px;
+   height:520px;
 }
 
 .join_box{
-	width: 60%; 	height: 70%;
-	margin: 8% 0px 0px 20%;
-	padding: 0px 0px 0px 0px;
-	background-color: #F4F4F4;
+   width:600px; height:60%;
+   margin:9% 0px 0px 25%;
+   padding:0px 0px 0px 0px;
+   background-color:#F4F4F4;
 }
 
 .content_memberJoin{
-	height:520px;
-	padding-top:50px;
+   height:520px;
+   padding-top:50px;
 }
 .memberJoin_box{
-	width:600px; height:60%;
-	margin:9% 0px 0px 25%;
-	padding:0px 0px 0px 0px;
-	background-color:#F4F4F4;
+   width:600px; height:70%;
+   margin:6% 0px 0px 25%;
+   padding:0px 0px 0px 0px;
+   background-color:#F4F4F4;
+}
+.input_box{
+   padding-left:25px;
+   padding-top: 11px;
 }
 .join_input{
-	width:180px; height:25px;
-	margin:0px 0px 0px 0px;
+   width:180px; height:25px;
+   margin:0px 0px 0px 0px;
 
-	border:none;
-	border-bottom:2px solid #F38983;
-	background-color:#F4F4F4;
+   border:none;
+   border-bottom:2px solid #F38983;
+   background-color:#F4F4F4;
 
-	font-size:18px;
-	font-weight:bold;
+   font-size:18px;
+   font-weight:bold;
+}
+.join_input_half{
+   width:55px; height:25px;
+   margin:0px 0px 0px 0px;
+
+   border:none;
+   border-bottom:2px solid #F38983;
+   background-color:#F4F4F4;
+
+   font-size:18px;
+   font-weight:bold;
+   text-align:center;
 }
 .bottom_Btn{
-	text-align:center;
+   text-align:center;
+   margin-top: 25px;
 }
+
+
+
+<!-- memberMypage -->
+.content{
+   height:auto;   
+}
+.myPage_content{
+   padding-top:50px;
+}
+
+.myPage_box{
+   width:600px; height: auto;
+   margin: 4% 0px 0px 25%;
+   padding:0px 0px 0px 0px;
+}
+.content_box{
+   height: 240px;
+   padding-left: 10px;
+   margin-bottom: 30px;
+   background-color: #F4F4F4;
+}
+.mypage_content_box{
+   height: 400px;
+   padding-left: 10px;
+   margin-bottom: 30px;
+   background-color: #F4F4F4;
+}
+.myProfile{
+   width: auto;
+   margin: 0px 10px 10px 10px;
+   float: left;
+}
+.info_title{
+   width: 100px;   height:auto;
+   margin-top: 8px;
+   float:left;
+}
+.myPhoto{
+   text-align: center;
+}
+.myNick{
+   font-weight:bold;
+   text-align: center;
+}
+.profile_content{
+   padding: 5px 10px 20px 200px;
+}
+.follow{
+   margin: 5px 0px 40px 0px;
+   text-align:center;
+}
+.myinfo_style{
+   margin-top: 65px;
+}
+.line{
+   margin-left: 20px;
+   margin-top: 13px;
+}
+.profile_input{
+   width:80px; height:25px;
+   margin:0px 0px 0px 0px;
+
+   border:none;
+   border-bottom:2px solid #F38983;
+   background-color:#F4F4F4;
+
+   font-size: 15px;
+   font-weight:bold;
+   text-align:center;
+   color:#7C7475;
+}
+.label{
+   font-size: 16px;
+   padding: 0px 10px 0px 10px;
+   color: #7C7475;
+}
+.review_box{
+   width: 520px;
+   float: left;
+   margin: 0px 10px 10px 10px;
+   border-left: 2px dotted white;
+}
+.reviewTitle_line{
+   margin: 35px 0px 05px 0px;
+   text-align: center;
+   font-size:20px;
+   font-weight: 700;
+}
+.reviewCnt_line{
+   margin: 307px 15px 10px 0px;
+   text-align: right;
+   font-size:20px;
+}
+.review_line{
+   
+}
+.reviews{
+   width: 150px;
+   margin: 30px 5px 10px 0px;
+   float: left;
+   text-align: center;
+}
+.store_pic{
+   float:center;
+   text-align: center;
+}
+.store_name{
+   margin-bottom: 15px;
+   font-size: 16px;
+   font-weight: 700;
+   text-align: center;
+}
+.my_rate{
+   margin-top:5px;
+}
+
+<!-- modifyMember -->
+.bottom_Btn{
+   text-align:center;
+   margin-top: 23px;
+}
+.profile_update{
+   width:50px; height:25px;
+   margin:0px 0px 0px 0px;
+
+   border:none;
+   border-bottom:dotted 2px #F38983;
+   background-color:#F4F4F4;
+
+   font-size:18px;
+   font-weight:bold;
+   text-align:center;
+   color:#7C7475;
+}
+.modify_myphoto{
+   padding-top:10px;
+}
+
+
+
+
+

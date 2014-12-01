@@ -8,6 +8,7 @@ public class Review {
 	private int storeId;
 	private String profilePic;	
 	private String writer;
+	private String email;	
 	private int rate;
 	private Date writeDate;
 	private Date lastModify;
@@ -21,6 +22,7 @@ public class Review {
 	private int pic4;
 	private int pic5;
 	private List<String> picPath;
+
 	public int getReviewId() {
 		return reviewId;
 	}
@@ -38,6 +40,12 @@ public class Review {
 	}
 	public void setWriter(String writer) {
 		this.writer = writer;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	public int getRate() {
 		return rate;

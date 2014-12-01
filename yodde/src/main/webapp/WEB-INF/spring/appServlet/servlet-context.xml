@@ -47,6 +47,8 @@
 	<context:component-scan base-package="com.yodde.pictureModel" />
 	<context:component-scan base-package="com.yodde.ownerAction" />
 	<context:component-scan base-package="com.yodde.ownerModel" />
+	<context:component-scan base-package="com.yodde.evaluationAction" />
+	<context:component-scan base-package="com.yodde.evaluationModel" />
 	<context:component-scan base-package="com.yodde.security" />
 	
 	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
