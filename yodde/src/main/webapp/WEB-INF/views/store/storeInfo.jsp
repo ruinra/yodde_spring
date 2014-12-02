@@ -44,24 +44,24 @@
             }
             
             function followCheck(){
-               var mail="${email}";
-            var store="${storeDto.storeId}";
-            var url="followStore?email=" + mail + "&storeId=" + store;
+				var mail="${email}";
+				var store="${storeDto.storeId}";
+				var url="followStore?email=" + mail + "&storeId=" + store;
             
-            $.ajax({
-               url:url,
-               type:"get",
-               contentType:"text/xml; charset=utf-8", 
-               dataType: "text",
-               error: function(xhr, status, error) { alert("error : " +status); },
-               success: function(data){
-                  //alert(data);
-                  if(data ==1){
-                     $("#follow").attr("src", "${root}/resources/images/images/follow.png");   
-                  }else{
-                     $("#follow").attr("src", "${root}/resources/images/images/notfollow.png");
-                  }
-               } }); // Ajax 호출 및 이벤트 핸들러 함수 정의
+	            $.ajax({
+	               url:url,
+	               type:"get",
+	               contentType:"text/xml; charset=utf-8", 
+	               dataType: "text",
+	               error: function(xhr, status, error) { alert("error : " +status); },
+	               success: function(data){
+	                  //alert(data);
+	                  if(data ==1){
+	                     $("#follow").attr("src", "${root}/resources/images/images/follow.png");   
+	                  }else{
+	                     $("#follow").attr("src", "${root}/resources/images/images/notfollow.png");
+	                  }
+               	} }); // Ajax 호출 및 이벤트 핸들러 함수 정의
             }
          </script>
    
@@ -352,11 +352,12 @@
                                  </c:if>
                               </span> 
                               
-                              <span class="updown_position"> <!-- 리뷰 찬반 -->
+                              <span class="updown_position"> <!-- 리뷰 찬반 -->								
                                  <a href=""><img   src="${root}/resources/images/images/up.png" height="25"></a>
                                  ${itemReview.like1}
                                  <a href=""><img   src="${root}/resources/images/images/down.png" height="25"></a>
                                  ${itemReview.unlike}
+                                 ${itemReview.eval}
                               </span>
                               
                               <p class="scroll_tag">${itemReview.content}</p> 
@@ -403,7 +404,7 @@
          <!-- footer -->
          <jsp:include page="../common/footer.jsp" />
       </div>
-      <script type="text/javascript" src="http://openapi.map.naver.com/openapi/naverMap.naver?ver=2.0&key=15319f937084dc86f076a48652007f45&coord=latlng"></script>
+      <script type="text/javascript" src="http://openapi.map.naver.com/openapi/naverMap.naver?ver=2.0&key=2043d7b7bca2a35d8a16427791132a29&coord=latlng"></script>
       <script type="text/javascript">
       nhn.api.map.setDefaultPoint('LatLng');
       //var latitude = ${storeDto.latitude};

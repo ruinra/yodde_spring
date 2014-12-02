@@ -22,7 +22,15 @@ public class Review {
 	private int pic4;
 	private int pic5;
 	private List<String> picPath;
+	private int eval; // 0 : no eval 1: like 2: unlike 3: report
 
+	public int getEval() {
+		return eval;
+	}
+	public void setEval(int eval) {
+		this.eval = eval;
+	}
+	
 	public int getReviewId() {
 		return reviewId;
 	}

@@ -1,5 +1,8 @@
 package com.yodde.evaluationModel;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class EvaluationDto {
 	int evalId;
 	int reviewId;

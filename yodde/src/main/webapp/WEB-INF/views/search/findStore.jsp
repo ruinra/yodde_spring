@@ -48,8 +48,10 @@
          var roadAddress = $(this).find("roadAddress").text();
          var mapx = $(this).find("mapx").text();
          var mapy = $(this).find("mapy").text();
+         var email = "${email}";
 
-         var item = "title="+ title + "&category="+ category + "&telephone=" + telephone + "&address=" + address + "&roadAddress=" + roadAddress;
+         //var item = "title="+ title + "&category="+ category + "&telephone=" + telephone + "&address=" + address + "&roadAddress=" + roadAddress;
+         var item = "title="+ title + "&category="+ category + "&telephone=" + telephone + "&address=" + address + "&roadAddress=" + roadAddress + "&email=" + email;
          
          var info = "<br/>" + "<div class='result_stores'>"
          info += "<div class='recommend' style='float:left'><a href='javascript:insertStore(\""+item+"\",\""+mapx+"\",\""+mapy+"\")'>" + "<img src='${root}/resources/images/images/ex1.jpg' height='170'></a></div>"
@@ -84,7 +86,7 @@
 		   jQuery.ajax({            
 		         type:"GET",
 		         url:"http://apis.daum.net/local/geo/transcoord",
-		         data:"apikey=aea5d21e8e375ed8d2aa0c5d97a6b62af132a0ce&x="+mapx+"&y="+mapy+"&fromCoord=KTM&toCoord=WGS84&output=json",
+		         data:"apikey=f28206be65f6dff3d46be8d6dd9c01c167d73b86&x="+mapx+"&y="+mapy+"&fromCoord=KTM&toCoord=WGS84&output=json",
 		         dataType:"jsonp", // 옵션이므로 JSON으로 받을게 아니면 안써도 됨
 		         jsonp:"callback",
 		         success : function(data) {

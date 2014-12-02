@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.yodde.evaluationModel.EvaluationDao;
 import com.yodde.pictureModel.PictureDao;
 import com.yodde.pictureModel.PictureDto;
 import com.yodde.reviewModel.Review;
@@ -29,6 +30,8 @@ public class SearchStoreCtrl {
 	private ReviewDao reviewDao;
 	@Autowired
 	private PictureDao pictureDao;
+	@Autowired
+	private EvaluationDao evaluationDao;
 	
 	@RequestMapping(value = "/getStoreInfo", method=RequestMethod.GET)
 	public ModelAndView getStoreInfo(HttpServletRequest request,
@@ -40,6 +43,8 @@ public class SearchStoreCtrl {
 		//title tag delete
 		title = title.replaceAll("<b>", "");
 		title = title.replaceAll("</b>", "");
+		
+		String email = request.getParameter("email");
 		
 		//category tokenize
 		StringTokenizer st = new StringTokenizer(request.getParameter("category"), ">");
@@ -84,8 +89,15 @@ public class SearchStoreCtrl {
 		//select review : 원래 스토어가 있을때만 리뷰검색 : 사진검색
 		List<Review> reviewList = null;
 		List<PictureDto> pictureList = null;
-		if (check == 2) {			
-			reviewList = reviewDao.getReviewsByStoreId(storeDto.getStoreId());	
+		if (check == 2) {
+			reviewList = reviewDao.getReviewsByStoreId(storeDto.getStoreId());
+			if (email.length() > 0) {
+				for (Review review : reviewList){
+					int eval = evaluationDao.evaluationCheck(email, review.getReviewId());
+					review.setEval(eval);
+				}
+			}
+				
 			pictureList = pictureDao.select7Picture(storeDto.getStoreId());
 		}
 		

@@ -1,5 +1,5 @@
 package com.yodde.evaluationModel;
 
 public interface EvaluationDao {
-	EvaluationDto evaluationCheck(String email, int ReviewId);
+	int evaluationCheck(String email, int ReviewId);
 }

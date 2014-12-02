@@ -24,13 +24,13 @@ public class EvaluationCtrl {
 			HttpServletResponse response) throws Exception {
 		String email = request.getParameter("email");
 		int reviewId = Integer.parseInt(request.getParameter("reviewId"));
-		String writer = request.getParameter("writer");
-		//System.out.println(email + "," + reviewId + "," + writer);
+		
+		System.out.println(email + "," + reviewId);
 		
 		EvaluationDto eval = null;
-		if (email != null){
-			eval = evaluationDao.evaluationCheck(email, reviewId);
-		}
+//		if (email != null){
+//			eval = evaluationDao.evaluationCheck(email, reviewId);
+//		}
 		
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("result", eval);
