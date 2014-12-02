@@ -55,7 +55,7 @@ public class WriteReviewCtrl {
 		//file upload
 		List<MultipartFile> files = reviewDto.getFiles();
 		String filePath;
-		String picturePath = "C:/Users/Lake/git/yodde_spring/yodde/src/main/webapp";
+		String picturePath = "/Users/Min/git/yodde_spring/yodde/src/main/webapp";
 		String filename;
 		int index = 0;
 		if (files != null){

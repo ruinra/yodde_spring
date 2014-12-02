@@ -22,6 +22,7 @@ public class StoreDaoImp implements StoreDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("Store Insert Error.");
+			session.rollback();
 		} finally {
 			session.close();
 		}

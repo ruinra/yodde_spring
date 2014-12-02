@@ -79,7 +79,7 @@
 		                              <li class="category_li" id=""><a href="">숙박</a></li>
 		                              <li class="category_li" id=""><a href="">영화/공연</a></li>
 		                              <li class="category_li" id=""><a href="">오락서비스</a></li>
-		                              <li class="category_li" id=""><a href="">음식</a></li>
+		                              <li class="category_li" id=""><a href="${root}/">음식</a></li>
 		                              <li class="category_li" id=""><a href="">자동차</a></li>
 		                              <li class="category_li" id=""><a href="">카페/제과</a></li>
 		                           </ul>

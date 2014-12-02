@@ -61,8 +61,8 @@ public class SearchStoreCtrl {
 		storeDto.setPhoneNum(request.getParameter("telephone"));
 		storeDto.setAddress(request.getParameter("address"));
 		storeDto.setStreetAddr(request.getParameter("roadAddress"));
-		storeDto.setLatitude(Long.parseLong(request.getParameter("mapx")));
-		storeDto.setLongitude(Long.parseLong(request.getParameter("mapy")));
+		storeDto.setLatitude(Double.parseDouble(request.getParameter("mapx")));
+		storeDto.setLongitude(Double.parseDouble(request.getParameter("mapy")));
 		storeDto.setOpenDate(null);
 		
 		//선택한 스토어가 데이터베이스에 있는지 확인
