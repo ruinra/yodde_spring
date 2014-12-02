@@ -13,12 +13,12 @@ public class StoreDto {
 	private Date 	openDate;
 	private String 	serviceTime;
 	private String 	mapId;
-	private long	latitude;
-	private long	longitude;
+	private double	latitude;
+	private double	longitude;
 	private int 	status;
 	private String	phoneNum;
 	private String	homepage;
-	private int		rate;
+	private double		rate;
 	private String	category1;
 	private String	category2;
 	private String	category3;
@@ -65,16 +65,16 @@ public class StoreDto {
 	public void setMapId(String mapId) {
 		this.mapId = mapId;
 	}
-	public long getLatitude() {
+	public double getLatitude() {
 		return latitude;
 	}
-	public void setLatitude(long latitude) {
+	public void setLatitude(double latitude) {
 		this.latitude = latitude;
 	}
-	public long getLongitude() {
+	public double getLongitude() {
 		return longitude;
 	}
-	public void setLongitude(long longitude) {
+	public void setLongitude(double longitude) {
 		this.longitude = longitude;
 	}
 	public int getStatus() {
@@ -95,10 +95,10 @@ public class StoreDto {
 	public void setHomepage(String homepage) {
 		this.homepage = homepage;
 	}
-	public int getRate() {
+	public double getRate() {
 		return rate;
 	}
-	public void setRate(int rate) {
+	public void setRate(double rate) {
 		this.rate = rate;
 	}
 	public String getCategory1() {

@@ -50,11 +50,13 @@ public class ReviewDaoImp implements ReviewDao {
 		try{
 			session=sqlSessionFactory.openSession();
 			value=session.insert("writeReview", review);
+			value=session.update("averageRate", review);
 			session.commit();
 			
 		}catch(Exception e){
 			e.printStackTrace();
 			System.out.println("writeReview Error");
+			session.rollback(); // 내가 추가한 부
 		}finally{
 			session.close();
 		}

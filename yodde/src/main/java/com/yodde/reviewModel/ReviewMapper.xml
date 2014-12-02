@@ -32,4 +32,11 @@
 	<select id="reviewCount" parameterType="String" resultType="int">
 		select count(reviewId) from REVIEW WHERE writer=#{email}
 	</select>
+	
+	<update id="averageRate" parameterType="com.yodde.reviewModel.Review">
+		<![CDATA[
+			update store set rate = (SELECT SUM(rate)/COUNT(*) FROM REVIEW WHERE storeid = #{storeId}) where storeid = #{storeId}
+		]]>
+	</update>
+	
 </mapper>
