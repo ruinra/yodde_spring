@@ -10,19 +10,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.yodde.reviewModel.ReviewDao;
+
 @Component
 @Controller
 public class DeleteReviewCtrl {
-	//@Autowired //해당 변수타입과 일치하는 빈을 찾아서 주입
-
-
-//	@RequestMapping(value = "", method=RequestMethod.GET)
-//	public ModelAndView delete(HttpServletRequest request,
-//			HttpServletResponse response) throws Exception {
-//		
-//		
-//		ModelAndView mav = new ModelAndView();
-//		
-//		return mav;
-//	}
+   @Autowired //해당 변수타입과 일치하는 빈을 찾아서 주입
+   ReviewDao reviewDao;
+   
+   @RequestMapping(value = "/deleteReview", method=RequestMethod.GET)
+   public ModelAndView delete(HttpServletRequest request,
+         HttpServletResponse response) throws Exception {
+      
+      int reviewId = Integer.parseInt(request.getParameter("reviewId"));
+      //System.out.println(reviewId);
+      
+      int deleteCheck = reviewDao.deleteReveiw(reviewId);
+      //System.out.println("deleteCheck : " + deleteCheck);
+      
+      ModelAndView mav = new ModelAndView();
+      mav.addObject("result", deleteCheck);
+      mav.setViewName("/result");
+      
+      return mav;
+   }
 }

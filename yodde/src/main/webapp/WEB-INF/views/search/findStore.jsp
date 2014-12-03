@@ -86,7 +86,7 @@
 		   jQuery.ajax({            
 		         type:"GET",
 		         url:"http://apis.daum.net/local/geo/transcoord",
-		         data:"apikey=f28206be65f6dff3d46be8d6dd9c01c167d73b86&x="+mapx+"&y="+mapy+"&fromCoord=KTM&toCoord=WGS84&output=json",
+		         data:"apikey=aea5d21e8e375ed8d2aa0c5d97a6b62af132a0ce&x="+mapx+"&y="+mapy+"&fromCoord=KTM&toCoord=WGS84&output=json",
 		         dataType:"jsonp", // 옵션이므로 JSON으로 받을게 아니면 안써도 됨
 		         jsonp:"callback",
 		         success : function(data) {
@@ -101,19 +101,19 @@
 </script>
    <body onload="javascript:callOpenAPI('${query}','1')">
       <div>
-         <jsp:include page="../common/title.jsp"/>         <!-- title -->
+         <jsp:include page="../common/title.jsp"/>         <!— title —>
       </div>
       
       <div>
-         <jsp:include page="../main/searchBar.jsp"/>               <!-- searchBar -->
+         <jsp:include page="../main/searchBar.jsp"/>               <!— searchBar —>
       </div>
       
       <script type="text/javascript" src="${root}/resources/scripts/jQueryWeb.js"></script> 
       <script type="text/javascript" src="${root}/resources/scripts/jQueryWeb2.js"></script>
       
-      <div class="content">                           <!-- content -->
+      <div class="content">                           <!— content —>
          <div class="result_content">
-            <div class="result_img">                  <!-- result title -->
+            <div class="result_img">                  <!— result title —>
                <img src="${root}/resources/images/images/about.png" height="55">
                ${query}
             </div>
@@ -123,14 +123,14 @@
             <input type="hidden" id="startNumb">
             <div id="pageNumb" style="text-align:center;"></div>
             
-            <div class="request_Btn">
-               <a href=""><img src="${root}/resources/images/images/request.png" height="20"></a>
+             <div class="request_Btn">            <!-- 스토어 등록요청 메일보내기 -->
+               <a href="${root}/requestRegStore" onclick="window.open(this.href,'_blank',width=650, height=500);return false" ><img src="${root}/resources/images/images/request.png" height="20"></a>
             </div>
          </div>
       </div>
       
       <div>
-         <jsp:include page="../common/footer.jsp"/>      <!-- footer -->
+         <jsp:include page="../common/footer.jsp"/>      <!— footer —>
       </div>
       
       

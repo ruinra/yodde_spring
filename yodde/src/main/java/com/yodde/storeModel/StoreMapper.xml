@@ -3,37 +3,70 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="www.yodde.co.kr/store">
-	<insert id="insertStore" parameterType="com.yodde.storeModel.StoreDto">
-		insert into store(storeId, storeName, address, streetAddr, openDate, serviceTime, mapId, latitude, longitude, status, homepage, rate, category1, category2, category3, phoneNum) values(
-			seq_store.nextval,
-			#{storeName},
-			#{address},
-			#{streetAddr},
-			#{openDate, jdbcType=DATE},
-			#{serviceTime, jdbcType=VARCHAR},
-			#{mapId, jdbcType=VARCHAR},
-			#{latitude, jdbcType=DOUBLE},
-			#{longitude, jdbcType=DOUBLE},
-			#{status, jdbcType=VARCHAR},			
-			#{homepage, jdbcType=VARCHAR},
-			#{rate, jdbcType=NUMERIC},
-			#{category1},
-			#{category2},
-			#{category3},
-			#{phoneNum, jdbcType=VARCHAR}
-		)
-	</insert>
-	
-	<select id="isExistStore" parameterType="com.yodde.storeModel.StoreDto" resultType="String">
-		select storeId from store where latitude = #{latitude} and storeName = #{storeName}
-	</select>
-	
-	<select id="selectStoreByStoreId" parameterType="int" resultType="com.yodde.storeModel.StoreDto">
-		select * from store where storeId = #{storeId}
-	</select>
-	
-	<insert id="storeInfo" parameterType="String">
-		insert into store_info values(#{storeId}, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-	</insert>
+   <insert id="insertStore" parameterType="com.yodde.storeModel.StoreDto">
+      insert into store(storeId, storeName, address, streetAddr, openDate, serviceTime, mapId, latitude, longitude, status, homepage, rate, category1, category2, category3, phoneNum) values(
+         seq_store.nextval,
+         #{storeName},
+         #{address},
+         #{streetAddr},
+         #{openDate, jdbcType=DATE},
+         #{serviceTime, jdbcType=VARCHAR},
+         #{mapId, jdbcType=VARCHAR},
+         #{latitude, jdbcType=DOUBLE},
+         #{longitude, jdbcType=DOUBLE},
+         #{status, jdbcType=VARCHAR},         
+         #{homepage, jdbcType=VARCHAR},
+         #{rate, jdbcType=NUMERIC},
+         #{category1},
+         #{category2},
+         #{category3},
+         #{phoneNum, jdbcType=VARCHAR}
+      )
+   </insert>
+   
+   <select id="isExistStore" parameterType="com.yodde.storeModel.StoreDto" resultType="String">
+      select storeId from store where address = #{address} and storeName = #{storeName}
+   </select>
+   
+   <select id="selectStoreByStoreId" parameterType="int" resultType="com.yodde.storeModel.StoreDto">
+      select * from store where storeId = #{storeId}
+   </select>
+   
+   <insert id="storeInfo" parameterType="int">
+      insert into store_info values(#{storeId}, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+   </insert>
+   
+   <update id="storeUpdateFile" parameterType="com.yodde.storeModel.StoreDto">
+      update store set openDate=#{openDate}, serviceTime=#{serviceTime}, status=#{status}, homePage=#{homepage}, profilePic=#{profilePic} where storeId=#{storeId}
+   </update>
+   
+   <select id="storeInfoSelect" parameterType="int" resultType="com.yodde.storeModel.StoreInfoDto">
+      select * from store_info where storeId=#{storeId}
+   </select>
+   
+   <update id="storeInfoUpdate" parameterType="com.yodde.storeModel.StoreInfoDto">
+      update store_info set 
+         RESERVATION=#{reservation}, 
+         DELIVERY=#{delivery}, 
+         TAKEOUT=#{takeOut}, 
+         CREDITCARD=#{creditCard}, 
+         PARKING=#{parking}, 
+         GROUP1=#{group1}, 
+         TOILET=#{toilet}, 
+         WIFI=#{wifi}, 
+         TV=#{tv}, 
+         SEATING=#{seating}, 
+         KIDS=#{kids}, 
+         DRIVETHROUGH=#{driveThrough}
+         where storeId=#{storeId}   
+   </update>
+   
+   <update id="storeUpdate" parameterType="com.yodde.storeModel.StoreDto">
+      update store set openDate=#{openDate}, serviceTime=#{serviceTime}, status=#{status}, homePage=#{homepage} where storeId=#{storeId}
+   </update>
+   
+   <select id="selectRecentReviewName" parameterType="String" resultType="com.yodde.storeModel.StoreDto">
+       SELECT s.storeName, s.storeId, s.latitude, s.longitude FROM REVIEW rv, STORE s WHERE RV.WRITER=#{email} AND RV.STOREID=S.STOREID ORDER BY RV.WRITEDATE DESC
+    </select>
    
 </mapper>

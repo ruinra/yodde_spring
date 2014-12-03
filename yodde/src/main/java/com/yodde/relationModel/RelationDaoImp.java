@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.yodde.memberModel.MemberDto;
 import com.yodde.storeModel.StoreDto;
 
 @Component
@@ -84,16 +85,19 @@ public class RelationDaoImp implements RelationDao {
 	}
 
 	@Override
-	public int checkFollowMember(String follower, String following) {
+	public int checkFollowMember(String follower, String followee) {
 		HashMap<String, String> hMap=new HashMap<String, String>();
 		hMap.put("follower", follower);
-		hMap.put("following", following);
+		hMap.put("followee", followee);
 		
 		int value=0;
-		
+		//System.out.println("RelationDaoImp> relationDaoImp "+follower + followee);
+		//System.out.println("RelationDaoImp> checkFollowingMember> "+hMap);
 		try{
 			session=sqlSessionFactory.openSession();
 			String followCheck=session.selectOne("checkFollowMember", hMap);
+			System.out.println("followCheck "+followCheck);
+			
 			if(followCheck != null) value=1;
 		}catch(Exception e){
 			e.printStackTrace();
@@ -165,5 +169,90 @@ public class RelationDaoImp implements RelationDao {
 		}
 		
 		return list;
+	}
+
+	@Override
+	public List<MemberDto> selectFollowingMember(String email) {
+		List<MemberDto> list=null;
+		
+		try{
+			session=sqlSessionFactory.openSession();
+			list=session.selectList("selectFollowingMember", email);
+		}catch(Exception e){
+			System.out.println("selectFollowingMember Error");
+			e.printStackTrace();
+		}finally{
+			session.close();
+		}
+		
+		return list;
+	}
+
+	@Override
+	public List<MemberDto> selectFollowerMember(String email) {
+		List<MemberDto> list=null;
+		
+		try{
+			session=sqlSessionFactory.openSession();
+			list=session.selectList("selectFollowerMember", email);
+		}catch(Exception e){
+			System.out.println("selectFollowerMember Error");
+			e.printStackTrace();
+		}finally{
+			session.close();
+		}
+		
+		return list;
+	}
+
+	@Override
+	public int getFollowingCnt(String email) {
+		int cnt = 0;
+		
+		try{
+			session=sqlSessionFactory.openSession();
+			cnt=session.selectOne("getFollowingCnt", email);
+		}catch(Exception e){
+			System.out.println("getFollowingCnt Error");
+			e.printStackTrace();
+		}finally{
+			session.close();
+		}
+		
+		return cnt;
+	}
+
+	@Override
+	public int getFollowerCnt(String email) {
+		int cnt = 0;
+		
+		try{
+			session=sqlSessionFactory.openSession();
+			cnt=session.selectOne("getFollowerCnt", email);
+		}catch(Exception e){
+			System.out.println("getFollowerCnt Error");
+			e.printStackTrace();
+		}finally{
+			session.close();
+		}
+		
+		return cnt;
+	}
+
+	@Override
+	public int getfollowingStoreCnt(String email) {
+		int cnt = 0;
+		
+		try{
+			session=sqlSessionFactory.openSession();
+			cnt=session.selectOne("getfollowingStoreCnt", email);
+		}catch(Exception e){
+			System.out.println("getfollowingStoreCnt Error");
+			e.printStackTrace();
+		}finally{
+			session.close();
+		}
+		
+		return cnt;
 	}
 }

@@ -37,7 +37,7 @@ public class JoinOwnerCtrl {
 	
 		request.setCharacterEncoding("utf-8");
 		
-		ownerDto.setStoreId(4);
+		ownerDto.setStoreId(117);
 		ownerDto.setStoreName(request.getParameter("name"));
 		ownerDto.setEmail(request.getParameter("email"));
 		ownerDto.setPassword(request.getParameter("password"));

@@ -106,15 +106,15 @@ public class MemberDaoImp implements MemberDao {
 	}
 
 	@Override
-	public int updateMember(MemberDto memberDto) {
+	public int updateMemberFile(MemberDto memberDto) {
 		int value = 0;
 		  
 		try{
 			session=sqlSessionFactory.openSession();
-			value =session.update("updateMember", memberDto);
+			value =session.update("updateMemberFile", memberDto);
 			session.commit();
 		}catch(Exception e){
-			System.out.println("updateMember Error");
+			System.out.println("MemberFile Update Error");
 			e.printStackTrace();
 		}finally{
 			session.close();
@@ -122,4 +122,23 @@ public class MemberDaoImp implements MemberDao {
 		
 		return value;
 	}
+
+	@Override
+	public int updateMember(MemberDto memberDto) {
+		int value=0;
+		
+		try{
+			session=sqlSessionFactory.openSession();
+			value =session.update("updateMember", memberDto);
+			session.commit();
+		}catch(Exception e){
+			System.out.println("Member Update Error");
+			e.printStackTrace();
+		}finally{
+			session.close();
+		}
+		return value;
+	}
+
+
 }

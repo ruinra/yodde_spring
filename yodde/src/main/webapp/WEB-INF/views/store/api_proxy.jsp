@@ -7,7 +7,8 @@
 	String key = "fece5eed2b355fdeb56e8ce1c7aea4fc";
 	String target = request.getParameter("target");
 	String query = request.getParameter("query");
-	String url = "http://openapi.naver.com/search?query="+query+"&target="+target+"&key="+key;
+	int start = Integer.parseInt(request.getParameter("start"));
+	String url = "http://openapi.naver.com/search?query="+query+"&display="+10+"&start="+start+"&target="+target+"&key="+key;
 	request.setCharacterEncoding("utf-8");
 	HttpClient client = new HttpClient();
 	GetMethod method = new GetMethod(url);

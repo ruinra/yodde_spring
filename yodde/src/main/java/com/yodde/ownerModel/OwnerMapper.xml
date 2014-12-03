@@ -24,4 +24,15 @@
 	<select id="selectOwner" parameterType="String" resultType="com.yodde.ownerModel.OwnerDto">
 		select * from owner where email = #{id}
 	</select>
+	
+	<update id="ownerUpdateFile" parameterType="com.yodde.ownerModel.OwnerDto">
+		update owner set password = #{password}, profilepic = #{profilePic}	where email = #{email}
+	</update>
+	
+	<update id="ownerUpdate" parameterType="com.yodde.ownerModel.OwnerDto">
+		update owner set password = #{password}	where email = #{email}
+	</update>
+	
+	
+	
 </mapper>

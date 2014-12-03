@@ -1,6 +1,7 @@
 package com.yodde.memberAction;
 
 import java.io.File;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,7 +19,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.yodde.memberModel.MemberDao;
 import com.yodde.memberModel.MemberDto;
+import com.yodde.relationModel.RelationDao;
 import com.yodde.reviewModel.ReviewDao;
+import com.yodde.reviewModel.ReviewDto;
+import com.yodde.storeModel.StoreDao;
+import com.yodde.storeModel.StoreDto;
 
 @Component
 @Controller
@@ -27,24 +32,41 @@ public class modifyMemberCtrl {
 	private MemberDao memberDao;
 	@Autowired
 	private ReviewDao reviewDao;
+	@Autowired
+	private RelationDao relationDao;
+    @Autowired
+    private StoreDao storeDao;
 	
 	@RequestMapping(value = "/info/memberMypage", method=RequestMethod.GET)
-	public ModelAndView memberMypage(@ModelAttribute MemberDto memberDto, HttpServletRequest request,
-			HttpServletResponse response) throws Exception {
-		
-		String email=request.getParameter("email");
-		//System.out.println(email);
-		
-		MemberDto member = memberDao.selectMember(email);
-		int reviewCnt = reviewDao.getReviewCnt(email);
-		
-		System.out.println(reviewCnt);
-		
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("member", member);
-		mav.addObject("reviewCnt", reviewCnt);
-		mav.setViewName("/member/memberMyPage");
-		return mav;
+	   public ModelAndView memberMypage(@ModelAttribute MemberDto memberDto, HttpServletRequest request,
+	         HttpServletResponse response) throws Exception {
+	      
+	      String email=request.getParameter("email");
+	      //System.out.println(email);
+	      
+	      MemberDto member = memberDao.selectMember(email);
+	      int reviewCnt = reviewDao.getReviewCnt(email);
+	      int followingCnt = relationDao.getFollowingCnt(email);
+	      int followerCnt = relationDao.getFollowerCnt(email);
+	      int followingStoreCnt = relationDao.getfollowingStoreCnt(email);
+	      List<ReviewDto> rateList;
+	      rateList=reviewDao.selectRecentReviewRate(email);
+	      List<StoreDto> nameList;
+	      nameList=storeDao.selectRecentReviewName(email);
+	      
+	      //System.out.println(Arrays.toString(nameList));
+	      ModelAndView mav = new ModelAndView();
+	      mav.addObject("member", member);
+	      mav.addObject("reviewCnt", reviewCnt);
+	      mav.addObject("followingCnt", followingCnt);
+	      mav.addObject("followerCnt", followerCnt);
+	      mav.addObject("followingStoreCnt", followingStoreCnt);
+	      
+	      mav.addObject("selectRecentReviewRate", rateList);
+	      mav.addObject("selectRecentReviewName", nameList);
+	      
+	      mav.setViewName("/member/memberMyPage");
+	      return mav;
 	}
 	
 	@RequestMapping(value = "/info/modifyMember", method=RequestMethod.GET)
@@ -75,12 +97,20 @@ public class modifyMemberCtrl {
 			MultipartHttpServletRequest request,
 			HttpServletResponse response,
 			HttpSession session) throws Exception {
+		
+		String zipcode = request.getParameter("zip1") + "-" + request.getParameter("zip2");
+		String password=request.getParameter("password");
+		
+		memberDto.setZipcode(zipcode);
+		memberDto.setPassword(password);
+		
 		String filename = null;
-		String profilePath = "C:/Users/Lake/git/yodde_spring/yodde/src/main/webapp";
+		String profilePath = "/Users/Min/git/yodde_spring/yodde/src/main/webapp";
 		MultipartFile uploadfile = memberDto.getUploadfile();
 		
 		//file upload
-		if (uploadfile != null) {
+		if (uploadfile.getOriginalFilename().length() > 0) {
+			// 프로필 사진 변경시 
 			//System.out.println("file not null" + uploadfile.getOriginalFilename());
 			String ext = uploadfile.getOriginalFilename();
 			ext = ext.substring(ext.length() - 4);
@@ -93,23 +123,22 @@ public class modifyMemberCtrl {
 			File file = new File(profilePath + filename);
 			
 			uploadfile.transferTo(file);
+			
+			memberDto.setProfilePic(filename);
+			memberDao.updateMemberFile(memberDto);
 		} else {
-			System.out.println("file null");
+			//프로필 사진 변경 안할시
+			int check=memberDao.updateMember(memberDto);
+			//System.out.println(check);
 		}
 		
-		//update
-		String zipcode = request.getParameter("zip1") + "-" + request.getParameter("zip1");
-		
-		memberDto.setProfilePic(filename);
-		memberDto.setZipcode(zipcode);
-		
-		memberDao.updateMember(memberDto);
-		
-		//
 		MemberDto member = memberDao.selectMember(memberDto.getEmail());
 		
+		int reviewCnt = reviewDao.getReviewCnt(memberDto.getEmail());
+		
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("memberDto", memberDto);
+		mav.addObject("reviewCnt", reviewCnt);
+		mav.addObject("member", member);
 		mav.setViewName("/member/memberMyPage");
 		return mav;
 	}

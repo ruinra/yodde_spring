@@ -3,6 +3,7 @@ package com.yodde.storeModel;
 import java.util.Date;
 
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 
 @Component
 public class StoreDto {
@@ -18,11 +19,27 @@ public class StoreDto {
 	private int 	status;
 	private String	phoneNum;
 	private String	homepage;
-	private double		rate;
+	private double	rate;
 	private String	category1;
 	private String	category2;
 	private String	category3;
+	private String profilePic;
 	
+	private MultipartFile uploadfile;
+	
+	
+	public String getProfilePic() {
+		return profilePic;
+	}
+	public void setProfilePic(String profilePic) {
+		this.profilePic = profilePic;
+	}
+	public MultipartFile getUploadfile() {
+		return uploadfile;
+	}
+	public void setUploadfile(MultipartFile uploadfile) {
+		this.uploadfile = uploadfile;
+	}
 	public int getStoreId() {
 		return storeId;
 	}

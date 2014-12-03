@@ -81,4 +81,75 @@ public class ReviewDaoImp implements ReviewDao {
 		
 		return cnt;
 	}	
+	
+	@Override
+	   public List<ReviewDto> selectRecentReviewRate(String email) {
+	      List<ReviewDto> list=null;
+	      
+	      try{
+	         session=sqlSessionFactory.openSession();
+	         list=session.selectList("selectRecentReviewRate", email);
+	      }catch(Exception e){
+	         System.out.println("selectRecentReview Error");
+	         e.printStackTrace();
+	      }finally{
+	         session.close();
+	      }
+	      
+	      return list;
+	   }   
+	
+	@Override
+	public double averageRate(String email) {
+		double average=0.0;
+		
+		try{
+			session = sqlSessionFactory.openSession();
+			average = session.selectOne("getAverage", email);
+			
+		}catch(Exception e){
+			System.out.println("ReviewDaoImp> averageRate error");
+			e.printStackTrace();
+		}finally{
+			session.close();
+		}
+		
+		return average;
+	}
+
+	@Override
+	public List<Review> getReviewByWriter(String email) {
+		List<Review> list=null;
+		System.out.println("email"+email);
+		try{
+			session = sqlSessionFactory.openSession();
+			list = session.selectList("selectReviewByWriter", email);
+			//System.out.println("ReviewDaoImp list="+list);
+		}catch(Exception e){
+			e.printStackTrace();
+			System.out.println("ReviewDaoImp > getReviewByWriter error");
+		}finally{
+			session.close();
+		}
+		
+		return list;
+	}
+	@Override
+	   public int deleteReveiw(int reviewId) {
+	      int check=0;
+	      //System.out.println("deleteReveiw : " + reviewId);
+	      
+	      try{
+	         session=sqlSessionFactory.openSession();
+	         check=session.delete("deleteReveiw", reviewId);
+	         //System.out.println("deleteReveiw check : " + check);
+	      }catch(Exception e){
+	         System.out.println("deleteReveiw");
+	         e.printStackTrace();
+	      }finally{
+	         session.close();
+	      }
+	      
+	      return check;
+	   }
 }

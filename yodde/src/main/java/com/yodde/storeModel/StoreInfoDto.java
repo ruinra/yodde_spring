@@ -1,5 +1,8 @@
 package com.yodde.storeModel;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class StoreInfoDto {
 	private int storeId;      
 	private int reservation;
@@ -7,7 +10,7 @@ public class StoreInfoDto {
 	private int takeOut;
 	private int creditCard;
 	private int parking;
-	private int group;
+	private int group1;
 	private int toilet;
 	private int wifi;
 	private int tv;
@@ -50,11 +53,11 @@ public class StoreInfoDto {
 	public void setParking(int parking) {
 		this.parking = parking;
 	}
-	public int getGroup() {
-		return group;
+	public int getGroup1() {
+		return group1;
 	}
-	public void setGroup(int group) {
-		this.group = group;
+	public void setGroup1(int group1) {
+		this.group1 = group1;
 	}
 	public int getToilet() {
 		return toilet;

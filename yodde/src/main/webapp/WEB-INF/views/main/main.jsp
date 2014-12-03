@@ -40,13 +40,14 @@
 		
 		<div class="content">
 			<div class="main_content">
+			
 				<div class="store_box">
 					<div class="store_box_title">
-						<img src="${root}/resources/images/images/1_HOT.png" height="40">
+						<img src="${root}/resources/images/images/1_HOT.png" height="40"> 핫플레이스!
 					</div>
 					<div class="stores" id="pic_slide">
 						<div class="slide_title">
-							<ul id="carousel" class="elastislide-list">
+							<ul id="carousel1" class="elastislide-list">
 								<li class="main_recommend">
 									<a href="#">
 										<div class="pic1" style="background: url(/home/resources/images/images/ex1.jpg); background-size: 250px;">
@@ -104,36 +105,328 @@
 				
 				<div class="store_box">
 					<div class="store_box_title">
-						<img src="${root}/resources/images/images/2_REGION.png" height="40">
+						<img src="${root}/resources/images/images/2_REGION.png" height="40"> 지역 중심 상점
 					</div>
-					<div class="stores">
-						접속 지역 기준 스토어 추천
+					<div class="stores" id="pic_slide">
+						<div class="slide_title">
+							<ul id="carousel2" class="elastislide-list">
+								<li class="main_recommend">
+									<a href="#">
+										<div class="pic1" style="background: url(/home/resources/images/images/ex1.jpg); background-size: 250px;">
+											<div class="text">
+												<span class="tit">7Train</span><br/>
+												<span class="add">강남역 11번 출구</span>
+											</div>
+										</div>
+									</a>
+								</li>
+								<li class="main_recommend">
+									<a href="#">
+										<div class="pic1" style="background: url(/home/resources/images/images/ex2.jpg); background-size: 250px;">
+											<div class="text">
+												<span class="tit">코카콜라</span><br/>
+												<span class="add">KOSTA~~</span>
+											</div>
+										</div>
+									</a>
+								</li>
+								<li class="main_recommend">
+									<a href="#">
+										<div class="pic1" style="background: url(/home/resources/images/images/ex0.jpg); background-size: 250px;">
+											<div class="text">
+												<span class="tit">무한리필 고깃집</span><br/>
+												<span class="add">새마을식당</span>
+											</div>
+										</div>
+									</a>
+								</li>
+								<li class="main_recommend">
+									<a href="#">
+										<div class="pic1" style="background: url(/home/resources/images/images/ex3.jpg); background-size: 250px;">
+											<div class="text">
+												<span class="tit">호식이 두마리</span><br/>
+												<span class="add">나영이집</span>
+											</div>
+										</div>
+									</a>
+								</li>
+								<li class="main_recommend">
+									<a href="#">
+										<div class="pic1" style="background: url(/home/resources/images/images/ex4.jpg); background-size: 250px;">
+											<div class="text">
+												<span class="tit">눈꽃빙수</span><br/>
+												<span class="add">valley's coffee</span>
+											</div>
+										</div>
+									</a>
+								</li>
+							</ul>
+						</div>
 					</div>
 				</div>
 				
 				<div class="store_box">
 					<div class="store_box_title">
-						<img src="${root}/resources/images/images/3_LIKES.png" height="40">
+						<img src="${root}/resources/images/images/3_LIKES.png" height="40"> 좋아요 많은 리뷰
 					</div>
-					<div class="stores">
-						추천수 기준 리뷰 추천
+					<div class="stores" id="pic_slide">
+						<div class="slide_title">
+							<ul id="carousel3" class="elastislide-list">
+								<li class="main_recommend">
+									<a href="#">
+										<div class="pic1" style="background: url(/home/resources/images/images/ex1.jpg); background-size: 250px;">
+											<div class="text">
+												<span class="tit">7Train</span><br/>
+												<span class="add">강남역 11번 출구</span>
+											</div>
+										</div>
+									</a>
+								</li>
+								<li class="main_recommend">
+									<a href="#">
+										<div class="pic1" style="background: url(/home/resources/images/images/ex2.jpg); background-size: 250px;">
+											<div class="text">
+												<span class="tit">코카콜라</span><br/>
+												<span class="add">KOSTA~~</span>
+											</div>
+										</div>
+									</a>
+								</li>
+								<li class="main_recommend">
+									<a href="#">
+										<div class="pic1" style="background: url(/home/resources/images/images/ex0.jpg); background-size: 250px;">
+											<div class="text">
+												<span class="tit">무한리필 고깃집</span><br/>
+												<span class="add">새마을식당</span>
+											</div>
+										</div>
+									</a>
+								</li>
+								<li class="main_recommend">
+									<a href="#">
+										<div class="pic1" style="background: url(/home/resources/images/images/ex3.jpg); background-size: 250px;">
+											<div class="text">
+												<span class="tit">호식이 두마리</span><br/>
+												<span class="add">나영이집</span>
+											</div>
+										</div>
+									</a>
+								</li>
+								<li class="main_recommend">
+									<a href="#">
+										<div class="pic1" style="background: url(/home/resources/images/images/ex4.jpg); background-size: 250px;">
+											<div class="text">
+												<span class="tit">눈꽃빙수</span><br/>
+												<span class="add">valley's coffee</span>
+											</div>
+										</div>
+									</a>
+								</li>
+							</ul>
+						</div>
 					</div>
 				</div>
 				
 				<div class="store_box">
 					<div class="store_box_title">
-						<img src="${root}/resources/images/images/4_NEW.png" height="40">
+						<img src="${root}/resources/images/images/4_NEW.png" height="40"> 새로 오픈한 상점
 					</div>
-					<div class="stores">
-						새로 오픈된 스토어 추천
+					<div class="stores" id="pic_slide">
+						<div class="slide_title">
+							<ul id="carousel4" class="elastislide-list">
+								<li class="main_recommend">
+									<a href="#">
+										<div class="pic1" style="background: url(/home/resources/images/images/ex1.jpg); background-size: 250px;">
+											<div class="text">
+												<span class="tit">7Train</span><br/>
+												<span class="add">강남역 11번 출구</span>
+											</div>
+										</div>
+									</a>
+								</li>
+								<li class="main_recommend">
+									<a href="#">
+										<div class="pic1" style="background: url(/home/resources/images/images/ex2.jpg); background-size: 250px;">
+											<div class="text">
+												<span class="tit">코카콜라</span><br/>
+												<span class="add">KOSTA~~</span>
+											</div>
+										</div>
+									</a>
+								</li>
+								<li class="main_recommend">
+									<a href="#">
+										<div class="pic1" style="background: url(/home/resources/images/images/ex0.jpg); background-size: 250px;">
+											<div class="text">
+												<span class="tit">무한리필 고깃집</span><br/>
+												<span class="add">새마을식당</span>
+											</div>
+										</div>
+									</a>
+								</li>
+								<li class="main_recommend">
+									<a href="#">
+										<div class="pic1" style="background: url(/home/resources/images/images/ex3.jpg); background-size: 250px;">
+											<div class="text">
+												<span class="tit">호식이 두마리</span><br/>
+												<span class="add">나영이집</span>
+											</div>
+										</div>
+									</a>
+								</li>
+								<li class="main_recommend">
+									<a href="#">
+										<div class="pic1" style="background: url(/home/resources/images/images/ex4.jpg); background-size: 250px;">
+											<div class="text">
+												<span class="tit">눈꽃빙수</span><br/>
+												<span class="add">valley's coffee</span>
+											</div>
+										</div>
+									</a>
+								</li>
+							</ul>
+						</div>
 					</div>
 				</div>
+				
+				<c:if test="${email != ''}">
+				
+					<div class="store_box">
+					<div class="store_box_title">
+						<img src="${root}/resources/images/images/4_NEW.png" height="40"> 새로 오픈한 상점
+					</div>
+					<div class="stores" id="pic_slide">
+						<div class="slide_title">
+							<ul id="carousel5" class="elastislide-list">
+								<li class="main_recommend">
+									<a href="#">
+										<div class="pic1" style="background: url(/home/resources/images/images/ex1.jpg); background-size: 250px;">
+											<div class="text">
+												<span class="tit">7Train</span><br/>
+												<span class="add">강남역 11번 출구</span>
+											</div>
+										</div>
+									</a>
+								</li>
+								<li class="main_recommend">
+									<a href="#">
+										<div class="pic1" style="background: url(/home/resources/images/images/ex2.jpg); background-size: 250px;">
+											<div class="text">
+												<span class="tit">코카콜라</span><br/>
+												<span class="add">KOSTA~~</span>
+											</div>
+										</div>
+									</a>
+								</li>
+								<li class="main_recommend">
+									<a href="#">
+										<div class="pic1" style="background: url(/home/resources/images/images/ex0.jpg); background-size: 250px;">
+											<div class="text">
+												<span class="tit">무한리필 고깃집</span><br/>
+												<span class="add">새마을식당</span>
+											</div>
+										</div>
+									</a>
+								</li>
+								<li class="main_recommend">
+									<a href="#">
+										<div class="pic1" style="background: url(/home/resources/images/images/ex3.jpg); background-size: 250px;">
+											<div class="text">
+												<span class="tit">호식이 두마리</span><br/>
+												<span class="add">나영이집</span>
+											</div>
+										</div>
+									</a>
+								</li>
+								<li class="main_recommend">
+									<a href="#">
+										<div class="pic1" style="background: url(/home/resources/images/images/ex4.jpg); background-size: 250px;">
+											<div class="text">
+												<span class="tit">눈꽃빙수</span><br/>
+												<span class="add">valley's coffee</span>
+											</div>
+										</div>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				
+				<div class="store_box">
+					<div class="store_box_title">
+						<img src="${root}/resources/images/images/4_NEW.png" height="40"> 새로 오픈한 상점
+					</div>
+					<div class="stores" id="pic_slide">
+						<div class="slide_title">
+							<ul id="carousel6" class="elastislide-list">
+								<li class="main_recommend">
+									<a href="#">
+										<div class="pic1" style="background: url(/home/resources/images/images/ex1.jpg); background-size: 250px;">
+											<div class="text">
+												<span class="tit">7Train</span><br/>
+												<span class="add">강남역 11번 출구</span>
+											</div>
+										</div>
+									</a>
+								</li>
+								<li class="main_recommend">
+									<a href="#">
+										<div class="pic1" style="background: url(/home/resources/images/images/ex2.jpg); background-size: 250px;">
+											<div class="text">
+												<span class="tit">코카콜라</span><br/>
+												<span class="add">KOSTA~~</span>
+											</div>
+										</div>
+									</a>
+								</li>
+								<li class="main_recommend">
+									<a href="#">
+										<div class="pic1" style="background: url(/home/resources/images/images/ex0.jpg); background-size: 250px;">
+											<div class="text">
+												<span class="tit">무한리필 고깃집</span><br/>
+												<span class="add">새마을식당</span>
+											</div>
+										</div>
+									</a>
+								</li>
+								<li class="main_recommend">
+									<a href="#">
+										<div class="pic1" style="background: url(/home/resources/images/images/ex3.jpg); background-size: 250px;">
+											<div class="text">
+												<span class="tit">호식이 두마리</span><br/>
+												<span class="add">나영이집</span>
+											</div>
+										</div>
+									</a>
+								</li>
+								<li class="main_recommend">
+									<a href="#">
+										<div class="pic1" style="background: url(/home/resources/images/images/ex4.jpg); background-size: 250px;">
+											<div class="text">
+												<span class="tit">눈꽃빙수</span><br/>
+												<span class="add">valley's coffee</span>
+											</div>
+										</div>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				
+				</c:if>
 				
 				<script type="text/javascript" src="${root}/resources/scripts/jquery.min.js"></script>
 				<script type="text/javascript" src="${root}/resources/scripts/jquerypp.custom.js"></script>
 				<script type="text/javascript" src="${root}/resources/scripts/jquery.elastislide.js"></script>
 				<script type="text/javascript">
-					$('#carousel').elastislide();
+					$('#carousel1').elastislide();
+					$('#carousel2').elastislide();
+					$('#carousel3').elastislide();
+					$('#carousel4').elastislide();
+					$('#carousel5').elastislide();
+					$('#carousel6').elastislide();
 				</script>
 				<script type="text/javascript"> 
 					$.fn.getLeft = function() { 

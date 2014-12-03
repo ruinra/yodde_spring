@@ -33,11 +33,20 @@
 		select * from member where nickname like #{query}
 	</select>
 	
-	<update id="updateMember" parameterType="com.yodde.memberModel.MemberDto">
+	<update id="updateMemberFile" parameterType="com.yodde.memberModel.MemberDto">
 		update member set 
 			nickname = #{nickName}, 
 			profilepic = #{profilePic}, 
-			zipcode = #{zipcode}
+			zipcode = #{zipcode},
+			password= #{password}
+		where email = #{email}
+	</update>
+	
+	<update id="updateMember" parameterType="com.yodde.memberModel.MemberDto">
+		update member set 
+			nickname = #{nickName}, 
+			zipcode = #{zipcode},
+			password= #{password}
 		where email = #{email}
 	</update>
 </mapper>

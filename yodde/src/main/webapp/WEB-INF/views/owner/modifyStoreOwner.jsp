@@ -108,7 +108,7 @@
 	<div class="content">
 		<div class="content_storeJoin">
 			<div class="modifyOwner_box">
-				<form id="valiex" novalidate="novalidate" action="storeJoin"
+				<form id="valiex" novalidate="novalidate" action="modifyOwner" enctype="multipart/form-data"
 					method="post">
 					<div class="result_title">
 						<!-- login title -->
@@ -120,15 +120,20 @@
 						<li class="myProfile">
 							<!-- user의 프로필사진과 닉네임 받아오는 부분 -->
 							<div class="myPhoto">
-								<img src="${root}/resources/images/images/profile.png"
-									id="profile"
-									style="Width: 150px; Height: 150px; border-radius: 75px;">
+								<c:choose>
+									<c:when test="${ownerDto.profilePic != null}">
+										<img src="${root}${ownerDto.profilePic}" id="profile" style="Width: 150px; Height: 150px; border-radius: 75px;">
+									</c:when>
+									<c:otherwise>
+										<img id="profile" src="${root}/resources/images/images/profile.png" style="Width: 150px; Height: 150px; border-radius: 75px;">
+									</c:otherwise>
+								</c:choose>
 							</div>
 							<div style="padding-top: 10px;">
 								<!-- 프로필 사진 변경 부분 -->
 								<div id="fileInputForm"
 									style="position: relative; float: center; width: 50px; height: 25px; overflow: hidden; margin-left: 50px; cursor: pointer; background-image: url('${root}/resources/images/images/modify_submit.png'); background-size: 100%;">
-									<input type="file" name="file" onchange="readURL(this);"
+									<input type="file" name="uploadfile" onchange="readURL(this);"
 										style='margin-left: -10px; width: 50px; height: 25px; filter: alpha(opacity = 0); opacity: 0; -moz-opacity: 0; cursor: pointer;'>
 								</div>
 							</div>

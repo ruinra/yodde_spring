@@ -34,4 +34,40 @@ public class EvaluationDaoImp implements EvaluationDao {
 		if (eval == null) return 0;
 		else return eval.getEval();
 	}
+
+	@Override
+	public int insertEval(EvaluationDto eval) {
+		int value = 0;
+		
+		try{
+			session=sqlSessionFactory.openSession();
+			value=session.insert("insertEval", eval);
+			session.commit();
+		}catch(Exception e){
+			e.printStackTrace();
+			System.out.println("insert evaluation Error");
+		}finally{
+			session.close();
+		}
+		
+		return value;
+	}
+
+	@Override
+	public int deleteEval(EvaluationDto eval) {
+		int value = 0;
+		
+		try{
+			session=sqlSessionFactory.openSession();
+			value=session.delete("deleteEval", eval);
+			session.commit();
+		}catch(Exception e){
+			e.printStackTrace();
+			System.out.println("delete evaluation Error");
+		}finally{
+			session.close();
+		}
+		
+		return value;
+	}
 }

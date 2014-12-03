@@ -1,6 +1,7 @@
 package com.yodde.ownerModel;
 
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 
 @Component
 public class OwnerDto {
@@ -11,8 +12,16 @@ public class OwnerDto {
 	String registerNum;
 	String profilePic;
 	
+	MultipartFile uploadfile;
 	
 	
+	
+	public MultipartFile getUploadfile() {
+		return uploadfile;
+	}
+	public void setUploadfile(MultipartFile uploadfile) {
+		this.uploadfile = uploadfile;
+	}
 	public String getStoreName() {
 		return storeName;
 	}

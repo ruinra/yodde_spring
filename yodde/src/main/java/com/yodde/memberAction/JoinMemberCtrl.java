@@ -48,12 +48,13 @@ public class JoinMemberCtrl {
 		String email=request.getParameter("email");
 		String password=request.getParameter("password");
 		String nickname=request.getParameter("name");
+		String zipcode = request.getParameter("zip1") + "-" + request.getParameter("zip2");
 		
 		memberDto.setEmail(email);
 		memberDto.setPassword(password);
 		memberDto.setNickName(nickname);
 		memberDto.setMemberLv(0);
-		memberDto.setZipcode("123-123");
+		memberDto.setZipcode(zipcode);
 		memberDto.setProfilePic("/resources/images/profile/noname.png");
 		//System.out.println(email + "," + password + "," + nickname); 
 		

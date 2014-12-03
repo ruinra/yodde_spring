@@ -1,5 +1,7 @@
 package com.yodde.relationAction;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.yodde.memberModel.MemberDto;
 import com.yodde.relationModel.RelationDao;
 
 @Component
@@ -22,8 +25,16 @@ public class MemberRelationCtrl {
 	public ModelAndView followerList(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		
+		String email = request.getParameter("email");
+		//System.out.println(email);
+		
+		List<MemberDto> list;
+		list=relationDao.selectFollowerMember(email);
+		//System.out.println(list);
 		
 		ModelAndView mav=new ModelAndView();
+		mav.addObject("followerList", list);
+		mav.addObject("email", email);
 		mav.setViewName("/relation/followerList");
 		
 		return mav;
@@ -33,9 +44,104 @@ public class MemberRelationCtrl {
 	public ModelAndView followingList(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		
+		String email=request.getParameter("email");
+		
+		List<MemberDto> list;
+		list=relationDao.selectFollowingMember(email);
 		
 		ModelAndView mav=new ModelAndView();
+		mav.addObject("selectFollowingMember", list);
+		mav.addObject("email", email);
 		mav.setViewName("/relation/followingList");
+		
+		return mav;
+	}
+	
+	/* follower list에서 팔로잉 버튼 부분 */
+	@RequestMapping(value = "/info/followerMemberCheckMyPage", method=RequestMethod.GET) //storeinfo.jsp에서 들어올때
+	public ModelAndView checkFollowerMemberMyPage(HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		// 로그인 follower, following를 받아온다
+		String email=request.getParameter("email");
+		String following = request.getParameter("following");
+		System.out.println("checkFollowerMemberMyPage : " +email+","+following);
+		
+		int check=relationDao.checkFollowMember(email, following);
+		//System.out.println(check);
+		
+		ModelAndView mav=new ModelAndView();
+		mav.addObject("result",check);
+		mav.setViewName("/result");
+		
+		return mav;
+	}
+	
+	/* follower list에서 팔로잉 버튼 부분 */
+	@RequestMapping(value = "/info/followerMemberMyPage", method=RequestMethod.GET)
+	public ModelAndView followerMypage(HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		
+		String email=request.getParameter("following");
+		String following = request.getParameter("email");
+		//System.out.println(email + "+" + following);		//상대방 + 나
+		
+		int check = relationDao.checkFollowMember(email, following);
+		System.out.println(check);
+
+		if(check == 1){
+			check = relationDao.unfollowMember(email, following);
+		}else if(check == 0){
+			check = relationDao.followMember(email, following);
+		}
+		
+		ModelAndView mav=new ModelAndView();
+		mav.addObject("result",check);
+		mav.setViewName("/result");
+		
+		return mav;
+	}
+	
+	/* following list에서 팔로잉 버튼 부분 */
+	@RequestMapping(value = "/info/followMemberCheckMyPage", method=RequestMethod.GET) //storeinfo.jsp에서 들어올때
+	public ModelAndView checkFollowMemberMyPage(HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		// 로그인 follower, following를 받아온다
+		String email=request.getParameter("email");
+		String following = request.getParameter("following");
+		System.out.println("checkFollowMemberMyPage : 나" + email+", 상대"+following);
+		
+		int check=relationDao.checkFollowMember(email, following);
+		System.out.println("MemberRelationCtrl "+check);
+		
+		ModelAndView mav=new ModelAndView();
+		mav.addObject("result",check);
+
+		mav.setViewName("/result");
+		
+		return mav;
+	}
+	
+	/* following list에서 팔로잉 버튼 부분 */
+	@RequestMapping(value = "/info/followMemberMyPage", method=RequestMethod.GET)
+	public ModelAndView followMypage(HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		
+		String email=request.getParameter("email");
+		String following = request.getParameter("following");
+		System.out.println("followMypage : 나" + email + ", 상대" + following);
+		
+		int check = relationDao.checkFollowMember(email, following);
+		//System.out.println(check);
+
+		if(check == 1){
+			check = relationDao.unfollowMember(email, following);
+		}else if(check == 0){
+			check = relationDao.followMember(email, following);
+		}
+		
+		ModelAndView mav=new ModelAndView();
+		mav.addObject("result",check);
+		mav.setViewName("/result");
 		
 		return mav;
 	}
@@ -51,18 +157,17 @@ public class MemberRelationCtrl {
 		return mav;
 	}
 	
-	@RequestMapping(value = "/member/followMemberCheck", method=RequestMethod.GET) //storeinfo.jsp에서 들어올때
+	/* store_info에서 팔로잉 버튼 부분 */
+	@RequestMapping(value = "/member/followMemberCheck", method=RequestMethod.GET)
 	public ModelAndView checkFollowMember(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		
 		// 로그인 follower, following를 받아온다
 		String follower=request.getParameter("follower");
 		String following=request.getParameter("following");
-		//System.out.println(email + "," + store);
-		
+
 		int check=relationDao.checkFollowMember(follower, following);
 		//System.out.println(check);
-		
 		
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("result",check);
@@ -71,21 +176,24 @@ public class MemberRelationCtrl {
 		return mav;
 	}
 	
-	@RequestMapping(value = "/member/followMember", method=RequestMethod.GET) //storeinfo.jsp에서 들어올때
+	/* store_info에서 팔로잉 버튼 부분 */
+	@RequestMapping(value = "/member/followMember", method=RequestMethod.GET)
 	public ModelAndView follow(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		
 		String follower = request.getParameter("follower");
 		String following = request.getParameter("following");
-		
+		//System.out.println(follower+","+following);
+
 		int check = relationDao.checkFollowMember(follower, following);
 		//System.out.println(check);
-		
+
 		if(check == 1){
 			check = relationDao.unfollowMember(follower, following);
 		}else if(check == 0){
 			check = relationDao.followMember(follower, following);
 		}
+		//System.out.println(check+"12341234");
 		
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("result",check);
@@ -93,5 +201,4 @@ public class MemberRelationCtrl {
 		
 		return mav;
 	}
-	
 }

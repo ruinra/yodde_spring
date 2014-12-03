@@ -9,7 +9,9 @@
 	</select>
 	
 	<select id="checkFollowMember" parameterType="java.util.HashMap" resultType="String">
-		select * from follow_member where followee=#{follower} and follower=#{following}
+		<![CDATA[
+		select * from follow_member where followee=#{follower} and follower=#{followee}
+		]]>
 	</select>
 	
 	<delete id="deleteFollow" parameterType="java.util.HashMap">
@@ -29,6 +31,26 @@
 	</insert>
 	
 	<select id="selectFollowingStore" parameterType="String" resultType="com.yodde.storeModel.StoreDto">
-		SELECT * FROM FOLLOW_STORE fs,STORE s WHERE fs.storefollowee=#{email} AND fs.storeid = s.storeid
+		SELECT * FROM FOLLOW_STORE fs, STORE s WHERE fs.storefollowee=#{email} AND fs.storeid = s.storeid
+	</select>
+	
+	<select id="selectFollowingMember" parameterType="String" resultType="com.yodde.memberModel.MemberDto">
+		SELECT M.NICKNAME, M.PROFILEPIC, M.EMAIL FROM FOLLOW_MEMBER fm, MEMBER m WHERE fm.followee=#{email} AND FM.FOLLOWER = M.EMAIL
+	</select>
+	
+	<select id="selectFollowerMember" parameterType="String" resultType="com.yodde.memberModel.MemberDto">
+		SELECT M.NICKNAME, M.PROFILEPIC, M.EMAIL FROM FOLLOW_MEMBER fm, MEMBER m WHERE fm.follower=#{email} AND FM.FOLLOWEE = M.EMAIL
+	</select>
+	
+	<select id="getFollowingCnt" parameterType="String" resultType="int">
+		SELECT COUNT(follower)FROM FOLLOW_MEMBER WHERE FOLLOWEE=#{email}
+	</select>
+	
+	<select id="getFollowerCnt" parameterType="String" resultType="int">
+		SELECT COUNT(followee)FROM FOLLOW_MEMBER WHERE FOLLOWER=#{email}
+	</select>
+	
+	<select id="getfollowingStoreCnt" parameterType="String" resultType="int">
+		SELECT COUNT(STOREID)FROM FOLLOW_STORE WHERE STOREFOLLOWEE=#{email}
 	</select>
 </mapper>

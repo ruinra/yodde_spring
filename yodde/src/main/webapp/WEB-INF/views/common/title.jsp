@@ -52,12 +52,26 @@
 									<c:choose>
 										<c:when test="${status == 'member'}">
 											<a href="${root}/info/memberMypage?email=${email}">
-												<img id="profilePic" src="${root}${profilePic}?email=${email}" height="90" style="border-radius: 75px;">
+												<c:choose>
+													<c:when test="${profilePic != null}">
+														<img id="profilePic" src="${root}${profilePic}" height="90" style="border-radius: 75px;">
+													</c:when>
+													<c:otherwise>
+														<img id="profilePic" src="${root}/resources/images/images/profile.png" height="90" style="border-radius: 75px;">
+													</c:otherwise>
+												</c:choose>
 											</a>
 										</c:when>
 										<c:when test="${status == 'owner'}">
-											<a href="${root}/info/modifyOwner?email=${email}">
-												<img id="profilePic" src="${root}${profilePic}" height="90" style="border-radius: 75px;">
+											<a href="${root}/info/ownerMyPage?email=${email}">
+												<c:choose>
+													<c:when test="${profilePic != null}">
+														<img id="profilePic" src="${root}${profilePic}" height="90" style="border-radius: 75px;">
+													</c:when>
+													<c:otherwise>
+														<img id="profilePic" src="${root}/resources/images/images/profile.png" height="90" style="border-radius: 75px;">
+													</c:otherwise>
+												</c:choose>
 											</a>
 										</c:when>
 										<c:otherwise>
@@ -79,26 +93,26 @@
 		                              <li class="category_li" id=""><a href="">숙박</a></li>
 		                              <li class="category_li" id=""><a href="">영화/공연</a></li>
 		                              <li class="category_li" id=""><a href="">오락서비스</a></li>
-		                              <li class="category_li" id=""><a href="${root}/">음식</a></li>
+		                              <li class="category_li" id=""><a href="">음식</a></li>
 		                              <li class="category_li" id=""><a href="">자동차</a></li>
 		                              <li class="category_li" id=""><a href="">카페/제과</a></li>
 		                           </ul>
 		                        </span>
 		                        <span id="memberMenu" class="menu-menu-1-container">
 		                           <ul class="category" style="margin-left:0px">
-		                              <li class="category_li" id=""><a href="${root}/info/modifyMember">회원정보수정</a></li>
-		                              <li class="category_li" id=""><a href="${root}/info/followerList?">팔로워리스트</a></li>
-		                              <li class="category_li" id=""><a href="${root}/info/followingList">팔로잉리스트 </a></li>
+		                              <li class="category_li" id=""><a href="${root}/info/modifyMember?email=${email}">회원정보수정</a></li>
+		                              <li class="category_li" id=""><a href="${root}/info/followerList?email=${email}">팔로워리스트</a></li>
+		                              <li class="category_li" id=""><a href="${root}/info/followingList?email=${email}">팔로잉리스트 </a></li>
 		                              <li class="category_li" id=""><a href="${root}/info/storeFollowingList?email=${email}">스토어 팔로잉리스트</a></li>
-		                              <li class="category_li" id=""><a href="${root}/info/history">나의 리뷰</a></li>
+		                              <li class="category_li" id=""><a href="${root}/info/memHistory?email=${email}">나의 리뷰</a></li>
 		                              <li class="category_li" id=""><a href="">회원탈퇴</a></li>		                             
 		                           </ul>
 		                        </span>
 		                        <span id="ownerMenu" class="menu-menu-1-container">
 		                           <ul class="category" style="margin-left:0px">
-		                              <li class="category_li" id=""><a href="${root}/info/modifyOwner">회원정보수정</a></li>
-		                              <li class="category_li" id=""><a href="${root}/info/modifyStore">스토어정보수정</a></li>
-		                              <li class="category_li" id=""><a href="${root}/info/storeFollowerList">팔로워리스트</a></li>
+		                              <li class="category_li" id=""><a href="${root}/info/modifyOwner?email=${email}">회원정보수정</a></li>
+		                              <li class="category_li" id=""><a href="${root}/info/modifyStore?email=${email}">스토어정보수정</a></li>
+		                              <li class="category_li" id=""><a href="${root}/info/storeFollowerList?email=${email}">팔로워리스트</a></li>
 		                           </ul>
 		                        </span>
 							</span>

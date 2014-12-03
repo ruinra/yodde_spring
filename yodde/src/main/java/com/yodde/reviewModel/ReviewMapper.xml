@@ -4,39 +4,66 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="www.yodde.co.kr/store">
 	<insert id="writeReview" parameterType="com.yodde.reviewModel.ReviewDto">
-		INSERT into REVIEW(reviewId, storeId, writer, rate, writeDate, lastModify, like1, unlike, report, content, pic1, pic2, pic3, pic4, pic5) values(
-			SEQ_REVIEW.NEXTVAL, 
-			#{storeId},
-			#{writer},
-			#{rate},
-			SYSDATE, 
-			SYSDATE, 
-			#{like1}, 
-			#{unlike}, 
-			#{report}, 
-			#{content},
-			#{pic1},
-			#{pic2},
-			#{pic3},
-			#{pic4},
-			#{pic5}
+		INSERT into
+		REVIEW(reviewId, storeId, writer, rate, writeDate, lastModify, like1,
+		unlike, report, content, pic1, pic2, pic3, pic4, pic5) values(
+		SEQ_REVIEW.NEXTVAL,
+		#{storeId},
+		#{writer},
+		#{rate},
+		SYSDATE,
+		SYSDATE,
+		#{like1},
+		#{unlike},
+		#{report},
+		#{content},
+		#{pic1},
+		#{pic2},
+		#{pic3},
+		#{pic4},
+		#{pic5}
 		)
 	</insert>
-	
-	<select id="selectReviewByStoreId" parameterType="int" resultType="com.yodde.reviewModel.Review" >
-		select R.REVIEWID, R.STOREID, M.PROFILEPIC, M.NICKNAME AS writer, M.EMAIL AS email, R.RATE, R.WRITEDATE, R.LASTMODIFY, R.LIKE1, R.UNLIKE,
-			R.REPORT, R.CONTENT, R.PIC1, R.PIC2, R.PIC3, R.PIC4, R.PIC5 
-		from REVIEW r,MEMBER m where r.writer = m.email AND r.storeId = #{storeId} ORDER BY r.writedate DESC
-	</select>	
-	
+
+	<select id="selectReviewByStoreId" parameterType="int"
+		resultType="com.yodde.reviewModel.Review">
+		select R.REVIEWID, R.STOREID, M.PROFILEPIC, M.NICKNAME AS writer, R.RATE,
+		R.WRITEDATE, R.LASTMODIFY, R.LIKE1, R.UNLIKE,
+		R.REPORT, R.CONTENT, R.PIC1, R.PIC2, R.PIC3, R.PIC4, R.PIC5, R.WRITER AS
+		WRITER_EMAIL
+		from REVIEW r,MEMBER m where r.writer = m.email AND r.storeId = #{storeId}
+		ORDER BY r.writedate DESC
+	</select>
+
 	<select id="reviewCount" parameterType="String" resultType="int">
 		select count(reviewId) from REVIEW WHERE writer=#{email}
 	</select>
-	
+
+	<select id="selectRecentReviewRate" parameterType="String"
+		resultType="com.yodde.reviewModel.ReviewDto">
+		SELECT rv.rate FROM REVIEW rv, STORE s WHERE RV.WRITER=#{email} AND
+		RV.STOREID=S.STOREID ORDER BY RV.WRITEDATE DESC
+	</select>
+
+	<!-- 스토어 평균 점 -->
 	<update id="averageRate" parameterType="com.yodde.reviewModel.Review">
 		<![CDATA[
 			update store set rate = (SELECT SUM(rate)/COUNT(*) FROM REVIEW WHERE storeid = #{storeId}) where storeid = #{storeId}
 		]]>
 	</update>
+	<!-- 멤바 평균 별점 -->
+	<select id="getAverage" parameterType="String" resultType="double">
+		select SUM(rate)/count(*) from review where writer=#{email}
+	</select>
+
+	<select id="selectReviewByWriter" parameterType="String"
+		resultType="com.yodde.reviewModel.Review">
+		select * from review where
+		writer=#{email}
+	</select>
 	
+	<delete id="deleteReveiw" parameterType="int">
+      DELETE FROM REVIEW WHERE REVIEWID=#{reviewId}
+   </delete>
+
 </mapper>

@@ -18,22 +18,32 @@ import com.yodde.evaluationModel.EvaluationDto;
 public class EvaluationCtrl {
 	@Autowired
 	private EvaluationDao	evaluationDao;
-	
-	@RequestMapping(value = "/evaluationCheck", method = RequestMethod.GET)
-	public ModelAndView like(HttpServletRequest request,
+		
+	@RequestMapping(value = "/evaluation", method = RequestMethod.POST)
+	public ModelAndView evaluation(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		String email = request.getParameter("email");
 		int reviewId = Integer.parseInt(request.getParameter("reviewId"));
+		int eval = Integer.parseInt(request.getParameter("eval"));
+		EvaluationDto dto = new EvaluationDto();
+		dto.setEval(eval);
+		dto.setEvaluator(email);
+		dto.setReviewId(reviewId);
+		//System.out.println(email + "," + reviewId + "," + eval);
 		
-		System.out.println(email + "," + reviewId);
+		int check = evaluationDao.evaluationCheck(email, reviewId);
+		int value = 0;
+		//no evaluation
+		if (check == 0) {
+			value = evaluationDao.insertEval(dto);
+		}
+		else {
+			value = evaluationDao.deleteEval(dto);
+		}
 		
-		EvaluationDto eval = null;
-//		if (email != null){
-//			eval = evaluationDao.evaluationCheck(email, reviewId);
-//		}
-		
+		check = evaluationDao.evaluationCheck(email, reviewId);
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("result", eval);
+		mav.addObject("result", check);
 		mav.setViewName("/result");
 		
 		return mav;

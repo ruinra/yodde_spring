@@ -7,6 +7,9 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.yodde.storeModel.StoreDto;
+import com.yodde.storeModel.StoreInfoDto;
+
 @Component
 public class OwnerDaoImp implements OwnerDao {
 	@Autowired
@@ -68,4 +71,38 @@ public class OwnerDaoImp implements OwnerDao {
 		return owner;
 	}
 
+	@Override
+	public int updateOwnerFile(OwnerDto ownerDto) {
+		int value=0;
+		
+		try{
+			session=sqlSessionFactory.openSession();
+			value=session.update("ownerUpdateFile", ownerDto);
+			session.commit();
+		}catch(Exception e){
+			e.printStackTrace();
+			System.out.println("OwnerUpdate Error");
+		}finally{
+			session.close();
+		}
+		
+		return value;
+	}
+
+	@Override
+	public int updateOwner(OwnerDto ownerDto) {
+		int value=0;
+		
+		try{
+			session=sqlSessionFactory.openSession();
+			value=session.update("ownerUpdate", ownerDto);
+			session.commit();
+		}catch(Exception e){
+			e.printStackTrace();
+			System.out.println("OwnerUpdate Error");
+		}finally{
+			session.close();
+		}
+		return value;
+	}
 }

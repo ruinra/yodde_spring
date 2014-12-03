@@ -98,4 +98,51 @@ public class StoreRelationCtrl {
 		
 		return mav;
 	}
+	
+	/*member 입장에서 storefollowing 리스트에서 호출*/
+	@RequestMapping(value = "/info/followStoreCheckMyPage", method=RequestMethod.GET)
+	public ModelAndView followCheckMyPage(HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		
+		// 로그인 email, storeId를 받아온다
+		String email=request.getParameter("email");
+		String store=request.getParameter("storeId");
+		//System.out.println(email + "," + store);
+		
+		int check=relationDao.checkFollowStore(store, email);
+		//System.out.println(check);
+		
+		
+		ModelAndView mav=new ModelAndView();
+		mav.addObject("result",check);
+		mav.setViewName("/result");
+		
+		return mav;
+	}
+	
+	/*member 입장에서 storefollowing 리스트에서 호출*/
+	@RequestMapping(value = "/info/followStoreMyPage", method=RequestMethod.GET)
+	public ModelAndView followMyPage(HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		
+		// 로그인 email, storeId를 받아온다
+		String email=request.getParameter("email");
+		String store=request.getParameter("storeId");
+		//System.out.println("followMyPage : " + email + "," + store);
+		
+		int check = relationDao.checkFollowStore(store, email);
+		System.out.println(check);
+		
+		if(check == 1){
+			check = relationDao.unfollowStore(store, email);
+		}else if(check == 0){
+			check = relationDao.followStore(store, email);
+		}
+		
+		ModelAndView mav=new ModelAndView();
+		mav.addObject("result",check);
+		mav.setViewName("/result");
+		
+		return mav;
+	}
 }

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions"  prefix="fn"%>
 <c:set var="root" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -11,6 +12,38 @@
 		<link rel="stylesheet" type="text/css" href="${root}/resources/css/commons/category.css" />		<!-- category css -->
 		<link rel="stylesheet" type="text/css" href="${root}/resources/css/main/main.css"/>			<!-- main css -->
 		<link rel="stylesheet" type="text/css" href="${root}/resources/css/follow/follow.css"/>
+		
+		<script type="text/javascript" src="${root}/resources/scripts/jquery-2.1.1.js"></script>
+		
+		<!-- 팔로잉 버튼 누르면 오는 곳 -->
+		<script type="text/javascript">
+			function followCheck(follower, following, index){
+				var following=following;
+				var email=follower;
+				var index = index;
+				var url="followStoreMyPage?email=" + email + "&storeId=" + following;
+// 				alert("followCheck : "+ url);			//OK
+
+				$.ajax({
+					url:url,
+					type:"get",
+					contentType:"text/xml; charset=utf-8", 
+					dataType: "text",
+					error: function(xhr, status, error) { alert("error : " +status); },
+					success: function(data){
+						//alert(data);
+						if(data ==1){
+							//alert("팔로우"+"following "+following+", email "+email);
+							$(".follow").children().eq(index).attr("src", "${root}/resources/images/images/follow_list.png");
+
+						}else{
+							//alert("해제"+"following "+following+", email "+email);
+							$(".follow").children().eq(index).attr("src", "${root}/resources/images/images/notfollow_list.png");
+						}
+					}
+				}); // Ajax 호출 및 이벤트 핸들러 함수 정의
+			}
+		</script>
 	</head>
 	<body style="min-width:1260px;">
 		<div>
@@ -24,21 +57,43 @@
 						<img src="${root}/resources/images/images/storefollowing.png" height="45">
 					</div>
 					
+					<!-- 처음 페이지 로드되면 가는 곳 -->
+					<script type="text/javascript">
+          				$(document).ready(function(){
+          					var email="${email}";
+          					var following="${storeList.storeId}";
+          					var url="followStoreCheckMyPage?email=" + email + "&storeId=" + following;
+              				$.ajax({
+              					url:url,
+              					type:"get",
+              					contentType:"text/xml; charset=utf-8", 
+              					dataType: "text",
+              					error: function(xhr, status, error) { alert("error : " +status); },
+              					success: function(data){
+              						//alert(data);
+              						if(data ==1){
+              							$("#follow").attr("src", "${root}/resources/images/images/follow_list.png");	
+              						}
+              					}
+              				}); // Ajax 호출 및 이벤트 핸들러 함수 정의
+          				});
+          			</script>
+					
 					<ul class="content_box">
 						<c:choose>
 							<c:when test="${empty storeFollowingList}">
-								<div class="none"> 새로운 스토우를 팔로잉 해보세요!</div>
+								<div class="none"> 새로운 스토어를 팔로잉 해보세요!</div>
 							</c:when>
 							<c:otherwise>
-								<c:forEach var="storeList" items="${storeFollowingList}">
-									<li class="myProfile">					<!-- 스토어의 사진과 가게이름 받아오는 부분 12개. -->
+								<c:forEach var="storeList" begin="0" varStatus="status" end="${fn:length(storeFollowingList)}" items="${storeFollowingList}">
+									<li class="myProfile">
 										<div class="myPhoto" style="padding-top:20px">
-											<img src="${root}/resources/images/images/ex1.jpg" width="130px">
+											<a href=""><img src="${root}/resources/images/images/ex1.jpg" width="130px"></a>
 										</div>
 										<div class="follower_nickname">
 											${storeList.storeName}
 										</div>
-										<img src="${root}/resources/images/images/fcancel.png" height="20">
+										<a href="javascript:followCheck('${email}', '${storeList.storeId}','${status.count-1}')" class="follow"><img src="${root}/resources/images/images/follow_list.png" height="20" id="follow"></a>
 									</li>
 								</c:forEach>
 							</c:otherwise>
