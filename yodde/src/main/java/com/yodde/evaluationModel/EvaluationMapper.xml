@@ -9,7 +9,7 @@
 	
 	<insert id="insertEval" parameterType="com.yodde.evaluationModel.EvaluationDto">
 		insert into evaluation(evalId, reviewId, evaluator, eval, reportDetail) values(
-			#{evalId},
+			seq_evaluation.nextval,
 			#{reviewId},
 			#{evaluator},
 			#{eval},

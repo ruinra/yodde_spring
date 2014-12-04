@@ -46,11 +46,11 @@ public class ReviewDaoImp implements ReviewDao {
 	@Override
 	public int insertReview(ReviewDto review) {
 		int value=0;
-		
+		int storeId = review.getStoreId();
 		try{
 			session=sqlSessionFactory.openSession();
 			value=session.insert("writeReview", review);
-			value=session.update("averageRate", review);
+			value=session.update("averageRate", storeId);
 			session.commit();
 			
 		}catch(Exception e){

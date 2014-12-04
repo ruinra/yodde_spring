@@ -11,7 +11,6 @@
 		<link rel="stylesheet" type="text/css" href="${root}/resources/css/commons/common.css"/>		<!-- footer, title css -->
 		<link rel="stylesheet" type="text/css" href="${root}/resources/css/commons/category.css" />		<!-- category css -->
 		<link rel="stylesheet" type="text/css" href="${root}/resources/css/main/main.css"/>			<!-- main css -->
-		
 		<link rel="stylesheet" type="text/css" href="${root}/resources/css/main/demo.css" />
 		<link rel="stylesheet" type="text/css" href="${root}/resources/css/main/elastislide.css" />
 		<script src="${root}/resources/scripts/modernizr.custom.17475.js"></script>

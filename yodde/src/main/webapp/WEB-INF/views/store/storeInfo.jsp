@@ -17,10 +17,8 @@
 <link rel="stylesheet" type="text/css" href="${root}/resources/css/main/main.css" />          <!-- main css -->
 <link rel="stylesheet" type="text/css" href="${root}/resources/css/store/store.css" />
 
-<script type="text/javascript"
-   src="${root}/resources/scripts/jquery-2.1.1.js"></script>
-<script type="text/javascript"
-   src="${root}/resources/scripts/jquery.raty.js"></script>
+<script type="text/javascript" src="${root}/resources/scripts/jquery-2.1.1.js"></script>
+<script type="text/javascript" src="${root}/resources/scripts/jquery.raty.js"></script>
 <script type="text/javascript">
          function writeReview() {
             alert("write");
@@ -50,47 +48,26 @@
             }
             
             function followCheck(){
-	            var mail="${email}";
-	            var store="${storeDto.storeId}";
-	            var url="followStore?email=" + mail + "&storeId=" + store;
+               var mail="${email}";
+            var store="${storeDto.storeId}";
+            var url="followStore?email=" + mail + "&storeId=" + store;
             
-	            $.ajax({
-	               url:url,
-	               type:"get",
-	               contentType:"text/xml; charset=utf-8", 
-	               dataType: "text",
-	               error: function(xhr, status, error) { alert("error : " +status); },
-	               success: function(data){
-	                  //alert(data);
-	                  if(data ==1){
-	                     $("#follow").attr("src", "${root}/resources/images/images/follow.png");   
-	                  }else{
-	                     $("#follow").attr("src", "${root}/resources/images/images/notfollow.png");
-	                  }
-	               } 
-	        	}); // Ajax 호출 및 이벤트 핸들러 함수 정의
-            }
-            
-            //like unlike
-            function evaluation(eval, reviewId) {
-            	var email="${email}";
-				var url="evaluation?email=" + email + "&reviewId=" + reviewId + "&eval=" + eval;
-				if (email == "") {
-		        	alert("로그인 후 이용하세요.");
-		            return;
-		        }
-				$.ajax({
-				   url:url,
-				   type:"post",
-				   contentType:"text/xml; charset=utf-8", 
-				   dataType: "text",
-				   error: function(xhr, status, error) { alert("error : " +status); },
-				   success: function(data){
-				      alert(data)
-				   } }); // Ajax 호출 및 이벤트 핸들러 함수 정의
+            $.ajax({
+               url:url,
+               type:"get",
+               contentType:"text/xml; charset=utf-8", 
+               dataType: "text",
+               error: function(xhr, status, error) { alert("error : " +status); },
+               success: function(data){
+                  //alert(data);
+                  if(data ==1){
+                     $("#follow").attr("src", "${root}/resources/images/images/follow.png");   
+                  }else{
+                     $("#follow").attr("src", "${root}/resources/images/images/notfollow.png");
+                  }
+               } }); // Ajax 호출 및 이벤트 핸들러 함수 정의
             }
          </script>
-         
    
       <script type="text/javascript">                  /* 썸네일 팝업 함수 */
                function open_win(src){
@@ -168,6 +145,25 @@
          }); // Ajax 호출 및 이벤트 핸들러 함수 정의
       }
    }
+   
+   //like unlike
+   function evaluation(eval, reviewId) {
+		var email="${email}";
+		var url="evaluation?email=" + email + "&reviewId=" + reviewId + "&eval=" + eval;
+		if (email == "") {
+		     	alert("로그인 후 이용하세요.");
+		         return;
+		     }
+		$.ajax({
+		   url:url,
+		   type:"post",
+		   contentType:"text/xml; charset=utf-8", 
+		   dataType: "text",
+		   error: function(xhr, status, error) { alert("error : " +status); },
+		   success: function(data){
+		      alert(data)
+		   } }); // Ajax 호출 및 이벤트 핸들러 함수 정의
+	}
 </script>
 </head>
 <body>
@@ -232,7 +228,7 @@
                              readOnly: true,
                                 starOff : 'review_btnOff.png',
                                 starOn  : 'review_btnOn.png',
-                       starHalf: 'review_half.png',
+                       		starHalf: 'review_half.png',
                              score: '${storeDto.rate}'
                           });
                   </script>

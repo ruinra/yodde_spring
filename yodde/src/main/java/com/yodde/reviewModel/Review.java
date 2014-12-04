@@ -31,6 +31,7 @@ public class Review {
 	public void setEval(int eval) {
 		this.eval = eval;
 	}
+
 	public String getWriter_email() {
 		return writer_email;
 	}

@@ -98,14 +98,14 @@ public class SearchStoreCtrl {
       List<Review> reviewList = null;
       List<PictureDto> pictureList = null;
       if (check == 2) {         
-         reviewList = reviewDao.getReviewsByStoreId(storeDto.getStoreId()); 
-         if (email.length() > 0) {
-			for (Review review : reviewList){
-				int eval = evaluationDao.evaluationCheck(email, review.getReviewId());
-					review.setEval(eval);
-				}
-			}
-         pictureList = pictureDao.select7Picture(storeDto.getStoreId());
+    	  reviewList = reviewDao.getReviewsByStoreId(storeDto.getStoreId()); 
+          if (email.length() > 0) {
+ 			for (Review review : reviewList){
+ 				int eval = evaluationDao.evaluationCheck(email, review.getReviewId());
+ 					review.setEval(eval);
+ 				}
+ 			}
+          pictureList = pictureDao.select7Picture(storeDto.getStoreId());
       }
       
       StoreInfoDto storeInfo=new StoreInfoDto();

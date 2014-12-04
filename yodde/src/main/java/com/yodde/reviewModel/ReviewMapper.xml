@@ -46,7 +46,7 @@
 	</select>
 
 	<!-- 스토어 평균 점 -->
-	<update id="averageRate" parameterType="com.yodde.reviewModel.Review">
+	<update id="averageRate" parameterType="int">
 		<![CDATA[
 			update store set rate = (SELECT SUM(rate)/COUNT(*) FROM REVIEW WHERE storeid = #{storeId}) where storeid = #{storeId}
 		]]>

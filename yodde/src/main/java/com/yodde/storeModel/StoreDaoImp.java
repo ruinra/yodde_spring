@@ -1,5 +1,6 @@
 package com.yodde.storeModel;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -169,5 +170,24 @@ public class StoreDaoImp implements StoreDao {
          
          return list;
       }
+
+	@Override
+	public List<StoreDto> selectStoreByCategory(String category) {
+		List<StoreDto> list = null;
+		//System.out.println("StoreDaoImp "+category);
+		
+		try{
+			session = sqlSessionFactory.openSession();
+			list=session.selectList("selectStoreByCategory", '%'+category+'%');
+			//System.out.println(list.get(0).getStoreName());
+		}catch(Exception e){
+			System.out.println("StoreDaoImp > selectStoreByCategory error");
+			e.printStackTrace();
+		}finally{
+			session.close();
+		}
+		
+		return list;
+	}
 
 }

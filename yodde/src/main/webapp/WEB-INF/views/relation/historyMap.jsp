@@ -23,10 +23,8 @@
 <!-- main css -->
 <link rel="stylesheet" type="text/css"
 	href="${root}/resources/css/follow/follow.css" />
-<script type="text/javascript"
-	src="${root}/resources/scripts/jquery-2.1.1.js"></script>
-<script type="text/javascript"
-	src="${root}/resources/scripts/jquery.raty.js"></script>
+<script type="text/javascript" src="${root}/resources/scripts/jquery-2.1.1.js"></script>
+<script type="text/javascript" src="${root}/resources/scripts/jquery.raty.js"></script>
 
 </head>
 <body style="min-width: 1260px;">
@@ -49,8 +47,6 @@
 						style="border: 2px solid #DCDCDF; width: 800px; height: 320px; margin: 5px;"></div>
 					</div>
 			</div>
-			${nameList[0].longitude}
-			${nameList[0].latitude}
 			<div class="historyrate_box">
 				<span id="averageRate" class="input"></span>
 				<!-- 평균별점을 표시 -->
@@ -67,7 +63,7 @@
 					starHalf: 'history_half.png',
 					score: ${average}
 				});
-	</script>
+			</script>
 	${nameList[0].address}
 
 
@@ -148,91 +144,20 @@
 	<!-- 지도부분 -->
 	<script type="text/javascript"
 		src="http://openapi.map.naver.com/openapi/naverMap.naver?ver=2.0&key=15319f937084dc86f076a48652007f45&coord=latlng"></script>
-<!-- <script type="text/javascript"> 
 
-var oCenterPoint = new nhn.api.map.LatLng(35.1601396, 129.1733139); 
-nhn.api.map.setDefaultPoint('LatLng'); 
-oMap = new nhn.api.map.Map((document.getElementById('scholes'), { 
-            point : oCenterPoint, 
-            zoom : 11, // - 초기 줌 레벨 
-            boundary : m, 
-            enableWheelZoom : true, 
-            enableDragPan : true, 
-            enableDblClickZoom : false, 
-            mapMode : 0, 
-            activateTrafficMap : false, 
-            activateBicycleMap : false, 
-            minMaxLevel : [ 1, 14 ], 
-            size : new nhn.api.map.Size(770, 500), 
-            detectCoveredMarker : true 
-}); 
-var mapZoom = new nhn.api.map.ZoomControl(); // - 줌 컨트롤 선언 
-mapZoom.setPosition({left:10, bottom:240}); // - 줌 컨트롤 위치 지정 
-oMap.addControl(mapZoom); // - 줌 컨트롤 추가. 
-mapTypeChangeButton = new nhn.api.map.MapTypeBtn(); // - 지도 타입 버튼 선언 
-mapTypeChangeButton.setPosition({top:10, left:680}); // - 지도 타입 버튼 위치 지정 
-oMap.addControl(mapTypeChangeButton); //지도타입버튼 
-
-var markerCount = 1; 
-var oSize = new nhn.api.map.Size(28, 37); 
-var oOffset = new nhn.api.map.Size(14, 37); 
-var oIcon = new nhn.api.map.Icon('./image/m'+markerCount+'.gif', oSize, oOffset); 
-
-var mapInfoTestWindow = new nhn.api.map.InfoWindow(); // - info window 생성 
-mapInfoTestWindow.setVisible(false); // - infowindow 표시 여부 지정. 
-oMap.addOverlay(mapInfoTestWindow);    // - 지도에 추가.     
-
-var oLabel = new nhn.api.map.MarkerLabel(); // - 마커 라벨 선언. 
-oMap.addOverlay(oLabel); // - 마커 라벨 지도에 추가. 기본은 라벨이 보이지 않는 상태로 추가됨. 
-
-for(i=0;i<m.length;i++){ //마커생성 
-    var oIcon = new nhn.api.map.Icon('http://static.naver.com/maps2/icons/pin_spot2.png', oSize, oOffset); 
-    var oPoint = m[i]; 
-    var oMarker = new nhn.api.map.Marker(oIcon, { title : i }); 
-    oMarker.setPoint(oPoint); 
-    oMap.addOverlay(oMarker); 
-}
-oMap.attach('click', function(oCustomEvent) { 
-    var oPoint = oCustomEvent.point; 
-    var oTarget = oCustomEvent.target; 
-    
-    mapInfoTestWindow.setVisible(false); 
-    // 마커 클릭하면 
-    if (oTarget instanceof nhn.api.map.Marker) { 
-        var ip = oCustomEvent.target.getTitle(); 
-        // 겹침 마커 클릭한거면 
-        if (oCustomEvent.clickCoveredMarker) { 
-            return; 
-        } 
-        //클릭 
-        map_list_select(ip,m.length); 
-        return; 
-    } 
-}); 
-</script>
- -->
 <script type="text/javascript">
-var m = new Array(); 
-/* 
-m[0] = new nhn.api.map.LatLng(35.1601396, 129.1733139);
-m[1] = new nhn.api.map.LatLng(35.1621496, 129.1735431);
-m[2] = new nhn.api.map.LatLng(35.1611306, 129.1736411);
-  */
- //alert(${nameList.size()});
- //alert(${nameList[0].longitude});
- var i ;
- for(i=0; i < ${nameList.size()}; i++){
-	//m[i] = new nhn.api.map.LatLng(${nameList[i].longitude},${nameList[i].latitude});
- 	alert(${nameList[0].longitude});
-	//alert(${nameList[i].longitude});
- 	//alert(i);
- 	
-} 
- 	var longitude=${nameList[0].longitude};
- 	alert(longitude);
 
- 
- 
+/* 배열에 위도 경도 가게이름 을 담아준다.  */ 
+ var longitude = [];
+ var latitude = [];
+ var storeName = [];
+ <c:forEach var="nameList" items="${nameList}" varStatus="status">
+     longitude.push("${nameList.longitude}"); 
+     latitude.push("${nameList.latitude}");
+     storeName.push("${nameList.storeName}");
+	 //alert(" VALUES => " + values[status]); 
+ </c:forEach>
+
  nhn.api.map.setDefaultPoint('LatLng');
 var oMap = new nhn.api.map.Map(document.getElementById('scholes'), {  
       point : new nhn.api.map.LatLng(37.562561888215,126.984436157441),         //아까 구한 위도, 경도   
@@ -253,21 +178,23 @@ oSlider.setPosition({
       top : 10,
       left : 10
 });
-  
-var oSize = new nhn.api.map.Size(20, 20);
-var oOffset = new nhn.api.map.Size(20, 20);
-var oPoint = new nhn.api.map.LatLng(37.562561888215,126.984436157441);
-var oIcon = new nhn.api.map.Icon('http://static.naver.com/maps2/icons/pin_spot2.png', oSize, oOffset); 
-var oMarker = new nhn.api.map.Marker(oIcon, {
-      point:oPoint,
-      zIndex:1,
-      title: '${storeDto.storeName}'
-});
-    
-var oLabel = new nhn.api.map.MarkerLabel();
-oMap.addOverlay(oLabel); 
+
+for(i=0; i < longitude.length;i++){
+var oLabel = new nhn.api.map.MarkerLabel(); // - 마커 라벨 선언. 
+oMap.addOverlay(oLabel); // - 마커 라벨 지도에 추가. 기본은 라벨이 보이지 않는 상태로 추가됨. 
+ 	var oSize = new nhn.api.map.Size(25, 30);
+	var oOffset = new nhn.api.map.Size(20, 20);
+	var oPoint = new nhn.api.map.LatLng(longitude[i],latitude[i]);/* 해당 가게 위도 경도들을 순서대로 뿌려준다. */
+	var oIcon = new nhn.api.map.Icon('${root}/resources/images/images/pin.png', oSize, oOffset); 
+	var oMarker = new nhn.api.map.Marker(oIcon, {
+	      point:oPoint,
+	      zIndex:1,
+	      title: storeName[i]
+	});
 oMap.addOverlay(oMarker);
 oLabel.setVisible(true,oMarker);
+ }
+  
   
 oMap.attach('mouseenter',function(oCustomEvent){    //마우스엔터,휠,클릭 등 api에서 제공하는 것 중에 골라서
       var oTarget = oCustomEvent.target;

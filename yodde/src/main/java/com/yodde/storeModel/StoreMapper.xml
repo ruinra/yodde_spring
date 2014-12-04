@@ -69,4 +69,8 @@
        SELECT s.storeName, s.storeId, s.latitude, s.longitude FROM REVIEW rv, STORE s WHERE RV.WRITER=#{email} AND RV.STOREID=S.STOREID ORDER BY RV.WRITEDATE DESC
     </select>
    
+   <select id="selectStoreByCategory" parameterType="String" resultType="com.yodde.storeModel.StoreDto">
+   	select * from store where category1 like #{query}
+   </select>
+   
 </mapper>
