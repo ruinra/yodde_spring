@@ -24,9 +24,11 @@ public class DeleteReviewCtrl {
       
       int reviewId = Integer.parseInt(request.getParameter("reviewId"));
       //System.out.println(reviewId);
+      int storeId = Integer.parseInt(request.getParameter("storeId"));
+      System.out.println(storeId);
       
-      int deleteCheck = reviewDao.deleteReveiw(reviewId);
-      //System.out.println("deleteCheck : " + deleteCheck);
+      int deleteCheck = reviewDao.deleteReveiw(reviewId, storeId);
+      System.out.println("deleteCheck : " + deleteCheck);
       
       ModelAndView mav = new ModelAndView();
       mav.addObject("result", deleteCheck);

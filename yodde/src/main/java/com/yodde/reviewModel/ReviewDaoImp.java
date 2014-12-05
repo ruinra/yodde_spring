@@ -135,13 +135,14 @@ public class ReviewDaoImp implements ReviewDao {
 		return list;
 	}
 	@Override
-	   public int deleteReveiw(int reviewId) {
+	   public int deleteReveiw(int reviewId, int storeId) {
 	      int check=0;
 	      //System.out.println("deleteReveiw : " + reviewId);
 	      
 	      try{
 	         session=sqlSessionFactory.openSession();
 	         check=session.delete("deleteReveiw", reviewId);
+	         check=session.update("averageRate", storeId);
 	         //System.out.println("deleteReveiw check : " + check);
 	      }catch(Exception e){
 	         System.out.println("deleteReveiw");

@@ -2,7 +2,9 @@ package com.yodde.storeAction;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.StringTokenizer;
 
@@ -136,6 +138,43 @@ public class SearchStoreCtrl {
             
       return mav;
    }
+   
+   @RequestMapping(value = "/searchStoreByStoreInfo", method = RequestMethod.GET)
+   public ModelAndView searchStoreByStoreInfo(HttpServletRequest request,
+         HttpServletResponse response) throws Exception {         
+      String query=request.getParameter("query");
+      //System.out.println("넘어오자마자 " + request.getParameter("storeInfo"));
+      StringTokenizer store = new StringTokenizer(request.getParameter("storeInfo"), " ");
+      //System.out.println("토큰카운트 = "+store.countTokens());
+      String[] storeInfo = new String[store.countTokens()];
+      HashMap<String, Integer> hMap = new HashMap<String, Integer>();
+      int i =0;
+      while(store.hasMoreTokens()){
+    	  hMap.put(store.nextToken(), 1);
+    	  i++;
+      }
+      hMap.get("dd");
+      //System.out.println("query = " + query);
+      //System.out.println("storeInfo = "+Arrays.toString(storeInfo));
+      List<StoreInfoDto> storeInfoList = null;
+      storeInfoList = storeDao.selectStoreByStoreInfo(query);
+      
+//      for(int j =0; i<storeInfoList.size();i++){
+//    	 if(storeInfoList.get(i).getCreditCard()==1){
+//    		 
+//    	 }
+//      }
+//      
+//      storeInfoList.remove(i);
+      
+      
+      ModelAndView mav = new ModelAndView();
+      //mav.addObject("query", query);
+      //mav.setViewName("/search/findStore");
+            
+      return null;
+   }
+   
       
    @RequestMapping(value = "/proxy", method = RequestMethod.GET)
    public ModelAndView proxy(HttpServletRequest request,
