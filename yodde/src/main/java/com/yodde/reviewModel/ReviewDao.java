@@ -9,5 +9,5 @@ public interface ReviewDao {
 	public List<ReviewDto>   selectRecentReviewRate(String email);
 	public double averageRate(String email);
 	public List<Review> getReviewByWriter(String email);
-	public int             deleteReveiw(int reviewId);
+	public int             deleteReveiw(int reviewId, int storeId);
 }

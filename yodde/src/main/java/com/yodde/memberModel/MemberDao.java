@@ -10,4 +10,6 @@ public interface MemberDao {
 	public List<MemberDto> selectMembersByNick(String query);
 	public int		updateMemberFile(MemberDto memberDto);
 	public int updateMember(MemberDto memberDto);
+	public int idCheck(String email);
+	public int nickName(String name);
 }

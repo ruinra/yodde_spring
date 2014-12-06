@@ -17,6 +17,7 @@ public class StoreInfoDto {
 	private int seating;
 	private int kids;
 	private int driveThrough;
+	
 	public int getStoreId() {
 		return storeId;
 	}

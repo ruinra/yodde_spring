@@ -35,13 +35,57 @@
                obj.style.display = "";
          }
          
-         function showUpdateEditor(email){
-            var obj = document.getElementById("updateEditorDiv");
-            var original = document.getElementById("originalDiv");
-            obj.style.display="";
-            original.style.display="none";
+         function showUpdateEditor(email, content){                        /*수정버튼 요청 함수*/
+             /*기존에 있던 공간들*/
+            var originalDiv = document.getElementById("originalDiv");
+            var hide = document.getElementById("hide");
+            var upBtn = document.getElementById("upBtn");
+            var delBtn = document.getElementById("delBtn");
+            
+            originalDiv.style.display="none";
+            hide.style.display="none";
+            upBtn.style.display="none";
+            delBtn.style.display="none";
+            
+            /*새로 만들 공간들*/
+            var updateEditorDiv = document.getElementById("updateEditorDiv");
+            var update_rate = document.getElementById("update_rate");
+            var okBtn = document.getElementById("okBtn");
+            var canBtn = document.getElementById("canBtn");
+            var updateValue = document.getElementById("updateValue");
+            
+            updateValue.value=content;
+            updateEditorDiv.style.display="";
+            update_rate.style.display="";
+            okBtn.style.display="";
+            canBtn.style.display="";
          }
-      </script>
+         
+         function returnUpdateEditer(){                              /*수정취소버튼 요청 함수*/
+            var original = document.getElementById("originalDiv");
+            var hide = document.getElementById("hide");
+            var upBtn = document.getElementById("upBtn");
+            var delBtn = document.getElementById("delBtn");
+            var updateValue = document.getElementById("updateValue");
+            
+            original.style.display="";
+            hide.style.display="";
+            upBtn.style.display="";
+            delBtn.style.display="";
+            updateValue.innerHTML="";
+            
+            var obj = document.getElementById("updateEditorDiv");
+            var update_rate = document.getElementById("update_rate");
+            var okBtn = document.getElementById("okBtn");
+            var canBtn = document.getElementById("canBtn");
+            
+            obj.style.display="none";
+            //obj.document = content;
+            update_rate.style.display="none";
+            okBtn.style.display="none";
+            canBtn.style.display="none";
+         }
+         </script>
    <script>
             function loginFollow(){
                alert("로그인을 해주세요.");
@@ -117,13 +161,13 @@
 </script>
 
 <script type="text/javascript">                  /* 리뷰 삭제 */
-   function del(reviewId){
-      var reviewId = reviewId;
-      var deleteCheck=0;
-      
-      var url="deleteReview?reviewId="+reviewId;
-     // alert("del(reviewId) : " + url);
-      
+   function del(reviewId, storeId){
+       var reviewId = reviewId;
+       var storeId = storeId;
+       var deleteCheck=0;
+       
+       var url="deleteReview?reviewId="+reviewId+"&storeId="+storeId;
+       //alert("del(reviewId) : " + url);
       if(!confirm("삭제하시겠습니까?")){
          return;
       }else{
@@ -470,20 +514,30 @@
                               </span>
                            </span>
                               
-                           <span class="content_btn">                         
-                                    <span class="btn_position">
-                                       <c:if test="${email == itemReview.writer_email}">   <!-- 본인댓글일 경우  수정 /삭제 -->
-                                             <a href="javascript:showUpdateEditor('${email}')">
-                                                <img src="${root}/resources/images/images/update.png" height="25"></a>
-                                    <a href="javascript:del('${itemReview.reviewId}')">
-                                                <img src="${root}/resources/images/images/delete.png" height="25"></a>
-                                       </c:if>
-                                       <c:if test="${email != itemReview.writer_email}">   <!-- 타인댓글일 경우  신고 -->
-                                          <a href="reportReview?writer=${itemReview.writer}&content=${itemReview.content}" onclick="window.open(this.href,'_blank','width=750, height=700');return false" >
-                                             <img src="${root}/resources/images/images/report.png" height="25" ></a>
-                                       </c:if>
-                                    </span> 
-                                 </span>
+ 			<span class="content_btn">                         
+                                       <span class="btn_position">
+                                          <c:if test="${email == itemReview.writer_email}">   <!-- 본인댓글일 경우  수정 /삭제 -->
+                                                <a href="javascript:showUpdateEditor('${email}','${itemReview.content}')">
+                                                   <img id="upBtn" src="${root}/resources/images/images/update.png" height="25"></a>
+                                       <a href="javascript:del('${itemReview.reviewId}', '${itemReview.storeId}')">
+                                                   <img id="delBtn" src="${root}/resources/images/images/delete.png" height="25"></a>
+<%--                                               
+                                                <span id="okBtn" style="display:none;">         <!-- 수정 완료 버튼 -->
+                                                   <a href="">
+                                                      <img src="${root}/resources/images/images/ok.png" height="25"></a>
+                                                </span>
+                                                <span id="canBtn" style="display:none;">      <!-- 수정 취소 버튼 -->
+                                                   <a href="javascript:returnUpdateEditer()">
+                                                      <img src="${root}/resources/images/images/cancel.png" height="25"></a>
+                                                </span>
+                                                 --%>
+                                          </c:if>
+                                          <c:if test="${email != itemReview.writer_email}">   <!-- 타인댓글일 경우  신고 -->
+                                             <a href="reportReview?writer=${itemReview.writer}&content=${itemReview.content}" onclick="window.open(this.href,'_blank','width=750, height=700');return false" >
+                                                <img src="${root}/resources/images/images/report.png" height="25" ></a>
+                                          </c:if>
+                                       </span> 
+                                    </span>
                         </span> 
                         <span class="profile">       <!-- 리뷰어 프로필사진 --> 
                         <img src="${root}${itemReview.profilePic}" style="max-width:75px;width:expression(this.width > 75 ? 75: true); heigth:auto;border-radius: 75px;">

@@ -13,4 +13,5 @@ public interface StoreDao {
 	public int updateStore(StoreDto storeDto);
 	public List<StoreDto> selectRecentReviewName(String email);
 	public List<StoreDto> selectStoreByCategory(String category);
+	public List<StoreInfoDto> selectStoreByStoreInfo(String query);
 }

@@ -140,5 +140,43 @@ public class MemberDaoImp implements MemberDao {
 		return value;
 	}
 
+	@Override
+	public int idCheck(String email) {
+		// TODO Auto-generated method stub
+		int value=0;
+		
+		try{
+			session=sqlSessionFactory.openSession();
+			System.out.println(email);
+			String check=session.selectOne("memberIdCheck", email);
+			if(check!=null) value=1;
+		}catch(Exception e){
+			System.out.println("Member IdCheck Error");
+		}finally{
+			session.close();
+		}
+		
+		return value;
+	}
+
+	@Override
+	public int nickName(String name) {
+		// TODO Auto-generated method stub
+		int value=0;
+		
+		try{
+			session=sqlSessionFactory.openSession();
+			System.out.println(name);
+			String check=session.selectOne("memberNickNameCheck", name);
+			if(check!=null) value=1;
+		}catch(Exception e){
+			System.out.println("Member NickNameCheck Error");
+		}finally{
+			session.close();
+		}
+		return value;
+	}
+
+
 
 }

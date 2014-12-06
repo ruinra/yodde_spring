@@ -81,6 +81,17 @@ $.extend($.fn, {
 						}
 						return false;
 					}
+					
+					if($("input[name='idCheckOk']").val() == 0){
+		                  alert("e-mail 중복확인을 해주세요.");
+		                  return false;
+		                  
+		               }
+		               if($("input[name='nickNameCheckOk']").val() == 0){
+		                  alert("닉네임 중복확인을 해주세요.");
+		                  return false;
+		                  
+		               }
 					return true;
 				}
 

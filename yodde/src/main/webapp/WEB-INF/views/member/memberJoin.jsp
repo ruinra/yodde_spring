@@ -44,6 +44,17 @@
          }
       }).open();
    }
+   
+   function idCheck(root) {
+		var url = root+"/member/idCheck?email="+$("input[name='email']").val();
+		window.open(url, "", "width=450, height=150");
+	}
+
+	function nickNameCheck(root) {
+		var url = root+"/member/nickNameCheck?name="+$("input[name='name']").val();
+		window.open(url, "", "width=450, height=150");
+	}
+	
 </script>
 
 <script type="text/javascript">
@@ -129,22 +140,42 @@
                   <!-- login title -->
                   <img src="${root}/resources/images/images/join_title.png" height="55">
                </div>
-               <p>
+               
+                <p>	<!-- 이메일입력 -->
+               <input type="hidden" name="idCheckOk" id="idCheckOk" value="0">
                   <img src="${root}/resources/images/images/pick.png" height="25"> <input
                      type="text" class="join_input error" style="ime-mode: active;"
                      name="email" placeholder=" ID@EMAIL"
                      onfocus="this.placeholder=''"
-                     onblur="this.placeholder=' ID@EMAIL'"> <label for="email"
-                     generated="true" class="error"> 이메일을 입력하세요.</label>
+                     onblur="this.placeholder=' ID@EMAIL'" value="">
+                     
+                     <label for="email" id="emailError" generated="true" class="error"> 이메일을 입력하세요.</label>
+              		 
+              		 <!-- 중복체크 -->
+              		 <a id="idCheck" name="idCheck"	
+                     type="button" onclick="idCheck('${root}')"> <img
+                     src="${root}/resources/images/images/zipcode.png" height="30">
+                 	 </a>
                </p>
-               <p>
+               
+               <p>	<!-- 닉네임입력 -->
+               <input type="hidden" name="nickNameCheckOk" id="nickNameCheckOk" value="0">
                   <img src="${root}/resources/images/images/pick.png" height="25"> <input
                      type="text" class="join_input error" style="ime-mode: active;"
-                     name="name" placeholder=" NICKNAME" onfocus="this.placeholder=''"
-                     onblur="this.placeholder=' NICKNAME'"> <label for="name"
-                     generated="true" class="error"> 2글자 이상으로 입력하세요.</label>
+                     name="name" placeholder=" NICKNAME" 
+                     onfocus="this.placeholder=''"
+                     onblur="this.placeholder=' NICKNAME'" value="">
+                     
+                     <label for="name" generated="true" class="error"> 2글자 이상으로 입력하세요.</label>
+
+					<!-- 중복체크 -->
+              		 <a id="nickNameCheck" name="nickNameCheck"
+                     type="button" onclick="nickNameCheck('${root}')"> <img
+                     src="${root}/resources/images/images/zipcode.png" height="30">
+                 	 </a>
                </p>
-               <p>
+               
+               <p>	<!-- 비밀번호입력 -->
                   <img src="${root}/resources/images/images/pick.png" height="25"> <input
                      type="password" class="join_input error"
                      style="ime-mode: active;" id="password" name="password"
@@ -153,7 +184,7 @@
                      for="password" generated="true" class="error"> 비밀 번호를
                      입력하세요.</label>
                </p>
-               <p>
+               <p>	<!-- 비밀번호확인입력 -->
                   <img src="${root}/resources/images/images/pick.png" height="25"> <input
                      type="password" class="join_input error"
                      style="ime-mode: active;" id="pwchk" name="pwchk"
@@ -162,7 +193,7 @@
                      generated="true" class="error"> 비밀번호를 다시 한 번 입력하세요.</label>
                </p>
 
-               <p>
+               <p>	<!-- 우편번호입력 -->
                   <img src="${root}/resources/images/images/pick.png" height="25"> <input
                      type="text" id="zip1" name="zip1" class="join_input_half error"
                      style="ime-mode: active;"> - <input type="text" id="zip2"

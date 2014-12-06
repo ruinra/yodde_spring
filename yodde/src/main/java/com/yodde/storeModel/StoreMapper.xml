@@ -40,6 +40,11 @@
       update store set openDate=#{openDate}, serviceTime=#{serviceTime}, status=#{status}, homePage=#{homepage}, profilePic=#{profilePic} where storeId=#{storeId}
    </update>
    
+   <select id="selectStoreByStoreName" parameterType="com.yodde.storeModel.StoreInfoDto">
+   	select * from store_info where storeid in (select storeId from store where storeName like #{query})
+   </select>
+   
+   
    <select id="storeInfoSelect" parameterType="int" resultType="com.yodde.storeModel.StoreInfoDto">
       select * from store_info where storeId=#{storeId}
    </select>

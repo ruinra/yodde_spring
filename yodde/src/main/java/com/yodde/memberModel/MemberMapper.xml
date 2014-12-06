@@ -49,4 +49,12 @@
 			password= #{password}
 		where email = #{email}
 	</update>
+	
+	<select id="memberIdCheck" parameterType="String" resultType="String">
+		select email from auth where email=#{email}
+	</select>
+
+	<select id="memberNickNameCheck" parameterType="String" resultType="String">
+		select nickname from member where nickname=#{nickname}
+	</select>
 </mapper>
