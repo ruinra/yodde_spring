@@ -64,13 +64,14 @@ function search(checked){
                      var url = "";
                      
                      for (i=0; i<option.length; i++){
-                        optionUrl.push("${root}/resources/images/images_test/"+option[i]+".png");
+                        optionUrl.push("${root}/resources/images/store_info_img/"+option[i]+".png");
                      }
                      
                      for(var i=0; i<option.length*2; i++){
                          $(document).ready(function() {
  							if(j%2!=0){
  								$("#img").children().eq(j-1).attr("value", option[k]);
+ 								$("#img").children().eq(j).attr("title", option[k]);
  								$("#img").children().eq(j).css({
  									"background-image":"url("+optionUrl[k]+")",
  									"background-size" : "36px 72px" 

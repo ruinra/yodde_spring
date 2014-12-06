@@ -81,23 +81,23 @@
 										</c:otherwise>
 									</c:choose>
 								</span>
-								<span id="categoryMenu" class="menu-menu-1-container">
-		                           <ul class="category" style="margin-left:0px">
-		                              <li class="category_li" id=""><a href="${root}/categorySearch?category=공공,사회기관">공공기관</a></li>
-		                              <li class="category_li" id=""><a href="${root}/categorySearch?category=교육,학문">교육</a></li>
-		                              <li class="category_li" id=""><a href="${root}/categorySearch?category=금융">금융서비스 </a></li>
-		                              <li class="category_li" id=""><a href="${root}/categorySearch?category=서비스,산업">렌탈</a></li>
-		                              <li class="category_li" id=""><a href="${root}/categorySearch?category=쇼핑,유통">마트</a></li>
-		                              <li class="category_li" id=""><a href="${root}/categorySearch?category=건강,의료">병원</a></li>
-		                              <li class="category_li" id=""><a href="${root}/categorySearch?category=생활,편의">생활서비스</a></li>
-		                              <li class="category_li" id=""><a href="${root}/categorySearch?category=숙박">숙박</a></li>
-		                              <li class="category_li" id=""><a href="${root}/categorySearch?category=문화,예술">영화/공연</a></li>
-		                              <li class="category_li" id=""><a href="${root}/categorySearch?category=스포츠,오락">오락서비스</a></li>
-		                              <li class="category_li" id=""><a href="${root}/categorySearch?category=식">음식</a></li>
-		                              <li class="category_li" id=""><a href="${root}/categorySearch?category=교통,운수">자동차</a></li>
-		                              <li class="category_li" id=""><a href="${root}/categorySearch?category=카페,디저트">카페/제과</a></li>
-		                           </ul>
-		                        </span>
+							<span id="categoryMenu" class="menu-menu-1-container">
+                                 <ul class="category" style="margin-left:0px">
+                                    <li class="category_li" id=""><a href="${root}/categorySearch?categoryLevel=category1&category=공공,사회기관">공공기관</a></li>
+                                    <li class="category_li" id=""><a href="${root}/categorySearch?categoryLevel=category1&category=교육,학문">교육</a></li>
+                                    <li class="category_li" id=""><a href="${root}/categorySearch?categoryLevel=category1&category=금융">금융서비스 </a></li>
+                                    <li class="category_li" id=""><a href="${root}/categorySearch?categoryLevel=category1&category=서비스,산업">렌탈</a></li>
+                                    <li class="category_li" id=""><a href="${root}/categorySearch?categoryLevel=category1&category=쇼핑,유통">마트</a></li>
+                                    <li class="category_li" id=""><a href="${root}/categorySearch?categoryLevel=category1&category=건강,의료">병원</a></li>
+                                    <li class="category_li" id=""><a href="${root}/categorySearch?categoryLevel=category1&category=생활,편의">생활서비스</a></li>
+                                    <li class="category_li" id=""><a href="${root}/categorySearch?categoryLevel=category1&category=숙박">숙박</a></li>
+                                    <li class="category_li" id=""><a href="${root}/categorySearch?categoryLevel=category1&category=문화,예술">영화/공연</a></li>
+                                    <li class="category_li" id=""><a href="${root}/categorySearch?categoryLevel=category1&category=스포츠,오락">오락서비스</a></li>
+                                    <li class="category_li" id=""><a href="${root}/categorySearch?categoryLevel=category1&category=식">음식</a></li>
+                                    <li class="category_li" id=""><a href="${root}/categorySearch?categoryLevel=category1&category=교통,운수">자동차</a></li>
+                                    <li class="category_li" id=""><a href="${root}/categorySearch?categoryLevel=category1&category=카페,디저트">카페/제과</a></li>
+                                 </ul>
+                              </span>
 		                        <span id="memberMenu" class="menu-menu-1-container">
 		                           <ul class="category" style="margin-left:0px">
 		                              <li class="category_li" id=""><a href="${root}/info/modifyMember?email=${email}">회원정보수정</a></li>
@@ -186,7 +186,7 @@
 	            } else {
 	            	category.style.display = "";
 		            memberMenu.style.display = "none";
-		            owner.style.display = "none";
+		            ownerMenu.style.display = "none";
 	            }	            
 			}			
 		</script>
