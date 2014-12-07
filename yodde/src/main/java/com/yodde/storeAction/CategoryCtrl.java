@@ -26,15 +26,16 @@ public class CategoryCtrl {
 	public ModelAndView category(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		String categoryName = request.getParameter("category");
+		String categoryLevel =request.getParameter("categoryLevel");
 		//System.out.println(categoryName);
+		//System.out.println(categoryLevel);
 		
 		List<StoreDto> storeList = null;
-		storeList = storeDao.selectStoreByCategory(categoryName);
-		
-		
-		//System.out.println("CategoryCtrl = "+list);
+		storeList = storeDao.selectStoreByCategory(categoryLevel, categoryName);
+		//System.out.println("CategoryCtrl = "+storeList);
 		
 		ModelAndView mav = new ModelAndView();
+		mav.addObject("categoryLevel", categoryLevel);
 		mav.addObject("categoryName", categoryName);
 		mav.addObject("storeDto", storeList);
 		mav.setViewName("/main/resultStore");

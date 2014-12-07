@@ -1,2 +1,7 @@
+<<<<<<< HEAD
 eclipse.preferences.version=1
 encoding//src/main/webapp/WEB-INF/views/main/region.jsp=UTF-8
+=======
+eclipse.preferences.version=1
+encoding//src/main/webapp/WEB-INF/views/common/title.jsp=UTF-8
+>>>>>>> branch 'master' of https://github.com/ruinra/yodde_spring.git

@@ -46,10 +46,11 @@ public class SearchStoreCtrl {
       ModelAndView mav = new ModelAndView();
       //parse request
       String title = request.getParameter("title");
+//      int storeId=Integer.parseInt(request.getParameter("storeId"));
+      
       //title tag delete
       title = title.replaceAll("<b>", "");
       title = title.replaceAll("</b>", "");
-      String email = request.getParameter("email");
       
       //category tokenize
       StringTokenizer st = new StringTokenizer(request.getParameter("category"), ">");
@@ -100,14 +101,8 @@ public class SearchStoreCtrl {
       List<Review> reviewList = null;
       List<PictureDto> pictureList = null;
       if (check == 2) {         
-    	  reviewList = reviewDao.getReviewsByStoreId(storeDto.getStoreId()); 
-          if (email.length() > 0) {
- 			for (Review review : reviewList){
- 				int eval = evaluationDao.evaluationCheck(email, review.getReviewId());
- 					review.setEval(eval);
- 				}
- 			}
-          pictureList = pictureDao.select7Picture(storeDto.getStoreId());
+         reviewList = reviewDao.getReviewsByStoreId(storeDto.getStoreId());   
+         pictureList = pictureDao.select7Picture(storeDto.getStoreId());
       }
       
       StoreInfoDto storeInfo=new StoreInfoDto();
@@ -142,30 +137,79 @@ public class SearchStoreCtrl {
    @RequestMapping(value = "/searchStoreByStoreInfo", method = RequestMethod.GET)
    public ModelAndView searchStoreByStoreInfo(HttpServletRequest request,
          HttpServletResponse response) throws Exception {         
+	   
       String query=request.getParameter("query");
-      //System.out.println("넘어오자마자 " + request.getParameter("storeInfo"));
       StringTokenizer store = new StringTokenizer(request.getParameter("storeInfo"), " ");
-      //System.out.println("토큰카운트 = "+store.countTokens());
-      String[] storeInfo = new String[store.countTokens()];
-      HashMap<String, Integer> hMap = new HashMap<String, Integer>();
-      int i =0;
-      while(store.hasMoreTokens()){
-    	  hMap.put(store.nextToken(), 1);
-    	  i++;
-      }
-      hMap.get("dd");
-      //System.out.println("query = " + query);
-      //System.out.println("storeInfo = "+Arrays.toString(storeInfo));
-      List<StoreInfoDto> storeInfoList = null;
-      storeInfoList = storeDao.selectStoreByStoreInfo(query);
       
-//      for(int j =0; i<storeInfoList.size();i++){
-//    	 if(storeInfoList.get(i).getCreditCard()==1){
-//    		 
-//    	 }
-//      }
-//      
-//      storeInfoList.remove(i);
+//	  넘어온 애들만 배열에 1을 집어 넣는다      
+      int[] storeInfo = new int[12];
+      for(int i=0; i<storeInfo.length;i++){
+    	  storeInfo[i]=2;
+      }
+      String token = "";
+      while(store.hasMoreTokens()){
+    	  token = store.nextToken();
+    	  if(token.equalsIgnoreCase("reservation")){
+    		  storeInfo[0] = 1;
+    	  }else if(token.equalsIgnoreCase("delivery")){
+    		  storeInfo[1] = 1;
+    	  }else if(token.equalsIgnoreCase("takeout")){
+    		  storeInfo[2] = 1;
+    	  }else if(token.equalsIgnoreCase("card")){
+    		  storeInfo[3] = 1;
+    	  }else if(token.equalsIgnoreCase("parking")){
+    		  storeInfo[4] = 1;
+    	  }else if(token.equalsIgnoreCase("group")){
+    		  storeInfo[5] = 1;
+    	  }else if(token.equalsIgnoreCase("toilet")){
+    		  storeInfo[6] = 1;
+    	  }else if(token.equalsIgnoreCase("wifi")){
+    		  storeInfo[7] = 1;
+    	  }else if(token.equalsIgnoreCase("tv")){
+    		  storeInfo[8] = 1;
+    	  }else if(token.equalsIgnoreCase("seating")){
+    		  storeInfo[9] = 1;
+    	  }else if(token.equalsIgnoreCase("kids")){
+    		  storeInfo[10] = 1;
+    	  }else if(token.equalsIgnoreCase("drive_through")){
+    		  storeInfo[11] = 1;
+    	  }
+      }
+      
+      
+      System.out.println(Arrays.toString(storeInfo));
+      List<StoreInfoDto> info = null;
+      info = storeDao.selectStoreByStoreInfo(query);
+      int k=info.size();
+      
+      for(int i=0; i < k;i++){
+    	  if(info.get(i).getReservation() == storeInfo[0]){
+    		  
+    	  }else if(info.get(i).getDelivery() == storeInfo[1]){
+    		  
+    	  }else if(info.get(i).getTakeOut() == storeInfo[2]){
+    		  
+    	  }else if(info.get(i).getCreditCard() == storeInfo[3]){
+    		  
+    	  }else if(info.get(i).getParking() == storeInfo[4]){
+    		  
+    	  }else if(info.get(i).getGroup1() == storeInfo[5]){
+    		  
+    	  }else if(info.get(i).getToilet() == storeInfo[6]){
+    		  
+    	  }else if(info.get(i).getWifi() == storeInfo[7]){
+    		  
+    	  }else if(info.get(i).getTv() == storeInfo[8]){
+    		  
+    	  }else if(info.get(i).getSeating() == storeInfo[9]){
+    		  
+    	  }else if(info.get(i).getKids() == storeInfo[10]){
+    		  
+    	  }else if(info.get(i).getDriveThrough() == storeInfo[11]){
+    		  
+    	  }else info.remove(i);
+    	  System.out.println(info.get(i));
+      }
       
       
       ModelAndView mav = new ModelAndView();

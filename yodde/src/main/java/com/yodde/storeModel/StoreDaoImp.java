@@ -193,11 +193,13 @@ public class StoreDaoImp implements StoreDao {
 	@Override
 	public List<StoreInfoDto> selectStoreByStoreInfo(String query) {
 		List<StoreInfoDto> list= null;
+		query = query.toUpperCase();
+		//System.out.println("StoreDaoImp > = "+query);
 		
-		try{
+		try{ 
 			session= sqlSessionFactory.openSession();
-			list = session.selectList("selectStoreByStoreName", '%'+query+'%');
-			
+			list = session.selectList("selectStoreByStoreName", "%"+query+"%");
+			//System.out.println("StoreDaoImp  ="+list.size());
 		}catch(Exception e){
 			System.out.println("StoreDaoImp > selectStoreByStoreInfo Error");
 			e.printStackTrace();
@@ -225,5 +227,107 @@ public class StoreDaoImp implements StoreDao {
 		
 		return list;
 	}
+	
+	@Override
+	public List<StoreDto> selectStoreByCategory(String categoryLevel, String category) {
+		List<StoreDto> list = null;
+		    
+		HashMap<String, String> hMap = new HashMap<String, String>();
+		hMap.put("categoryLevel", categoryLevel);
+		hMap.put("query", '%'+category+'%');
+		  
+		try{
+			session = sqlSessionFactory.openSession();
+			//list=session.selectList("selectStoreByCategory", '%'+category+'%');
+			list=session.selectList("selectStoreByCategory", hMap);
+		}catch(Exception e){
+			System.out.println("StoreDaoImp > selectStoreByCategory error");
+			e.printStackTrace();
+		}finally{
+			session.close();
+		}
+		System.out.println(list);
+		return list;
+	}
+	
+	@Override
+    public List<StoreDto> selectNewOpen() {
+       List<StoreDto> list=null;
+       
+       try{
+             session=sqlSessionFactory.openSession();
+             list=session.selectList("newOpen");
+       }catch(Exception e){
+          System.out.println("NewOpen Store Error");
+             e.printStackTrace();
+       }finally{
+          session.close();
+       }
+       
+       return list;
+    }
 
+    @Override
+    public List<StoreDto> selectHotPlace() {
+       List<StoreDto> list=null;
+       
+       try{
+             session=sqlSessionFactory.openSession();
+             list=session.selectList("hotPlace");
+       }catch(Exception e){
+          System.out.println("HotPlace Store Error");
+             e.printStackTrace();
+       }finally{
+          session.close();
+       }
+       return list;
+    }
+
+    @Override
+    public List<LikeDto> selectLike() {
+       List<LikeDto> list=null;
+       
+       try{
+             session=sqlSessionFactory.openSession();
+             list=session.selectList("upLike");
+       }catch(Exception e){
+          System.out.println("upLike Store Error");
+             e.printStackTrace();
+       }finally{
+          session.close();
+       }
+       return list;
+    }
+
+    @Override
+    public List<FollowReview> selectFollowReview(String email) {
+       List<FollowReview> list=null;
+       
+       try{
+             session=sqlSessionFactory.openSession();
+             list=session.selectList("followReview", email);
+       }catch(Exception e){
+          System.out.println("followReview Select Error");
+             e.printStackTrace();
+       }finally{
+          session.close();
+       }
+       return list;
+    }
+
+    @Override
+    public List<FollowStore> selectFollowStoreReview(String email) {
+       List<FollowStore> list=null;
+       
+       try{
+             session=sqlSessionFactory.openSession();
+             list=session.selectList("followStoreReview", email);
+       }catch(Exception e){
+          System.out.println("followStore Select Error");
+             e.printStackTrace();
+       }finally{
+          session.close();
+       }
+       return list;
+    }
 }
