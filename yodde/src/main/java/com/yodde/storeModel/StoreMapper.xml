@@ -40,8 +40,8 @@
       update store set openDate=#{openDate}, serviceTime=#{serviceTime}, status=#{status}, homePage=#{homepage}, profilePic=#{profilePic} where storeId=#{storeId}
    </update>
    
-   <select id="selectStoreByStoreName" parameterType="com.yodde.storeModel.StoreInfoDto">
-   	select * from store_info where storeid in (select storeId from store where storeName like #{query})
+   <select id="selectStoreByStoreName" parameterType="String" resultType="com.yodde.storeModel.StoreInfoDto">	
+   	select * from store_info where storeId in (select storeId from store where storeName like #{query})
    </select>
    
    
@@ -74,8 +74,47 @@
        SELECT s.storeName, s.storeId, s.latitude, s.longitude FROM REVIEW rv, STORE s WHERE RV.WRITER=#{email} AND RV.STOREID=S.STOREID ORDER BY RV.WRITEDATE DESC
     </select>
    
-   <select id="selectStoreByCategory" parameterType="String" resultType="com.yodde.storeModel.StoreDto">
-   	select * from store where category1 like #{query}
+	<select id="selectStoreByCategory" parameterType="java.util.HashMap" resultType="com.yodde.storeModel.StoreDto">
+      select * from store where category1 like #{query} or category2 like #{query}
    </select>
+   
+   <select id="newOpen" resultType="com.yodde.storeModel.StoreDto">
+       <![CDATA[
+         SELECT * FROM (SELECT * FROM store ORDER BY opendate DESC) WHERE ROWNUM <= 6     
+      ]]>
+    </select>
+    
+    <select id="hotPlace" resultType="com.yodde.storeModel.StoreDto">
+       <![CDATA[
+          select * from (select * from store order by rate desc) where rownum <= 6
+       ]]>
+    </select>
+    
+    <select id="upLike" resultType="com.yodde.storeModel.LikeDto">
+         <![CDATA[
+            select * from (SELECT R.STOREID, R.LIKE1, M.NICKNAME, M.PROFILEPIC, S.STORENAME FROM REVIEW r, MEMBER m, STORE s
+         where R.WRITER=M.EMAIL AND R.STOREID=S.STOREID ORDER BY R.LIKE1 desc) where rownum <= 6
+         ]]> 
+    </select>
+    
+    <select id="followReview" parameterType="String" resultType="com.yodde.storeModel.FollowReview">
+       <![CDATA[
+          SELECT * from
+         (select b.*, s.storename from STORE s,
+         ((SELECT a.*, m.nickname, m.profilePic from MEMBER m, ((SELECT storeid, writer, writedate
+         FROM REVIEW
+         where writer IN (SELECT follower FROM FOLLOW_MEMBER WHERE followee=#{email})) a)
+         WHERE m.email=a.writer) b) WHERE s.storeId=b.storeId ORDER BY writedate DESC) WHERE rownum <=6
+       ]]>
+    </select>
+    
+    <select id="followStoreReview" parameterType="String" resultType="com.yodde.storeModel.FollowStore">
+      <![CDATA[
+         select * from
+         (SELECT b.*, m.nickname, m.profilePic FROM MEMBER m,
+         ((SELECT a.*, r.writedate, r.writer FROM REVIEW r, ((SELECT storeId, storename FROM STORE WHERE storeId in (SELECT storeId FROM FOLLOW_STORE WHERE storefollowee=#{email})) a)
+         WHERE r.storeId=a.storeId) b) WHERE b.writer=m.email ORDER BY writedate desc) WHERE rownum <=6
+      ]]>    
+    </select>
    
 </mapper>
