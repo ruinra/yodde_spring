@@ -208,4 +208,22 @@ public class StoreDaoImp implements StoreDao {
 		return list;
 	}
 
+	@Override
+	public List<StoreDto> selectStoreByAddress(String query) {
+		List<StoreDto> list= null;
+		
+		try{
+			session= sqlSessionFactory.openSession();
+			list = session.selectList("selectStoreByAddress", '%'+query+'%');
+			
+		}catch(Exception e){
+			System.out.println("selectStoreByAddress");
+			e.printStackTrace();
+		}finally{
+			session.close();
+		}
+		
+		return list;
+	}
+
 }

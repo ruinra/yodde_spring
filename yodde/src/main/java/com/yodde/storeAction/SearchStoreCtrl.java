@@ -184,4 +184,16 @@ public class SearchStoreCtrl {
       mav.setViewName("/store/api_proxy");
       return mav;
    }
+   
+   @RequestMapping(value = "/getLocalStore", method = RequestMethod.GET)
+   public ModelAndView getLocalStore(HttpServletRequest request,
+           HttpServletResponse response) throws Exception {
+	   	String address = request.getParameter("address");
+	   	List<StoreDto> list = storeDao.selectStoreByAddress(address);
+	   	
+	   	ModelAndView mav = new ModelAndView();
+	   	mav.addObject("storeList", list);
+		mav.setViewName("/main/region");
+		return mav;	   
+   }
 }
