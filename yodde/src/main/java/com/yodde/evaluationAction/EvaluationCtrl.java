@@ -38,6 +38,7 @@ public class EvaluationCtrl {
       dto.setEvaluator(email);
       dto.setReviewId(reviewId);
       
+
       //no evaluation
       int value = 0;
       if(check == 0){            /*DB에 없을 떄*/
@@ -47,9 +48,13 @@ public class EvaluationCtrl {
          value = evaluationDao.deleteEval(dto);
       }
       
+      List<EvaluationDto> evalDto   = null;
+      evalDto = evaluationDao.selectList(email, reviewId);
+      
       check = evaluationDao.evaluationCheck(email, reviewId);
       
       ModelAndView mav = new ModelAndView();
+      //mav.addObject("eval", evalDto);
       mav.addObject("result", check);
       mav.setViewName("/result");
       

@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.yodde.evaluationModel.EvaluationDao;
+import com.yodde.evaluationModel.EvaluationDto;
 import com.yodde.pictureModel.PictureDao;
 import com.yodde.pictureModel.PictureDto;
 import com.yodde.reviewModel.Review;
@@ -101,6 +102,7 @@ public class SearchStoreCtrl {
 		List<Review> reviewList = null;
 		List<PictureDto> pictureList = null;
 		int eval = 0;
+		List<EvaluationDto> evalDto = null;
 
 		if (check == 2) {
 			reviewList = reviewDao.getReviewsByStoreId(storeDto.getStoreId());
@@ -108,10 +110,9 @@ public class SearchStoreCtrl {
 				for (Review review : reviewList) {
 					eval = evaluationDao.evaluationCheck(email,
 							review.getReviewId());
-					if (eval == 1) {
-						reviewDao.insertReviewEval(eval);
-					}
 					review.setEval(eval);
+					evalDto = evaluationDao.selectList(email,
+							review.getReviewId());
 				}
 			}
 			pictureList = pictureDao.select7Picture(storeDto.getStoreId());
@@ -121,6 +122,7 @@ public class SearchStoreCtrl {
 		storeInfo = storeDao.selectStoreInfo(storeId);
 
 		// set response value
+		mav.addObject("eval", evalDto);
 		mav.addObject("storeInfo", storeInfo);
 		mav.addObject("reviewList", reviewList);
 		mav.addObject("pictureList", pictureList);
@@ -214,7 +216,7 @@ public class SearchStoreCtrl {
 	public ModelAndView getLocalStore(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		String address = request.getParameter("address");
-		//System.out.println("address = " + address);
+		// System.out.println("address = " + address);
 		List<StoreDto> list = storeDao.selectStoreByAddress(address);
 
 		ModelAndView mav = new ModelAndView();

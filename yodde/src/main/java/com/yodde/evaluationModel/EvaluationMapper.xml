@@ -22,4 +22,8 @@
    <delete id="deleteEval" parameterType="com.yodde.evaluationModel.EvaluationDto">
       delete evaluation where evaluator=#{evaluator} and reviewId=#{reviewId}
    </delete>
+   
+   <select id="selectEvalList" parameterType="java.util.HashMap" resultType="com.yodde.evaluationModel.EvaluationDto">
+      select * from evaluation where evaluator=#{email} and reviewId=#{reviewId}
+   </select>
 </mapper>
