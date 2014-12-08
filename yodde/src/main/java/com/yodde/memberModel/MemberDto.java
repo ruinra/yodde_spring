@@ -14,6 +14,15 @@ public class MemberDto {
 	
 	private MultipartFile uploadfile;
 	
+	private int verificationCode;
+	
+	public int getVerificationCode() {
+		return verificationCode;
+	}
+	public void setVerificationCode(int code) {
+		this.verificationCode = code;
+	}
+	
 	public String getEmail() {
 		return email;
 	}	

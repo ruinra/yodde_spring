@@ -17,6 +17,7 @@ public interface StoreDao {
 	public List<StoreDto> selectStoreByCategory(String categoryLevel, String category);
 	public List<StoreDto> selectNewOpen();
    public List<StoreDto> selectHotPlace();
+   public List<StoreDto> selectStoreByAddress(String query);
    public List<LikeDto> selectLike();
    public List<FollowReview> selectFollowReview(String email);
    public List<FollowStore> selectFollowStoreReview(String email);

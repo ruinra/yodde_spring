@@ -24,7 +24,14 @@ public class Review {
 	private List<String> picPath;
 	private String writer_email;
 	private int eval; // 0 : no eval 1: like 2: unlike 3: report
+	private int totalReview;
 
+	public int getTotalReview() {
+		return totalReview;
+	}
+	public void setTotalReview(int totalReview) {
+		this.totalReview = totalReview;
+	}
 	public int getEval() {
 		return eval;
 	}

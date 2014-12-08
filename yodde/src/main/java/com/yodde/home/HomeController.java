@@ -82,4 +82,13 @@ public class HomeController {
 		return mav;
 	}
 	
+	@RequestMapping(value = "/test", method = RequestMethod.GET)
+	public ModelAndView test(HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("/home");
+		
+		return mav;
+	}
 }

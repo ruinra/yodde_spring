@@ -12,4 +12,5 @@ public interface MemberDao {
 	public int updateMember(MemberDto memberDto);
 	public int idCheck(String email);
 	public int nickName(String name);
+	public int       memberDelete(MemberDto memberDto);
 }

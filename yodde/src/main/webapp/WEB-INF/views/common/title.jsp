@@ -100,19 +100,22 @@
                               </span>
 		                        <span id="memberMenu" class="menu-menu-1-container">
 		                           <ul class="category" style="margin-left:0px">
-		                              <li class="category_li" id=""><a href="${root}/info/modifyMember?email=${email}">회원정보수정</a></li>
+									  <li class="category_li" id=""><a href="${root}/info/passwordConfirm?email=${email}">회원정보수정</a></li>
 		                              <li class="category_li" id=""><a href="${root}/info/followerList?email=${email}">팔로워리스트</a></li>
 		                              <li class="category_li" id=""><a href="${root}/info/followingList?email=${email}">팔로잉리스트 </a></li>
 		                              <li class="category_li" id=""><a href="${root}/info/storeFollowingList?email=${email}">스토어 팔로잉리스트</a></li>
 		                              <li class="category_li" id=""><a href="${root}/info/memHistory?email=${email}">나의 리뷰</a></li>
-		                              <li class="category_li" id=""><a href="">회원탈퇴</a></li>		                             
+		                              <li class="category_li" id=""><a href="${root}/info/deleteMember?email=${email}">회원탈퇴</a></li>		                             
 		                           </ul>
 		                        </span>
 		                        <span id="ownerMenu" class="menu-menu-1-container">
 		                           <ul class="category" style="margin-left:0px">
+		                          	  <li class="category_li" id=""><a href="${root}/info/OwPasswordConfirm?email=${email}">회원정보수정</a></li>
 		                              <li class="category_li" id=""><a href="${root}/info/modifyOwner?email=${email}">회원정보수정</a></li>
 		                              <li class="category_li" id=""><a href="${root}/info/modifyStore?email=${email}">스토어정보수정</a></li>
 		                              <li class="category_li" id=""><a href="${root}/info/storeFollowerList?email=${email}">팔로워리스트</a></li>
+		                              <li class="category_li" id=""><a href="${root}/info/deleteOwner?email=${email}">회원탈퇴</a></li>		                             
+		                              
 		                           </ul>
 		                        </span>
 							</span>

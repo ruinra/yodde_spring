@@ -9,5 +9,6 @@ public interface OwnerDao {
 	public OwnerDto selectOwner(String id);
 	public int updateOwnerFile(OwnerDto ownerDto);
 	public int updateOwner(OwnerDto ownerDto);
+	public int  deleteOwner(OwnerDto ownerDto);
 	
 }

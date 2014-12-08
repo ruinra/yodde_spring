@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -15,6 +16,12 @@
 		<div>
 			<jsp:include page="../common/title.jsp"/>			<!-- title -->
 		</div>
+		<script>
+			var msg = "${msg}";
+			if (msg.length > 0) {
+				alert(msg);
+			}
+		</script>
 		
 		<div class="content">
 			<div class="content_login">
@@ -44,7 +51,7 @@
 							<a href="/home/member/join" onclick="">
 								<img src="${root}/resources/images/images/JOIN.png" height="30">
 							</a>
-							<a href="" onclick="">
+							<a href="${root}/passwordMail" onclick="">
 								<img src="${root}/resources/images/images/FIND.png" height="30">
 							</a>
 						</div>

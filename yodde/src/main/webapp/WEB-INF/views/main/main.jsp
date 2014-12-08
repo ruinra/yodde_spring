@@ -205,8 +205,70 @@
             });
          });
       </script>
-   </head>
-   <body>
+      <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=true"></script>
+		<script type="text/javascript">
+		// Note that using Google Gears requires loading the Javascript
+		// at http://code.google.com/apis/gears/gears_init.js
+            
+        var initialLocation;
+        var siberia = new google.maps.LatLng(60, 105);
+        var newyork = new google.maps.LatLng(50.69847032728747, -73.9514422416687);
+        var browserSupportFlag = new Boolean();
+        
+        function initialize(){
+            // Try W3C Geolocation (Preferred)
+            if (navigator.geolocation) {
+                browserSupportFlag = true;                    
+                navigator.geolocation.getCurrentPosition(function(position){
+                	GoogleMap.initialize(position.coords.latitude, position.coords.longitude);
+                }, function(){
+                    handleNoGeolocation(browserSupportFlag);
+                });
+                // Try Google Gears Geolocation
+            }            
+			else {
+			    browserSupportFlag = false;
+			    handleNoGeolocation(browserSupportFlag);
+			}
+            
+            GoogleMap = {initialize : function(latitude, logitude) {
+            	var geocoder = new google.maps.Geocoder();
+            	geocoder.geocode({'latLng': new google.maps.LatLng(latitude, logitude)},
+            	function(result, status) {
+            		var address = result[2].formatted_address;
+            		var addressArray = address.split(" ");
+            		var addr = addressArray[1] + " " + addressArray[2];
+            		//var index = address.indexOf(" ");
+            		//var addr = address.substring(index+1, address.length);
+	                 $.ajax({
+	                 	type:"get",
+	                     url:"${root}/getLocalStore/",
+	                     data:"address=" + addr,
+	                     contentType:"text/xml; charset=utf-8", 
+	                     dataType:"html",
+	                     error: function(xhr, status, error) { alert("error : " +status); },
+	                     success: function(data){
+	                    	//alert(data);
+	                        var divRegion = document.getElementById("region");
+	                        divRegion.innerHTML = data;                 
+	                     } 
+	     			}); // Ajax 호출 및 이벤트 핸들러 함수 정의
+            	});
+            	}
+            }
+            
+            function handleNoGeolocation(errorFlag){
+                if (errorFlag == true) {
+                	document.getElementById("address").value = "";	
+                }
+                else {
+                	document.getElementById("address").value = "";
+                }
+            }           
+        }
+		</script>
+	</head>
+	<body onload="initialize()">
       <div>
          <jsp:include page="../common/title.jsp"/>      <!-- title -->
       </div>
@@ -246,21 +308,8 @@
                   <img src="${root}/resources/images/images/2_REGION.png" height="40"> 지역 중심 상점
                </div>
                <div class="stores" id="pic_slide">
-                  <div class="slide_title">
-                     <ul id="carousel2" class="elastislide-list">
-                        <c:forEach begin="1" end="6" varStatus="s">
-                           <li class="main_recommend" id="">
-                              <a href="#" id="">
-                                 <div id="" class="pic1" style="background: url(/home/resources/images/images/ex1.jpg); background-size: 250px;">
-                                    <div class="text">
-                                       <span id="" class="tit">7Train</span><br/>
-                                       <span id="" class="add">강남역 11번 출구</span>
-                                    </div>
-                                 </div>
-                              </a>
-                           </li>
-                        </c:forEach>
-                     </ul>
+                  <div class="slide_title" id="region">
+                     
                   </div>
                </div>
             </div>
