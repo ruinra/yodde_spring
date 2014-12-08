@@ -40,8 +40,8 @@
       update store set openDate=#{openDate}, serviceTime=#{serviceTime}, status=#{status}, homePage=#{homepage}, profilePic=#{profilePic} where storeId=#{storeId}
    </update>
    
-   <select id="selectStoreByStoreName" parameterType="String" resultType="com.yodde.storeModel.StoreInfoDto">	
-   	select * from store_info where storeId in (select storeId from store where storeName like #{query})
+   <select id="selectStoreByStoreInfo" parameterType="java.util.HashMap" resultType="com.yodde.storeModel.StoreAndStoreInfoDto">	
+		SELECT s.*, i.*, ${storeInfo} as total FROM STORE s, STORE_INFO i WHERE S.STOREID = I.STOREID AND s.storeName like #{query} ORDER BY total desc
    </select>
    
    

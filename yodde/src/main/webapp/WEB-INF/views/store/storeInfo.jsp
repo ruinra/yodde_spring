@@ -19,6 +19,7 @@
       
       <script type="text/javascript" src="${root}/resources/scripts/jquery-2.1.1.js"></script>
       <script type="text/javascript" src="${root}/resources/scripts/jquery.raty.js"></script>
+ 
       <script type="text/javascript">
          function writeReview() {
             alert("write");
@@ -188,28 +189,38 @@
             }
          }
       </script>
-      
       <script type="text/javascript">               /* like unlike */
          function evaluation(eval, reviewId) {
             var email="${email}";
             var url="evaluation?email=" + email + "&reviewId=" + reviewId + "&eval=" + eval;
+            //alert(eval);
+            
             if (email == "") {
                alert("로그인 후 이용하세요.");
                   return;
-               }
-            $.ajax({
-               url:url,
-               type:"post",
-               contentType:"text/xml; charset=utf-8", 
-               dataType: "text",
-               error: function(xhr, status, error) { alert("error : " +status); },
-               success: function(data){
-                  alert(data)
-               }
-            });
+            }
+            else{
+               $(document).ready(function(){
+                  $.ajax({
+                     url:url,
+                     type:"post",
+                     contentType:"text/xml; charset=utf-8", 
+                     dataType: "text",
+                     error: function(xhr, status, error) { alert("error : " +status); },
+                     success: function(data){
+                        //alert(data);
+                        if(data==1){
+                           //$("#upNumber").val("up");
+                           $("#itemReview_eval").text("dd");
+                        }else{
+                           
+                        }
+                     }
+                  });
+               })
+            }
          }
-      </script>
-   </head>
+      </script>   </head>
    <body>
       <div>
          <jsp:include page="../common/title.jsp" />    <!-- title -->
@@ -340,41 +351,42 @@
    
                   <li class="store_icon">
                      <!-- 스토어 info -->
+         
                      <c:if test="${storeInfo.reservation==1}">
-                        <img src="${root}/resources/images/store_info_img/reservation.png" width="45" style="margin-right: 10px;">
+                        <img src="${root}/resources/images/images_store_info/reservation.png" title="reservation" width="45" style="margin-right: 10px;">
                      </c:if>
                      <c:if test="${storeInfo.delivery==1}">
-                        <img src="${root}/resources/images/store_info_img/delivery.png" width="45" style="margin-right: 10px;">
+                        <img src="${root}/resources/images/images_store_info/delivery.png" title="reservation" width="45" style="margin-right: 10px;">
                      </c:if>
                      <c:if test="${storeInfo.takeOut==1}">
-                        <img src="${root}/resources/images/store_info_img/takeout.png" width="55" style="margin-right: 10px;">
+                        <img src="${root}/resources/images/images_store_info/takeout.png" width="55" style="margin-right: 10px;">
                      </c:if>
                      <c:if test="${storeInfo.creditCard==1}">
-                        <img src="${root}/resources/images/store_info_img/card.png" width="55" style="margin-right: 10px;">
+                        <img src="${root}/resources/images/images_store_info/card.png" width="55" style="margin-right: 10px;">
                      </c:if>
                      <c:if test="${storeInfo.parking==1}">
-                        <img src="${root}/resources/images/store_info_img/parking.png" width="55" style="margin-right: 10px;">
+                        <img src="${root}/resources/images/images_store_info/parking.png" width="55" style="margin-right: 10px;">
                      </c:if>
                      <c:if test="${storeInfo.group1==1}">
-                        <img src="${root}/resources/images/store_info_img/group.png" width="55" style="margin-right: 10px;">
+                        <img src="${root}/resources/images/images_store_info/group.png" width="55" style="margin-right: 10px;">
                      </c:if>
                      <c:if test="${storeInfo.toilet==1}">
-                        <img src="${root}/resources/images/store_info_img/toilet.png" width="45" style="margin-right: 10px;">
+                        <img src="${root}/resources/images/images_store_info/toilet.png" width="45" style="margin-right: 10px;">
                      </c:if>
                      <c:if test="${storeInfo.wifi==1}">
-                        <img src="${root}/resources/images/store_info_img/wifi.png" width="50" style="margin-right: 10px;">
+                        <img src="${root}/resources/images/images_store_info/wifi.png" width="50" style="margin-right: 10px;">
                      </c:if>
                      <c:if test="${storeInfo.tv==1}">
-                        <img src="${root}/resources/images/store_info_img/tv.png" width="55" style="margin-right: 10px;">
+                        <img src="${root}/resources/images/images_store_info/tv.png" width="55" style="margin-right: 10px;">
                      </c:if>
                      <c:if test="${storeInfo.seating==1}">
-                        <img src="${root}/resources/images/store_info_img/seating.png" width="55" style="margin-right: 10px;">
+                        <img src="${root}/resources/images/images_store_info/seating.png" width="55" style="margin-right: 10px;">
                      </c:if>
                      <c:if test="${storeInfo.kids==1}">
-                        <img src="${root}/resources/images/store_info_img/kids.png" width="55" style="margin-right: 10px;">
+                        <img src="${root}/resources/images/images_store_info/kids.png" width="55" style="margin-right: 10px;">
                      </c:if>
                      <c:if test="${storeInfo.driveThrough==1}">
-                        <img src="${root}/resources/images/store_info_img/drive_through.png" width="55" style="margin-right: 10px;">
+                        <img src="${root}/resources/images/images_store_info/drive_through.png" width="55" style="margin-right: 10px;">
                      </c:if>
                   </li>
                </ul>
@@ -488,6 +500,7 @@
                                     </c:if>
                                  </span>
                                  <span class="updown_position"> <!-- 리뷰 찬반 -->
+                                 <p>리뷰 찬: ${itemReview.like1}</p>
                                     <a href="javascript:evaluation(1,'${itemReview.reviewId}')">
                                        <img src="${root}/resources/images/images/up.png" height="25">
                                     </a>

@@ -10,4 +10,5 @@ public interface ReviewDao {
 	public double averageRate(String email);
 	public List<Review> getReviewByWriter(String email);
 	public int             deleteReveiw(int reviewId, int storeId);
+	public int             insertReviewEval(int storeId);
 }

@@ -17,7 +17,14 @@ public class StoreInfoDto {
 	private int seating;
 	private int kids;
 	private int driveThrough;
-	
+	private int total;
+
+	public int getTotal() {
+		return total;
+	}
+	public void setTotal(int total) {
+		this.total = total;
+	}
 	public int getStoreId() {
 		return storeId;
 	}

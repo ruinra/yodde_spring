@@ -65,5 +65,11 @@
 	<delete id="deleteReveiw" parameterType="int">
       DELETE FROM REVIEW WHERE REVIEWID=#{reviewId}
    </delete>
+   
+   <update id="insertLikeUnlike" parameterType="java.util.HashMap">
+	<![CDATA[
+		update review set like1 = like1+#{Like}, unlike =unlike+#{Unlike} where reviewId =#{reviewId}
+	]]>
+   </update>
 
 </mapper>

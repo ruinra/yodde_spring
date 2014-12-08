@@ -56,7 +56,7 @@ function search(checked){
     
                <div id="panel" >
                   <script>
-                     var option = ["card", "delivery", "drive_through", "group", "kids", "parking",
+                     var option = ["creditcard", "delivery", "drivethrough", "group1", "kids", "parking",
                                    "reservation", "seating", "takeout", "toilet", "tv", "wifi"];
                      var optionUrl = [];
                      var j=0;

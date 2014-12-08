@@ -153,4 +153,11 @@ public class ReviewDaoImp implements ReviewDao {
 	      
 	      return check;
 	   }
+	
+	@Override
+	   public int insertReviewEval(int storeId) {
+	      int check=0;
+	         //매퍼까지 연결 안된 상태
+	      return check;
+	   }
 }

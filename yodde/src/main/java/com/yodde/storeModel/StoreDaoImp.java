@@ -191,14 +191,28 @@ public class StoreDaoImp implements StoreDao {
 	}
 
 	@Override
-	public List<StoreInfoDto> selectStoreByStoreInfo(String query) {
-		List<StoreInfoDto> list= null;
+	public List<StoreAndStoreInfoDto> selectStoreByStoreInfo(String query, String[] infoChecked) {
+		List<StoreAndStoreInfoDto> list= null;
 		query = query.toUpperCase();
-		//System.out.println("StoreDaoImp > = "+query);
+	
+		HashMap<String, String> hMap = new HashMap<String, String>();
+		String storeInfo = "";
+		
+//		query를 stroreInfo에 담아주고 hashMap에 value 값으로 너어준다
+		
+		storeInfo = "i."+infoChecked[0]+" ";
+		for(int i=1; i<infoChecked.length;i++){
+			storeInfo += "+ i."+infoChecked[i]+" ";
+		}
+		hMap.put("query", "%"+query+"%");
+		
+		hMap.put("storeInfo",storeInfo);
+		//System.out.println(storeInfo);
+		//System.out.println("hashMap.get(storeInfo)="+hMap.get("storeInfo"));
 		
 		try{ 
 			session= sqlSessionFactory.openSession();
-			list = session.selectList("selectStoreByStoreName", "%"+query+"%");
+			list = session.selectList("selectStoreByStoreInfo", hMap);
 			//System.out.println("StoreDaoImp  ="+list.size());
 		}catch(Exception e){
 			System.out.println("StoreDaoImp > selectStoreByStoreInfo Error");
@@ -220,7 +234,6 @@ public class StoreDaoImp implements StoreDao {
 	      
 	      try{
 	         session = sqlSessionFactory.openSession();
-//	         list=session.selectList("selectStoreByCategory", '%'+category+'%');
 	         list=session.selectList("selectStoreByCategory", hMap);
 	      }catch(Exception e){
 	         System.out.println("StoreDaoImp > selectStoreByCategory error");
