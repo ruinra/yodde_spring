@@ -91,15 +91,15 @@ public class RelationDaoImp implements RelationDao {
       hMap.put("followee", followee);
       
       int value=0;
-      System.out.println("1. follower =" + follower);
-      System.out.println("2. followee =" + followee);
+     // System.out.println("1. follower =" + follower);
+      //System.out.println("2. followee =" + followee);
       
       //System.out.println("RelationDaoImp> relationDaoImp "+follower + followee);
       //System.out.println("RelationDaoImp> checkFollowingMember> "+hMap);
       try{
          session=sqlSessionFactory.openSession();
          String followCheck=session.selectOne("checkFollowMember", hMap);
-         System.out.println("3. RelationDaoImp > followCheck "+followCheck);
+       //  System.out.println("3. RelationDaoImp > followCheck "+followCheck);
          
          if(followCheck != null) value=1;
          if(followCheck == null) value=0;
@@ -109,7 +109,7 @@ public class RelationDaoImp implements RelationDao {
       }finally{
          session.close();
       }
-      System.out.print("4. 맞팔여부 =" + value);
+     // System.out.print("4. 맞팔여부 =" + value);
       return value;
    }
 
