@@ -16,7 +16,7 @@ public interface RelationDao {
 	
 	public List<StoreDto> selectFollowingStore(String email);
 	public List<MemberDto> selectFollowingMember(String email);
-	public List<MemberDto> selectFollowerMember(String email);
+	public List<RelationDto> selectFollowerMember(String email);
 	
 	public int getfollowingStoreCnt(String email);
 	public int getFollowingCnt(String email);

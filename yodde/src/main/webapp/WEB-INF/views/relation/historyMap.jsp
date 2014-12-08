@@ -12,19 +12,42 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 
-<link rel="stylesheet" type="text/css"
-	href="${root}/resources/css/commons/common.css" />
+<link rel="stylesheet" type="text/css" href="${root}/resources/css/commons/common.css" />
 <!-- footer, title css -->
-<link rel="stylesheet" type="text/css"
-	href="${root}/resources/css/commons/category.css" />
+<link rel="stylesheet" type="text/css" href="${root}/resources/css/commons/category.css" />
 <!-- category css -->
-<link rel="stylesheet" type="text/css"
-	href="${root}/resources/css/main/main.css" />
+<link rel="stylesheet" type="text/css" href="${root}/resources/css/main/main.css" />
 <!-- main css -->
-<link rel="stylesheet" type="text/css"
-	href="${root}/resources/css/follow/follow.css" />
+<link rel="stylesheet" type="text/css" href="${root}/resources/css/follow/follow.css" />
 <script type="text/javascript" src="${root}/resources/scripts/jquery-2.1.1.js"></script>
 <script type="text/javascript" src="${root}/resources/scripts/jquery.raty.js"></script>
+
+<script type="text/javascript">
+	function paging(email, startNumb){
+		var email= email;
+		var startNumb = startNumb;
+		
+		var url = "historyPaging?startNumb="+startNumb +"&email="+email;
+		alert(url);
+		$.ajax({
+			url:url,
+			type:"get",
+			contentType:"text/xml; charset=utf-8",
+			dataType:"text",
+			error: function(xhr, status, error){alert("error:" + status)},
+			success: function(data){
+				alert("data="+"${reviewList}");
+				<c:forEach begin ="0" end ="10" var="itemReview" varStatus="itemStatus" items="${reviewList}">
+				
+				</c:forEach>
+				$(".HR_board").empty();
+				
+			}
+		})
+	}
+
+</script>
+
 
 </head>
 <body style="min-width: 1260px;">
@@ -64,12 +87,11 @@
 					score: ${average}
 				});
 			</script>
-	${nameList[0].address}
 
 
 			<div class="historyreview_box">
-				여기부터 시작
 				<div class="HR_board">
+				<!-- DB에서 받아서 리뷰 뿌려주는 부분 -->
 					<c:forEach begin ="0" end = "${fn:length(reviewList)}" var="itemReview" varStatus="itemStatus" items="${reviewList}">
 						<!-- 리뷰 댓글 -->
 						<div class="HR_storeimg">
@@ -129,7 +151,14 @@
 							</span>
 							</span>
 						</div>
-
+					</c:forEach>
+					
+				</div>
+				<div style="text-align:center">
+					<c:forEach varStatus="s" items="${reviewList}" begin="1" end="${total}">
+						<span>
+							<a href="javascript:paging('${email}','${s.count*10-9}')">[${s.count}]</a>
+						</span>
 					</c:forEach>
 				</div>
 			</div>

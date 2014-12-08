@@ -39,17 +39,22 @@ public class MemberHistoryCtrl {
 		
 		// 리뷰들 받아오는 부분
 		// select review : 원래 스토어가 있을때만 리뷰검색 : 사진검색
-		int check = 0;
+		int startNumb = 1;
+		int endNumb = 10;
 		
 		List<Review> reviewList = null;
-		// List<PictureDto> pictureList = null;
-		reviewList = reviewDao.getReviewByWriter(email);
-
+		//List<PictureDto> pictureList = null;
+		reviewList = reviewDao.getReviewByWriter(email, startNumb, endNumb);
+		
+		double totalPage =Math.ceil(reviewDao.getReviewTotal(email)/10);
+		
+		
 		
 		List<StoreDto> nameList;
 		nameList=storeDao.selectRecentReviewName(email);
 		
 		ModelAndView mav = new ModelAndView();
+		mav.addObject("total", totalPage);
 		mav.addObject("average", avg); // 평균평점 값
 		mav.addObject("reviewList", reviewList);
 		mav.addObject("nameList", nameList);
@@ -57,6 +62,27 @@ public class MemberHistoryCtrl {
 
 		mav.setViewName("/relation/historyMap");
 
+		return mav;
+	}
+	
+	@RequestMapping(value ="/info/historyPaging", method = RequestMethod.GET)
+	public ModelAndView historyPaging(HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		String email = request.getParameter("email");
+		int startNumb = Integer.parseInt(request.getParameter("startNumb"));
+		int endNumb = startNumb+9;
+		
+		//System.out.println("email=" + email + "\nstartNumb="+startNumb+"\nendNumb="+endNumb);
+		
+		List<Review> reviewList = null;
+		reviewList = reviewDao.getReviewByWriter(email, startNumb, endNumb);
+
+		
+		
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("reviewList", reviewList);
+		mav.setViewName("/result");
+		
 		return mav;
 	}
 

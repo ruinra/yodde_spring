@@ -176,7 +176,28 @@ public class MemberDaoImp implements MemberDao {
 		}
 		return value;
 	}
-
+	
+	@Override
+	   public int memberDelete(MemberDto memberDto) {
+	      int value = 0;
+	      
+	      try {
+	         session = sqlSessionFactory.openSession();
+	         value = session.delete("deleteMember", memberDto);
+	         if (value > 0){
+	            session.delete("deleteReviewByMemberDelete", memberDto.getEmail());
+	            session.delete("deleteAuthByMemberDelete", memberDto.getEmail());
+	         }
+	         session.commit();
+	      }catch(Exception e) {
+	         System.out.println("deleteMember Error");
+	         e.printStackTrace();
+	      }finally{
+	         session.close();
+	      }
+	      
+	      return value;
+	   }
 
 
 }

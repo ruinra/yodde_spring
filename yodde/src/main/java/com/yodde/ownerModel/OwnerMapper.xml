@@ -4,35 +4,46 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="www.yodde.co.kr/store">
 	<insert id="storeJoin" parameterType="com.yodde.ownerModel.OwnerDto">
-		insert into owner(email, storeId, storeName, password, registerNum, profilePic) values(
-			#{email},
-			#{storeId},
-			#{storeName},
-			#{password},
-			#{registerNum},
-			#{profilePic, jdbcType=VARCHAR}
+		insert into owner(email,
+		storeId, storeName, password, registerNum, profilePic) values(
+		#{email},
+		#{storeId},
+		#{storeName},
+		#{password},
+		#{registerNum},
+		#{profilePic, jdbcType=VARCHAR}
 		)
 	</insert>
-	
+
 	<insert id="ownerJoinAuth" parameterType="java.util.HashMap">
-		insert into auth values(
-			#{email},
-			#{authority}
+		insert into auth
+		values(
+		#{email},
+		#{authority}
 		)
 	</insert>
-	
-	<select id="selectOwner" parameterType="String" resultType="com.yodde.ownerModel.OwnerDto">
+
+	<select id="selectOwner" parameterType="String"
+		resultType="com.yodde.ownerModel.OwnerDto">
 		select * from owner where email = #{id}
 	</select>
-	
+
 	<update id="ownerUpdateFile" parameterType="com.yodde.ownerModel.OwnerDto">
-		update owner set password = #{password}, profilepic = #{profilePic}	where email = #{email}
+		update owner set
+		password = #{password}, profilepic = #{profilePic} where email =
+		#{email}
 	</update>
-	
+
 	<update id="ownerUpdate" parameterType="com.yodde.ownerModel.OwnerDto">
-		update owner set password = #{password}	where email = #{email}
+		update owner set password
+		= #{password} where email = #{email}
 	</update>
-	
-	
-	
+
+	<delete id="deleteOwner" parameterType="com.yodde.ownerModel.OwnerDto">
+		DELETE FROM OWNER WHERE email=#{email} and password=#{password}
+	</delete>
+	<delete id="deleteAuthByOwnerDelete" parameterType="String">
+		DELETE FROM AUTH WHERE email=#{email}
+	</delete>
+
 </mapper>

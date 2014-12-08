@@ -11,6 +11,9 @@ public class MemberDto {
 	private String nickName;
 	private String profilePic;
 	private int memberLv;
+	
+	private MultipartFile uploadfile;
+	
 	private int verificationCode;
 	
 	public int getVerificationCode() {
@@ -19,7 +22,6 @@ public class MemberDto {
 	public void setVerificationCode(int code) {
 		this.verificationCode = code;
 	}
-	private MultipartFile uploadfile;
 	
 	public String getEmail() {
 		return email;

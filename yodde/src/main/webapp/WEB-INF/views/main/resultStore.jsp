@@ -13,6 +13,7 @@
 		<link rel="stylesheet" type="text/css" href="${root}/resources/css/commons/category.css" />		<!-- category css -->
 		<link rel="stylesheet" type="text/css" href="${root}/resources/css/main/main.css"/>				<!-- main css -->
 		<script type="text/javascript" src="${root}/resources/scripts/jquery-2.1.1.js"></script>
+
 		<script type="text/javascript">
 			window.onload=category('${categoryName}')
 			
@@ -40,9 +41,7 @@
 			<jsp:include page="searchBar.jsp"/>					<!-- searchBar -->
 		</div>
       
-		<script type="text/javascript" src="${root}/resources/scripts/jQueryWeb.js"></script> 
-		<script type="text/javascript" src="${root}/resources/scripts/jQueryWeb2.js"></script>
-      
+
 		<div class="content">       							<!-- content -->
 			<div class="RS_content">
 				<div class="RS_box">
@@ -61,6 +60,7 @@
 							<jsp:param name="firstCategory" value="${categoryNames}"/>
 						</jsp:include>
 					</div>
+  					<script type="text/javascript" src="${root}/resources/scripts/jquery.raty.js"></script>
 				           
 					<div class="content"> 						<!-- content -->
 						<div class="HP_content">
@@ -73,6 +73,7 @@
 									</c:when>
 									<c:otherwise>
 										<ul style="none;" class="HP_thumbnails">
+										
 											<c:forEach items="${storeDto}" var="storeDto">
 												<li class="HP_stores">
 													<div class="HP_store_name" style="text-align:center;">
@@ -86,7 +87,8 @@
 													</div>
 													<div class="HP_store_starrate">
 														<span id="averageRate" class="input"></span>${storeDto.rate}
-														<!-- <script>
+														
+														<script>
 															$.fn.raty.defaults.path = '${root}/resources/images/images';
 															$('#averageRate').raty({
 																round : { down: .26, full: .6, up: .76 },
@@ -97,7 +99,7 @@
 																starHalf: 'history_half.png',
 																score: ${storeDto.rate}
 															});
-														</script> -->
+														</script>
 													</div>
 													<div class="HP_store_reviewnum">
 								  						<span class="reviewnum_title">
@@ -115,8 +117,12 @@
 				</div>
 			</div>
 		</div>
+   		<script type="text/javascript" src="${root}/resources/scripts/jQueryWeb.js"></script> 
+		<script type="text/javascript" src="${root}/resources/scripts/jQueryWeb2.js"></script>
+      
       
       <div>
+      
          <jsp:include page="../common/footer.jsp"/>      <!-- footer -->
       </div>
    </body>

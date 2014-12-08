@@ -40,8 +40,8 @@
       update store set openDate=#{openDate}, serviceTime=#{serviceTime}, status=#{status}, homePage=#{homepage}, profilePic=#{profilePic} where storeId=#{storeId}
    </update>
    
-   <select id="selectStoreByStoreName" parameterType="String" resultType="com.yodde.storeModel.StoreInfoDto">	
-   	select * from store_info where storeId in (select storeId from store where storeName like #{query})
+   <select id="selectStoreByStoreInfo" parameterType="java.util.HashMap" resultType="com.yodde.storeModel.StoreAndStoreInfoDto">	
+		SELECT s.*, i.*, ${storeInfo} as total FROM STORE s, STORE_INFO i WHERE S.STOREID = I.STOREID AND s.storeName like #{query} ORDER BY total desc
    </select>
    
    
@@ -76,9 +76,6 @@
    
 	<select id="selectStoreByCategory" parameterType="java.util.HashMap" resultType="com.yodde.storeModel.StoreDto">
       select * from store where category1 like #{query} or category2 like #{query}
-   </select>
-   <select id="selectStoreByAddress" parameterType="String" resultType="com.yodde.storeModel.StoreDto">
-   	SELECT * FROM store WHERE address LIKE #{query}
    </select>
    
    <select id="newOpen" resultType="com.yodde.storeModel.StoreDto">
@@ -118,5 +115,10 @@
          ((SELECT a.*, r.writedate, r.writer FROM REVIEW r, ((SELECT storeId, storename FROM STORE WHERE storeId in (SELECT storeId FROM FOLLOW_STORE WHERE storefollowee=#{email})) a)
          WHERE r.storeId=a.storeId) b) WHERE b.writer=m.email ORDER BY writedate desc) WHERE rownum <=6
       ]]>    
-    </select>   
+    </select>
+    
+    <select id="selectStoreByAddress" parameterType="String" resultType="com.yodde.storeModel.StoreDto">
+   		SELECT * FROM store WHERE address LIKE #{query}
+   </select>
+   
 </mapper>

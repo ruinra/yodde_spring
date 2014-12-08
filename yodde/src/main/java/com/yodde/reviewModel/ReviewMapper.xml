@@ -27,11 +27,14 @@
 
 	<select id="selectReviewByStoreId" parameterType="int"
 		resultType="com.yodde.reviewModel.Review">
-		select R.REVIEWID, R.STOREID, M.PROFILEPIC, M.NICKNAME AS writer, R.RATE,
+		select R.REVIEWID, R.STOREID, M.PROFILEPIC, M.NICKNAME AS
+		writer, R.RATE,
 		R.WRITEDATE, R.LASTMODIFY, R.LIKE1, R.UNLIKE,
-		R.REPORT, R.CONTENT, R.PIC1, R.PIC2, R.PIC3, R.PIC4, R.PIC5, R.WRITER AS
+		R.REPORT,
+		R.CONTENT, R.PIC1, R.PIC2, R.PIC3, R.PIC4, R.PIC5, R.WRITER AS
 		WRITER_EMAIL
-		from REVIEW r,MEMBER m where r.writer = m.email AND r.storeId = #{storeId}
+		from REVIEW r,MEMBER m where r.writer = m.email AND
+		r.storeId = #{storeId}
 		ORDER BY r.writedate DESC
 	</select>
 
@@ -41,7 +44,8 @@
 
 	<select id="selectRecentReviewRate" parameterType="String"
 		resultType="com.yodde.reviewModel.ReviewDto">
-		SELECT rv.rate FROM REVIEW rv, STORE s WHERE RV.WRITER=#{email} AND
+		SELECT rv.rate FROM REVIEW rv, STORE s WHERE
+		RV.WRITER=#{email} AND
 		RV.STOREID=S.STOREID ORDER BY RV.WRITEDATE DESC
 	</select>
 
@@ -56,14 +60,31 @@
 		select SUM(rate)/count(*) from review where writer=#{email}
 	</select>
 
-	<select id="selectReviewByWriter" parameterType="String"
+	<select id="selectReviewByWriter" parameterType="java.util.HashMap"
 		resultType="com.yodde.reviewModel.Review">
-		select * from review where
-		writer=#{email}
+	<![CDATA[
+		select count(*) over () as totalReview, r.* from review r where r.writer = #{email} and rownum between #{startNumb} and #{endNumb}
+	]]>
 	</select>
-	
+
 	<delete id="deleteReveiw" parameterType="int">
-      DELETE FROM REVIEW WHERE REVIEWID=#{reviewId}
-   </delete>
+		DELETE FROM REVIEW WHERE REVIEWID=#{reviewId}
+	</delete>
+
+	<update id="insertLikeUnlike" parameterType="java.util.HashMap">
+   <![CDATA[
+      update review set like1=like1+#{Like}, unlike=unlike+#{Unlike} where reviewId =#{reviewId}
+   ]]>
+	</update>
+
+	<update id="deleteLikeUnlike" parameterType="java.util.HashMap">
+   <![CDATA[
+      update review set like1=like1-#{Like}, unlike=unlike-#{Unlike} where reviewId =#{reviewId}
+   ]]>
+	</update>
+
+	<select id="getReviewTotal" parameterType="String" resultType="int">
+		select count(*) from review where writer=#{email}
+	</select>
 
 </mapper>

@@ -105,4 +105,25 @@ public class OwnerDaoImp implements OwnerDao {
 		}
 		return value;
 	}
+	
+	@Override
+	   public int  deleteOwner(OwnerDto ownerDto) {
+	      int value=0;
+	      
+	      try{
+	         session=sqlSessionFactory.openSession();
+	         value=session.delete("deleteOwner",ownerDto);
+	         if(value > 0){
+//	            session.delete("deleteReviewByOwnerDelete" , ownerDto.getEmail());
+	            session.delete("deleteAuthByOwnerDelete" , ownerDto.getEmail());
+	         }
+	         session.commit();
+	      }catch(Exception e){
+	         System.out.println("deleteOwner Error");
+	         e.printStackTrace();
+	      }finally{
+	         session.close();
+	      }
+	      return value;
+	   }
 }

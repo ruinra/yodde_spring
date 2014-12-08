@@ -190,23 +190,45 @@
       </script>
       
       <script type="text/javascript">               /* like unlike */
-         function evaluation(eval, reviewId) {
+         function checkEval(eval, reviewId, likeNum, evalInfo){
+            var email = "${email}";
+            var evaluator = "${eval[0].evaluator}";
+            var evalInfo = evalInfo;
+            //alert(evalInfo + ", " + eval);      //evalInfo : 기존정보, eval : 이번 정보
+            
+            if(evalInfo==eval || evalInfo=="" ||  evalInfo==0){
+               evaluation(eval, reviewId, likeNum);
+            }else{
+               alert("님 반대쪽에 투표했잖아염");
+            }
+         }
+      
+         function evaluation(eval, reviewId, likeNum) {
             var email="${email}";
             var url="evaluation?email=" + email + "&reviewId=" + reviewId + "&eval=" + eval;
+            //alert("evaluation function / eval : "+ eval + "\treviewId : " + reviewId + "likeNum" + likeNum);
+            var likeNum=likeNum;
+         
             if (email == "") {
                alert("로그인 후 이용하세요.");
                   return;
-               }
-            $.ajax({
-               url:url,
-               type:"post",
-               contentType:"text/xml; charset=utf-8", 
-               dataType: "text",
-               error: function(xhr, status, error) { alert("error : " +status); },
-               success: function(data){
-                  alert(data)
-               }
-            });
+            }
+            else{
+               $(document).ready(function(){
+                  $.ajax({
+                     url:url,
+                     type:"post",
+                     contentType:"text/xml; charset=utf-8", 
+                     dataType: "text",
+                     error: function(xhr, status, error) { alert("error : " +status); },
+                     success: function(data){
+                        //alert("ready function " + data);
+                        $("#upNumber").text(likeNum);
+                        location.reload();
+                     }
+                  });
+               })
+            }
          }
       </script>
    </head>
@@ -341,40 +363,40 @@
                   <li class="store_icon">
                      <!-- 스토어 info -->
                      <c:if test="${storeInfo.reservation==1}">
-                        <img src="${root}/resources/images/store_info_img/reservation.png" width="45" style="margin-right: 10px;">
+                        <img src="${root}/resources/images/images_store_info/reservation.png" width="45" style="margin-right: 10px;">
                      </c:if>
                      <c:if test="${storeInfo.delivery==1}">
-                        <img src="${root}/resources/images/store_info_img/delivery.png" width="45" style="margin-right: 10px;">
+                        <img src="${root}/resources/images/images_store_info/delivery.png" width="45" style="margin-right: 10px;">
                      </c:if>
                      <c:if test="${storeInfo.takeOut==1}">
-                        <img src="${root}/resources/images/store_info_img/takeout.png" width="55" style="margin-right: 10px;">
+                        <img src="${root}/resources/images/images_store_info/takeout.png" width="55" style="margin-right: 10px;">
                      </c:if>
                      <c:if test="${storeInfo.creditCard==1}">
-                        <img src="${root}/resources/images/store_info_img/card.png" width="55" style="margin-right: 10px;">
+                        <img src="${root}/resources/images/images_store_info/card.png" width="55" style="margin-right: 10px;">
                      </c:if>
                      <c:if test="${storeInfo.parking==1}">
-                        <img src="${root}/resources/images/store_info_img/parking.png" width="55" style="margin-right: 10px;">
+                        <img src="${root}/resources/images/images_store_info/parking.png" width="55" style="margin-right: 10px;">
                      </c:if>
                      <c:if test="${storeInfo.group1==1}">
-                        <img src="${root}/resources/images/store_info_img/group.png" width="55" style="margin-right: 10px;">
+                        <img src="${root}/resources/images/images_store_info/group.png" width="55" style="margin-right: 10px;">
                      </c:if>
                      <c:if test="${storeInfo.toilet==1}">
-                        <img src="${root}/resources/images/store_info_img/toilet.png" width="45" style="margin-right: 10px;">
+                        <img src="${root}/resources/images/images_store_info/toilet.png" width="45" style="margin-right: 10px;">
                      </c:if>
                      <c:if test="${storeInfo.wifi==1}">
-                        <img src="${root}/resources/images/store_info_img/wifi.png" width="50" style="margin-right: 10px;">
+                        <img src="${root}/resources/images/images_store_info/wifi.png" width="50" style="margin-right: 10px;">
                      </c:if>
                      <c:if test="${storeInfo.tv==1}">
-                        <img src="${root}/resources/images/store_info_img/tv.png" width="55" style="margin-right: 10px;">
+                        <img src="${root}/resources/images/images_store_info/tv.png" width="55" style="margin-right: 10px;">
                      </c:if>
                      <c:if test="${storeInfo.seating==1}">
-                        <img src="${root}/resources/images/store_info_img/seating.png" width="55" style="margin-right: 10px;">
+                        <img src="${root}/resources/images/images_store_info/seating.png" width="55" style="margin-right: 10px;">
                      </c:if>
                      <c:if test="${storeInfo.kids==1}">
-                        <img src="${root}/resources/images/store_info_img/kids.png" width="55" style="margin-right: 10px;">
+                        <img src="${root}/resources/images/images_store_info/kids.png" width="55" style="margin-right: 10px;">
                      </c:if>
                      <c:if test="${storeInfo.driveThrough==1}">
-                        <img src="${root}/resources/images/store_info_img/drive_through.png" width="55" style="margin-right: 10px;">
+                        <img src="${root}/resources/images/images_store_info/drive_through.png" width="55" style="margin-right: 10px;">
                      </c:if>
                   </li>
                </ul>
@@ -468,7 +490,7 @@
                      <div class="review">
                         <!-- DB에서 리뷰 받아와서 뿌려줌 -->
                         <span class="reviewer_profile"> 
-                           <span class="review_content"> <!-- 리뷰어 내용 -->
+                           <span class="review_content">             <!-- 리뷰 내용 -->
                               <span id="hide">
                                  <span id="user_rate">
                                     <c:if test="${itemReview.rate==1}">
@@ -487,15 +509,22 @@
                                        <img src="${root}/resources/images/images/rate_5.png">
                                     </c:if>
                                  </span>
-                                 <span class="updown_position"> <!-- 리뷰 찬반 -->
-                                    <a href="javascript:evaluation(1,'${itemReview.reviewId}')">
+                                 <!-- 리뷰 찬반 -->
+                                 <span class="updown_position"> 
+                                    <!-- Like -->
+                                    <a href="javascript:checkEval(1,'${itemReview.reviewId}', '${itemReview.like1}','${eval[0].eval}')">
                                        <img src="${root}/resources/images/images/up.png" height="25">
                                     </a>
-                                    ${itemReview.like1}
-                                    <a href="javascript:evaluation(2,'${itemReview.reviewId}')">
+                                    <span id="upNumber">${itemReview.like1}</span>
+                                    
+                                    <!-- Unlike -->
+                                    <a href="javascript:checkEval(2,'${itemReview.reviewId}', '${itemReview.unlike}', '${eval[0].eval}')">
                                        <img src="${root}/resources/images/images/down.png" height="25">
                                     </a>
-                                    ${itemReview.unlike} ${itemReview.eval}
+                                    <span id="downNumber">${itemReview.unlike}</span>
+                                    <span id="itemReview_eval">
+                                       
+                                    </span>
                                  </span>
                               </span>
                               

@@ -3,21 +3,27 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="www.yodde.co.kr/store">
-	<select id="checkEvaluation" parameterType="java.util.HashMap" resultType="com.yodde.evaluationModel.EvaluationDto" >
-		select * from evaluation where evaluator=#{email} and reviewId=#{reviewId}
-	</select>
-	
-	<insert id="insertEval" parameterType="com.yodde.evaluationModel.EvaluationDto">
-		insert into evaluation(evalId, reviewId, evaluator, eval, reportDetail) values(
-			seq_evaluation.nextval,
-			#{reviewId},
-			#{evaluator},
-			#{eval},
-			#{reportDetail, jdbcType=VARCHAR}
-		)
-	</insert>
-	
-	<delete id="deleteEval" parameterType="com.yodde.evaluationModel.EvaluationDto">
-		delete evaluation where evaluator=#{evaluator} and reviewId=#{reviewId}
-	</delete>
+   <select id="evaluationCheck" parameterType="java.util.HashMap" resultType="com.yodde.evaluationModel.EvaluationDto" >
+      <![CDATA[
+         select * from evaluation where evaluator=#{email} and reviewId=#{reviewId}
+      ]]>
+   </select>
+   
+   <insert id="insertEval" parameterType="com.yodde.evaluationModel.EvaluationDto">
+      insert into evaluation(evalId, reviewId, evaluator, eval, reportDetail) values(
+         seq_evaluation.nextval,
+         #{reviewId},
+         #{evaluator},
+         #{eval},
+         #{reportDetail, jdbcType=VARCHAR}
+      )
+   </insert>
+   
+   <delete id="deleteEval" parameterType="com.yodde.evaluationModel.EvaluationDto">
+      delete evaluation where evaluator=#{evaluator} and reviewId=#{reviewId}
+   </delete>
+   
+   <select id="selectEvalList" parameterType="java.util.HashMap" resultType="com.yodde.evaluationModel.EvaluationDto">
+      select * from evaluation where evaluator=#{email} and reviewId=#{reviewId}
+   </select>
 </mapper>

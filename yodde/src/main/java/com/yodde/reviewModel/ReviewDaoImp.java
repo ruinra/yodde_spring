@@ -1,6 +1,7 @@
 package com.yodde.reviewModel;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -118,12 +119,19 @@ public class ReviewDaoImp implements ReviewDao {
 	}
 
 	@Override
-	public List<Review> getReviewByWriter(String email) {
+	public List<Review> getReviewByWriter(String email, int startNumb, int endNumb) {
+		HashMap<String, Object> hMap = new HashMap<String, Object>();
+		
 		List<Review> list=null;
-		System.out.println("email"+email);
+		hMap.put("email", email);
+		hMap.put("startNumb", startNumb);
+		hMap.put("endNumb", endNumb);
+		
+		//System.out.println("email = "+ email+"\n startNumb = " + startNumb + "\n endNumb = "+endNumb);
+		
 		try{
 			session = sqlSessionFactory.openSession();
-			list = session.selectList("selectReviewByWriter", email);
+			list = session.selectList("selectReviewByWriter", hMap);
 			//System.out.println("ReviewDaoImp list="+list);
 		}catch(Exception e){
 			e.printStackTrace();
@@ -153,4 +161,28 @@ public class ReviewDaoImp implements ReviewDao {
 	      
 	      return check;
 	   }
+	
+	@Override
+	   public int insertReviewEval(int storeId) {
+	      int check=0;
+	         //매퍼까지 연결 안된 상태
+	      return check;
+	   }
+
+	@Override
+	public int getReviewTotal(String email) {
+		int total =0;
+		
+		try{
+			session = sqlSessionFactory.openSession();
+			total = session.selectOne("getReviewTotal", email);
+		}catch(Exception e){
+			System.out.println("getReviewTotal Error");
+			e.printStackTrace();
+		}finally{
+			session.close();
+		}
+		
+		return total;
+	}
 }

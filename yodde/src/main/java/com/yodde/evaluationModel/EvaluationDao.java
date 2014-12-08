@@ -1,7 +1,10 @@
 package com.yodde.evaluationModel;
 
+import java.util.List;
+
 public interface EvaluationDao {
-	int evaluationCheck(String email, int reviewId);
-	int insertEval(EvaluationDto eval);
-	int deleteEval(EvaluationDto eval);
+   public int evaluationCheck(String email, int reviewId);
+   public int insertEval(EvaluationDto eval);
+   public int deleteEval(EvaluationDto eval); 
+   public List<EvaluationDto> selectList(String email, int reviewId); 
 }
