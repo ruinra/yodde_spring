@@ -43,7 +43,7 @@ a:hover {
 
 /*헤더 색깔! */
 #header {
-	background-color: #F38983
+	background-color: white;
 }
 
 /* 탑 검은색 바! */
@@ -129,10 +129,10 @@ a {
 	background: transparent url(../../images/images/categoryBtn.png)
 		no-repeat;
 	background-size: 32px 28px !important;
-	background-color:#F38983;
+	background-color:white;
 	cursor: pointer;
 	position: absolute;
-	left: 10px;
+	left: 180px;
 	top: 50%;
 	margin-top: -16px;
 	-o-transition: .5s;

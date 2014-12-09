@@ -38,7 +38,7 @@ function search(checked){
 <style> 
    #panel{
       text-align:center;
-      border:solid 2px #c3c3c3;
+      border:solid 1px #c3c3c3;
       padding:10px;
       display:none;
       position: fixed;

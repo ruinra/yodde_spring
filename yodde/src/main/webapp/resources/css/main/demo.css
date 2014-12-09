@@ -10,7 +10,8 @@ html { height: 100%; }
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	padding: 0;
-	margin: 0;
+	margin: auto;
+	max-width: 883px;
 }
 
 .slide_title {						/*사진크기 관련*/
@@ -19,5 +20,6 @@ html { height: 100%; }
 	padding: 0 10px;
 	margin: 0 15px 0 15px;
 	position: relative;
+	max-width: 830px;
 }
 

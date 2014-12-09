@@ -138,7 +138,7 @@
                action="${root}/member/memberJoin" method="post">
                <div class="result_title">
                   <!-- login title -->
-                  <img src="${root}/resources/images/images/join_title.png" height="55">
+                  <img src="${root}/resources/images/images/join_title.png" height="30">
                </div>
                
                 <p>	<!-- 이메일입력 -->
@@ -147,15 +147,16 @@
                      type="text" class="join_input error" style="ime-mode: active;"
                      name="email" placeholder=" ID@EMAIL"
                      onfocus="this.placeholder=''"
-                     onblur="this.placeholder=' ID@EMAIL'" value="">
+                     onblur="this.placeholder=' ID@EMAIL'" value="">&nbsp;
                      
-                     <label for="email" id="emailError" generated="true" class="error"> 이메일을 입력하세요.</label>
-              		 
               		 <!-- 중복체크 -->
               		 <a id="idCheck" name="idCheck"	
                      type="button" onclick="idCheck('${root}')"> <img
-                     src="${root}/resources/images/images/zipcode.png" height="30">
+                     src="${root}/resources/images/images/zipcode.png" height="20">
                  	 </a>
+                     
+                     <label for="email" id="emailError" generated="true" class="error">&nbsp;이메일을 입력하세요.</label>
+              		 
                </p>
                
                <p>	<!-- 닉네임입력 -->
@@ -164,15 +165,16 @@
                      type="text" class="join_input error" style="ime-mode: active;"
                      name="name" placeholder=" NICKNAME" 
                      onfocus="this.placeholder=''"
-                     onblur="this.placeholder=' NICKNAME'" value="">
+                     onblur="this.placeholder=' NICKNAME'" value="">&nbsp;
                      
-                     <label for="name" generated="true" class="error"> 2글자 이상으로 입력하세요.</label>
-
 					<!-- 중복체크 -->
               		 <a id="nickNameCheck" name="nickNameCheck"
-                     type="button" onclick="nickNameCheck('${root}')"> <img
-                     src="${root}/resources/images/images/zipcode.png" height="30">
+                     type="button" onclick="nickNameCheck('${root}')" style="margin: auto;"> <img
+                     src="${root}/resources/images/images/zipcode.png" height="20">
                  	 </a>
+                 	 
+                     <label for="name" generated="true" class="error">&nbsp; 2글자 이상으로 입력하세요.</label>
+
                </p>
                
                <p>	<!-- 비밀번호입력 -->
@@ -181,7 +183,7 @@
                      style="ime-mode: active;" id="password" name="password"
                      placeholder=" PASSWORD" onfocus="this.placeholder=''"
                      onblur="this.placeholder=' PASSWORD'"> <label
-                     for="password" generated="true" class="error"> 비밀 번호를
+                     for="password" generated="true" class="error">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 비밀번호를
                      입력하세요.</label>
                </p>
                <p>	<!-- 비밀번호확인입력 -->
@@ -190,7 +192,7 @@
                      style="ime-mode: active;" id="pwchk" name="pwchk"
                      placeholder=" PASSWORD" onfocus="this.placeholder=''"
                      onblur="this.placeholder=' PASSWORD'"> <label for="pwchk"
-                     generated="true" class="error"> 비밀번호를 다시 한 번 입력하세요.</label>
+                     generated="true" class="error">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 비밀번호를 다시 한 번 입력하세요.</label>
                </p>
 
                <p>	<!-- 우편번호입력 -->
@@ -199,10 +201,10 @@
                      style="ime-mode: active;"> - <input type="text" id="zip2"
                      name="zip2" class="join_input_half error"
                      style="ime-mode: active;"> <a id="zipcode" name="zipcode"
-                     type="button" onclick="openDaumPostcode()"> <img
-                     src="${root}/resources/images/images/zipcode.png" height="30">
+                     type="button" onclick="openDaumPostcode()"> &nbsp; <img
+                     src="${root}/resources/images/images/zipcode.png" height="20">
                   </a> <label id="postCheck" name="postCheck" for="zip2"
-                     generated="true" class="error">우편번호를 입력하세요.</label>
+                     generated="true" class="error">&nbsp;우편번호를 입력하세요.</label>
 
                </p>
 

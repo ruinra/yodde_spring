@@ -136,7 +136,7 @@
 			<!-- 센터 로고 -->
 			<span class="title_center">
 				<a href="/home" class="title_logo">
-					<img src="${root}/resources/images/images/title.png" height="43">
+					<img src="${root}/resources/images/images/logo.png" height="43">
 				</a>
 			</span>
 			
@@ -144,7 +144,7 @@
 			<span class="title_right">
 				<c:if test="${fn:length(email) < 3}">
 					<a href="/home/login" onclick="" style="padding-right:8px;">
-						<img src="${root}/resources/images/images/login.png" height="18">
+						<img src="${root}/resources/images/images/login2.png" height="18">
 					</a>
 				</c:if>
 				<c:if test="${fn:length(email) > 3 }">
@@ -154,7 +154,7 @@
 				</c:if>
 				
 				<a href="" onclick="">
-					<img src="${root}/resources/images/images/moning.png" height="18">
+					<img src="${root}/resources/images/images/about us.png" height="18">
 				</a>
 			</span>
 		</div>		

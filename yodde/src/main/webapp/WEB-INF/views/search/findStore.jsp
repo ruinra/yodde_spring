@@ -114,7 +114,7 @@
       <div class="content">                           <!— content —>
          <div class="result_content">
             <div class="result_img">                  <!— result title —>
-               <img src="${root}/resources/images/images/about.png" height="55">
+               <img src="${root}/resources/images/images/about.png" height="25">
                ${query}
             </div>
             <div id="resultCount" class = "resultCount"></div>

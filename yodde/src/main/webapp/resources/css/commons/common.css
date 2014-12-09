@@ -3,7 +3,7 @@
 
 body{
 	margin:0px 0px 0px 0px;
-	background-color:#F38983;
+	background-color:white;
 	font-family:'Nanum Gothic', '맑은 고딕', Helvetica;
 }
 A:link{text-decoration:none;}
@@ -13,12 +13,12 @@ A:hover{text-decoration:none;}
 .title_box{
 	width: 100%; 	height: 50px;
 	margin: 0px 0px 0px 0px;
-	padding: 7px 50px 0px 7px;
-	background-color: #F38983;
+	padding: 30px 50px 0px 7px;
+	background-color: white;
 	position: fixed;
 	z-index: 100;
 	min-width:1260px;
-	max-width: 1260px;
+	max-width: 1920px;
 }
 .title_left{
 	

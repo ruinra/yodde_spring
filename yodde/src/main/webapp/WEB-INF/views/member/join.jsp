@@ -22,7 +22,7 @@
 				<div class="join_box">
 					<form onsubmit="return checkForm()">
 						<div class="result_title">				<!-- login title -->
-							<img src="${root}/resources/images/images/join_title.png" height="55">
+							<img src="${root}/resources/images/images/join_title.png" height="25">
 						</div>
 						<div class="Btn" style="text-align:center; padding-top:25px;">
 							<span class="Btn_member">

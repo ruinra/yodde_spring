@@ -48,7 +48,7 @@
 					<div class="RS_title">
 						<div id = "categoryy"></div>
 						<c:if test="${categoryLevel == 'category1'}">
-							<img src="${root}/resources/images/images/ct_1.png" height="40px;" id="categoryImg"/>
+							<img src="${root}/resources/images/images/ct_1.png" height="25px;" id="categoryImg"/>
 						</c:if>
 						<c:if test="${categoryLevel == 'category2'}">
 							${categoryName}

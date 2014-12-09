@@ -110,7 +110,7 @@ function idCheck(root) {
 					<div class="result_title">
 						<!-- login title -->
 						<img src="${root}/resources/images/images/join_buss.png"
-							height="55">
+							height="25">
 					</div>
 					<div style="margin-left: 40px;">
 						<p>
@@ -119,12 +119,12 @@ function idCheck(root) {
 								style="ime-mode: active;" name="email" placeholder=" ID@EMAIL"
 								onfocus="this.placeholder=''"
 								onblur="this.placeholder=' ID@EMAIL'" value="">
-								<label for="email" generated="true" class="error"> 이메일을 입력하세요.</label>
+								<label for="email" generated="true" class="error">&nbsp;&nbsp;이메일을 입력하세요.</label>
 								
 								<!-- 중복체크 -->
 								<a id="idCheck" name="idCheck"	
 			                     type="button" onclick="idCheck('${root}')"> <img
-			                     src="${root}/resources/images/images/zipcode.png" height="30">
+			                     src="${root}/resources/images/images/zipcode.png" height="20">
                	 				</a>
 						</p>
 
@@ -134,7 +134,7 @@ function idCheck(root) {
 								style="ime-mode: active;" name="name" placeholder=" STORE_NAME"
 								onfocus="this.placeholder=''"
 								onblur="this.placeholder=' NICKNAME'"> <label for="name"
-								generated="true" class="error"> (지역)상호명으로 입력해주세요.</label>
+								generated="true" class="error">&nbsp;&nbsp;(지역)상호명으로 입력해주세요.</label>
 						</p>
 
 						<p>
@@ -143,7 +143,7 @@ function idCheck(root) {
 								style="ime-mode: active;" id="business" name="business"
 								placeholder=" REGISTRATION_NUMBER" onfocus="this.placeholder=''"
 								onblur="this.placeholder=' REGISTRATION_NUMBER'"> <label
-								for="business" generated="true" class="error"> 사업자 번호를
+								for="business" generated="true" class="error">&nbsp;&nbsp; 사업자 번호를
 								입력하세요.</label>
 						</p>
 
@@ -153,7 +153,7 @@ function idCheck(root) {
 								style="ime-mode: active;" id="password" name="password"
 								placeholder=" PASSWORD" onfocus="this.placeholder=''"
 								onblur="this.placeholder=' PASSWORD'"> <label
-								for="password" generated="true" class="error"> 비밀 번호를
+								for="password" generated="true" class="error">&nbsp;&nbsp;비밀번호를
 								입력하세요.</label>
 						</p>
 
@@ -163,7 +163,7 @@ function idCheck(root) {
 								style="ime-mode: active;" id="pwchk" name="pwchk"
 								placeholder=" PASSWORD" onfocus="this.placeholder=''"
 								onblur="this.placeholder=' PASSWORD'"> <label
-								for="pwchk" generated="true" class="error"> 비밀번호를 다시 한 번
+								for="pwchk" generated="true" class="error">&nbsp;&nbsp;비밀번호를 다시 한 번
 								입력하세요.</label>
 						</p>
 					</div>

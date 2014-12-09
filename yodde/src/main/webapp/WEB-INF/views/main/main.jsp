@@ -268,7 +268,7 @@
         }
 		</script>
 	</head>
-	<body onload="initialize()">
+	<body onload="initialize()" al>
       <div>
          <jsp:include page="../common/title.jsp"/>      <!-- title -->
       </div>
@@ -281,7 +281,7 @@
          
             <div class="store_box">
                <div class="store_box_title">
-                  <img src="${root}/resources/images/images/1_HOT.png" height="40"> 핫플레이스!
+                  <img src="${root}/resources/images/images/1_HOT2.png" height="30">
                </div>
                <div class="stores" id="pic_slide">
                   <div class="slide_title">
@@ -305,7 +305,7 @@
             
             <div class="store_box">
                <div class="store_box_title">
-                  <img src="${root}/resources/images/images/2_REGION.png" height="40"> 지역 중심 상점
+                  <img src="${root}/resources/images/images/2_REGION2.png" height="30">
                </div>
                <div class="stores" id="pic_slide">
                   <div class="slide_title" id="region">
@@ -316,7 +316,7 @@
             
             <div class="store_box">
                <div class="store_box_title">
-                  <img src="${root}/resources/images/images/3_LIKES.png" height="40"> 좋아요 많은 리뷰
+                  <img src="${root}/resources/images/images/3_LIKES2.png" height="30">
                </div>
                <div class="stores" id="pic_slide">
                   <div class="slide_title">
@@ -340,7 +340,7 @@
             
             <div class="store_box">
                <div class="store_box_title">
-                  <img src="${root}/resources/images/images/4_NEW.png" height="40"> 새로 오픈한 상점
+                  <img src="${root}/resources/images/images/4_NEW2.png" height="30">
                </div>
                <div class="stores" id="pic_slide">
                   <div class="slide_title">
@@ -365,7 +365,7 @@
             <c:if test="${status == 'member'}">
                <div class="store_box">
                   <div class="store_box_title">
-                     <img src="${root}/resources/images/images/4_NEW.png" height="40"> 팔로잉 하는 사람 최신 리뷰
+                     <img src="${root}/resources/images/images/4_NEW2.png" height="30">
                   </div>
                   <div class="stores" id="pic_slide">
                      <div class="slide_title">
@@ -389,7 +389,7 @@
             
                <div class="store_box">
                   <div class="store_box_title">
-                     <img src="${root}/resources/images/images/4_NEW.png" height="40"> 팔로잉 하는 상점 최신 리뷰
+                     <img src="${root}/resources/images/images/4_NEW2.png" height="30">
                   </div>
                   <div class="stores" id="pic_slide">
                      <div class="slide_title">

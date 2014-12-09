@@ -28,7 +28,7 @@
 				<div class="login_box">
 					<form onsubmit="return checkForm()" action="/home/j_spring_security_check" method="post">
 						<div class="result_title">				<!-- login title -->
-							<img src="${root}/resources/images/images/logintitle.png" height="55">
+							<img src="${root}/resources/images/images/logintitle.png" height="25">
 						</div>
 						<div class="login_form">				<!-- login form -->
 							<div>
@@ -47,12 +47,12 @@
 								<img src="${root}/resources/images/images/LOGINbtn.png" height="30">
 							</a>
 							 -->
-							<input type="IMAGE" src="${root}/resources/images/images/LOGINbtn.png" height="30" name="Submit" value="Submit">
+							<input type="IMAGE" src="${root}/resources/images/images/LOGINbtn.png" height="25" name="Submit" value="Submit">
 							<a href="/home/member/join" onclick="">
-								<img src="${root}/resources/images/images/JOIN.png" height="30">
+								<img src="${root}/resources/images/images/JOIN.png" height="25">
 							</a>
 							<a href="${root}/passwordMail" onclick="">
-								<img src="${root}/resources/images/images/FIND.png" height="30">
+								<img src="${root}/resources/images/images/FIND.png" height="25">
 							</a>
 						</div>
 					</form>

@@ -61,7 +61,7 @@ ol, ul {
 }
 
 .search_bar {
-	padding: 60px 0px 5px 26%;
+	padding: 110px 0px 5px 26%;
 	background-color: #FFFFFF;
 	display: inline-block;
 	width: 80%;
@@ -70,8 +70,8 @@ ol, ul {
 .input_text {
 	width: 95%;
 	height: 25px;
-	border: solid 7px #F38983;
-	font-size: 25px;
+	border: solid 2px #EA9494;
+	font-size: 15px;
 	text-transform: uppercase;
 	font-family: 'Nanum Gothic', '맑은 고딕', Helvetica;
 	font-weight: bold;
@@ -115,12 +115,14 @@ ol, ul {
 .store_box_title {
 	z-index: 100;
 	opacity: 1;
+	margin: auto;
+	max-width: 883px
 }
 
 .stores {
 	height: 270px;
 	padding: 2px 2px 2px 20px;
-	background-color: #fafafa;
+	background-color: #D7D2D2;
 	min-width: 883px;
 }
 
@@ -312,7 +314,7 @@ resultStore -->.RS_content {
 
 .RS_title {
 	width: 926px;
-	height: 50px;
+	height: 30px;
 	margin-bottom: 10px;
 	padding: 10px 0px 0px 0px;
 	text-align: center;

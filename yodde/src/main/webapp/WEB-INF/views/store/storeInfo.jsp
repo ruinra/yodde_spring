@@ -241,7 +241,7 @@
          <div class="storeInfo_content">
             <div class="result_img">
                <!-- result title -->
-               <img src="${root}/resources/images/images/about.png" height="30" />
+               <img src="${root}/resources/images/images/about.png" height="25" />
                <span class="result_value"> <!-- 검색해서 넘어온 가게 이름 -->
                   ${storeDto.storeName}
                </span>
@@ -265,10 +265,10 @@
                      <!-- store의 status 값을 받아와서 open / close 중 하나를 띄움 --> 
                      <c:choose>
                         <c:when test="${storeDto.status == 0}">
-                           <img src="${root}/resources/images/images/close.png" height="30"/>
+                           <img src="${root}/resources/images/images/close.png" height="25"/>
                         </c:when>
                         <c:otherwise>
-                           <img src="${root}/resources/images/images/open.png" height="30"/>
+                           <img src="${root}/resources/images/images/open.png" height="25"/>
                         </c:otherwise>
                      </c:choose>
                   </span>
@@ -406,7 +406,7 @@
                <div class="review_title">
                   <div style="background-color: white;">
 <%--                      ${pictureList.size()==0} --%>
-                     <img src="${root}/resources/images/images/review_pic.png" height="30">
+                     <img src="${root}/resources/images/images/review_pic.png" height="25">
                   </div>
                </div>
                <div class="reviewImg_box">
@@ -434,12 +434,12 @@
                <!-- 리뷰쓰기 창 -->
                <div class="review_title">
                   <span style="text-align: left; background-color: white;">
-                     <img src="${root}/resources/images/images/review_title.png" height="30">
+                     <img src="${root}/resources/images/images/review_title.png" height="25">
                   </span>
    
                   <div class="write_btn">
                      <a href="javascript:showReviewEditor('${email}')">
-                        <img src="${root}/resources/images/images/write.png" height="25">
+                        <img src="${root}/resources/images/images/write.png" height="20">
                      </a>
                   </div>
                </div>
